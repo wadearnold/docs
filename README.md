@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/moov/badge/?version=latest)](http://moov.readthedocs.io/en/latest/?badge=latest)
+
 # docs
 Project documentation in markdown - http://docs.moov.io
 
