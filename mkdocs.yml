@@ -1,7 +1,10 @@
 site_name: Moov Docs
 pages:
-    - Home: index.md
+    - Overview: index.md
+    - ACH: ach.md
+    - Reference: reference.md
     - About: about.md
+
 theme: readthedocs
 repo_url: https://github.com/moov-io/docs/
 google_analytics: ['UA-118148273-1', 'moov.io']
