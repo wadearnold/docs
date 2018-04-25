@@ -4,12 +4,9 @@
 
 ---
 
-## Moov ACH server
+## Moov ACH
 
 [Moov ACH server](./ach.md) is a open-source, cloud native ACH payment gateway exposing a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full [NACHA](https://www.nacha.org/) file format specification.
-
-Moov provides a lightweight server that is written in the [Go](https://golang.org/) programming language. Moov is maintained by [Moov.io](http://moov.io) and an amazing OpenSource EcoSystem, find more at [GitHub](https://github.com/moov-io/).
-
 
 ## Moov design goals
 
