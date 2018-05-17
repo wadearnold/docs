@@ -30,16 +30,22 @@ Gusto has provided a great technical overview of how ACH works for developers
 
 ## Sequence of records
 
-Overview of record file format specification
+Overview of Record type file format specification
 
 ### RCK (Represented Check Entries)
 
-Represented Check Entries. A physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
+RCK Entry Detail Record is a physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
 
-| FIELD | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |9 | 10 | 11 |
-| :-------- | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | ------: |
-| *Data element name* | Record Type Code | Transaction Code | receiving DFI Identification | Check Digit | DFI Account Number | amount | Check Serial Number | Individual Name | Discretionary Data | Addenda Record Indicator | Trace Number |
-| *Field Inclusion Requirement* | M | M | M | M | R | M | M | M | R | O | M | M |
-| *Contents* | '6' | Numeric | TTTTAAAA | Numeric | Alphameric | $$$$$$$$¢¢ |  Alphameric | Alphameric | Alphameric | Numeric | Numeric |
-| *Length* | 1 | 2 | 8 | 1 | 17 | 10 | 15 | 22 | 2 | 1 | 15 |
-| *Position* | 01-01 | 02-03 | 04-11 | 12-12 | 13-29 | 30-39 | 40-54 | 55-76 | 77-78 | 79-79 | 80-94 |
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-54 | 15 | Alphameric | Check Serial Number |The serial number of the check being represented | M |
+| *8* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | M |
+| *9* | 77-78 | 2 | Alphameric | Discretionary Data | The use of this field is defined byu the ODFI | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda "1" = one addenda included | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
