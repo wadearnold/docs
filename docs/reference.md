@@ -76,6 +76,33 @@ This ACH debit application is used by originators as a method of payment for the
 
 Back Office Conversion. A single entry debit initiated at the point of purchase or at a manned bill payment location to transfer funds through conversion to an ACH debit entry during back office processing. Unlike ARC entries, BOC conversions require the customer to be present and a notice that checks may be converted to BOC ACH entries be posted.
 
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-54 | 9 | Alphameric | Check Serial Number |The serial number of the check being represented | M |
+| *8* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | O |
+| *9* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda "1" = one addenda included | O |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+## ARC (Accounts Receivable Entry)
+
+Accounts Receivable Entry. A consumer check converted to a one-time ACH debit. The difference between ARC and POP is that ARC can result from a check mailed in where as POP is in-person.
+
+The Accounts Receivable (ARC) Entry provides billers the opportunity to initiate single-entry ACH
+debits to customer accounts by converting checks at the point of receipt through the U.S. mail, at
+a drop box location or in-person for payment of a bill at a manned location. The biller is required
+to provide the customer with notice prior to the acceptance of the check that states the receipt of
+the customer’s check will be deemed as the authorization for an ARC debit entry to the customer’s
+account. The provision of the notice and the receipt of the check together constitute authorization
+for the ARC entry. The customer’s check is solely be used as a source document to obtain the routing
+number, account number and check serial number. 
+
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
