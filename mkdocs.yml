@@ -1,4 +1,4 @@
-site_name: Moov Docs
+site_name: Moov Documentation
 pages:
     - Overview: index.md
     - ACH: ach.md

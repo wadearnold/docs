@@ -19,6 +19,7 @@ NACHA includes Members in the process of establishing Rules for the ACH Network,
 [source: ACH Network: How it Works](https://www.nacha.org/ach-network)
 
 ## Developer Overview
+
 Gusto has provided a great technical overview of how ACH works for developers
 
 - [How ACH works: A developer perspective - Part 1](http://engineering.gusto.com/how-ach-works-a-developer-perspective-part-1/)
@@ -27,3 +28,18 @@ Gusto has provided a great technical overview of how ACH works for developers
 - [How ACH works: A developer perspective - Part 4](http://engineering.gusto.com/how-ach-works-a-developer-perspective-part-4/)
 
 
+## Sequence of records
+
+Overview of record file format specification
+
+### RCK (Represented Check Entries)
+
+Represented Check Entries. A physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
+
+| FIELD | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |9 | 10 | 11 |
+| :-------- | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | ------: |
+| *Data element name* | Record Type Code | Transaction Code | receiving DFI Identification | Check Digit | DFI Account Number | amount | Check Serial Number | Individual Name | Discretionary Data | Addenda Record Indicator | Trace Number |
+| *Field Inclusion Requirement* | M | M | M | M | R | M | M | M | R | O | M | M |
+| *Contents* | '6' | Numeric | TTTTAAAA | Numeric | Alphameric | $$$$$$$$¢¢ |  Alphameric | Alphameric | Alphameric | Numeric | Numeric |
+| *Length* | 1 | 2 | 8 | 1 | 17 | 10 | 15 | 22 | 2 | 1 | 15 |
+| *Position* | 01-01 | 02-03 | 04-11 | 12-12 | 13-29 | 30-39 | 40-54 | 55-76 | 77-78 | 79-79 | 80-94 |
