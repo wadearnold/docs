@@ -50,7 +50,8 @@ RCK Entry Detail Record is a physical check that was presented but returned beca
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda "1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-## POP (Back Office Conversion)
+## POP (Point-of-Purchase)
+Point-of-Purchase. A check presented in-person to a merchant for purchase is presented as an ACH entry instead of a physical check.
 
 This ACH debit application is used by originators as a method of payment for the in-person purchase of goods or services by consumers. These Single Entry debit entries are initiated by the originator based on a written authorization and account information drawn from the source document (a check) obtained from the consumer at the point-of-purchase. The source document, which is voided by the merchant and returned to the consumer at the point-of-purchase, is used to collect the consumer’s routing number, account number and check serial number that will be used to generate the debit entry to the consumer’s account.
 
