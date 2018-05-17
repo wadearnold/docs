@@ -49,3 +49,23 @@ RCK Entry Detail Record is a physical check that was presented but returned beca
 | *9* | 77-78 | 2 | Alphameric | Discretionary Data | The use of this field is defined byu the ODFI | O |
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda "1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+## POP (Back Office Conversion)
+
+This ACH debit application is used by originators as a method of payment for the in-person purchase of goods or services by consumers. These Single Entry debit entries are initiated by the originator based on a written authorization and account information drawn from the source document (a check) obtained from the consumer at the point-of-purchase. The source document, which is voided by the merchant and returned to the consumer at the point-of-purchase, is used to collect the consumer’s routing number, account number and check serial number that will be used to generate the debit entry to the consumer’s account.
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-48 | 9 | Alphameric | Check Serial Number |The serial number of the check being represented | M |
+| *8* | 49-52 | 22 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | M |
+| *9* | 53-54 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | M |
+| *10* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | O |
+| *11* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda "1" = one addenda included | M |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
