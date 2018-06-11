@@ -181,10 +181,10 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
 | *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 9 | Alphameric | Individual Identification Number |The serial number of the check being represented | M |
-| *8* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | O |
-| *9* | 77-78 | 2 | Alphameric | Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
+| *7* | 40-54 | 9 | Alphameric | Individual Identification Number |The serial number of the check being represented | O |
+| *8* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | R |
+| *9* | 77-78 | 2 | Alphameric | Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction | M |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 #### POS Addenda Record
@@ -199,6 +199,45 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *6* | 20-25 | 6 | Alphameric | Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
 | *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
 | *8* | 30-35 | 6 | Alphameric | Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
+| *9* | 36-62 | 27 | Alphameric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
+| *10* | 63-77 | 2 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
+| *11* | 78-79 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | R |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+## SHR Shared Network Entry
+
+**Shared Network Entry.** A SHR entry a debit Entry initiated at an “electronic terminal,” as that term is defined in Regulation E, to a Consumer Account of the Receiver to pay an obligation incurred in a point-of-sale transaction, or to effect a point-of-sale terminal cash withdrawal. Also an adjusting or other credit Entry related to such debit Entry, transfer of funds, or obligation. SHR Entries are initiated in a shared network where the ODFI and RDFI have an agreement in addition to these Rules to process such Entries.
+
+#### SHR Entry Detail Record
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-43 | 4 | MMDD | Card Expiration Date | This code is used by cardholder processors and cardholder Financial Institutions to verify that the card remains valid and that certain security procedures required by various card authorization systems have been met. | R |
+| *8* | 44-54 | 11 | Numeric | Document Reference Number | This field further defines the transaction in the event of a Receiver’s inquiry. An example is an Electronic sequence number | R |
+| *9* | 55-76 | 22 | Numeric | Individual Card Account Number | The Individual Card Account Number is the number assigned by the card issuer and is obtained from the card itself. | R |
+| *10* | 77-78 | 2 | Alphameric | Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, 
+cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction | M |
+| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+#### SHR Addenda Record
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *2* | 02-03 | 2 | '02' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
+| *3* | 04-10 | 7 | Alphameric | Reference Information #1 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
+| *4* | 11-13 | 3 | Alphameric | Reference Information #2 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
+| *5* | 14-19 | 6 | Alphameric | Terminal Identification Code | This field identifies an Electronic terminal with a unique code that allows a terminal owner and/or switching network to identify the terminal at which an Entry originated. | R |
+| *6* | 20-25 | 6 | Alphameric | Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
+| *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
+| *8* | 30-35 | 6 | MMDD | Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
 | *9* | 36-62 | 27 | Alphameric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
 | *10* | 63-77 | 2 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
 | *11* | 78-79 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | R |
