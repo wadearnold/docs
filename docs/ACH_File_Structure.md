@@ -169,7 +169,7 @@ number, account number and check serial number.
 
 Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use of a merchant-issued plastic card to pay an obligation at the point-of-sale. Much like a financial institution issued debit card, the merchant- issued debit card is swiped at the point-of-sale and approved for use; however, the authorization only verifies the card is open, active and within the card’s limits—it does not verify the Receiver’s account balance or debit the account at the time of the purchase. Settlement of the transaction moves from the card network to the ACH Network through the creation of a POS entry by the card issuer to debit the Receiver’s account.
 
-#### POS Entry Detail Record
+**POS Entry Detail Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -185,7 +185,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-#### POS Addenda Record
+**POS Addenda Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -206,7 +206,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 **Shared Network Entry.** A SHR entry a debit Entry initiated at an “electronic terminal,” as that term is defined in Regulation E, to a Consumer Account of the Receiver to pay an obligation incurred in a point-of-sale transaction, or to effect a point-of-sale terminal cash withdrawal. Also an adjusting or other credit Entry related to such debit Entry, transfer of funds, or obligation. SHR Entries are initiated in a shared network where the ODFI and RDFI have an agreement in addition to these Rules to process such Entries.
 
-#### SHR Entry Detail Record
+**SHR Entry Detail Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -223,7 +223,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-#### SHR Addenda Record
+**SHR Addenda Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -239,3 +239,33 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *10* | 63-77 | 2 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
 | *11* | 78-79 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | R |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+## CIE Customer-Initiated Entries 
+
+**Customer-Initiated Entry** (or CIE entry) is a credit entry initiated on behalf of, and upon the instruction of, a consumer to transfer funds to a non-consumer Receiver. CIE entries are usually transmitted to a company for payment of funds that the consumer owes to that company and are initiated by the consumer through some type of online banking product or bill payment service provider. With CIEs, funds owed by the consumer are “pushed” to the biller in the form of an ACH credit, as opposed to the biller’s use of a debit application (e.g., PPD, WEB) to “pull” the funds from a customer’s account.
+
+**CIE Entry Detail Record**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-54 | 15 | Alphameric | Individual Name | This field is entered by the ODFI to provide additional identification for the Receiver and may be helpful in identifying returned Entries. Field 7, rather than Field 8, of the Entry Detail Record is used for the Individual Name | R |
+| *8* | 55-76 | 22 | Alphameric | Individual Identification Number | This field contains the accounting number by which the Originator (payor) is known to the Receiver (payee). It is used by the Receiver to update accounts receivable Records. It should be the number shown on an invoice, statement, billhead, notice, or other communication as the reference. Numbers may be policy, customer, invoice, meter, sequence, and/or alphanumeric combinations. Field 8, rather than Field 7, of the Entry Detail Record is used for the Individual Identification Number. | M |
+| *9* | 77-78 | 2 | Alphameric | Discretionary Data | This field in the Entry Detail Record allows ODFIs to include codes, of significance to them, to enable specialized handling of the Entry. There is no standardized interpretation for the value of this field. It can either be a single two-character code, or two distinct one-character codes, according to the needs of the ODFI and/or Originator involved. This field must be returned intact for any returned Entry. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+**CIE Addenda Record**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
+| *3* | 04-83 | 80 | Alphameric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
+| *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1.” | M |
+| *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
