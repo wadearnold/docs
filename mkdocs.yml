@@ -1,9 +1,10 @@
 site_name: Moov Documentation
 pages:
-    - Overview: index.md
-    - ACH: ach.md
+- Overview: index.md
+- Developers Guide: 
     - Reference: reference.md
-    - About: about.md
+    - 'ACH File Structure': ACH_File_Structure.md
+- About: about.md
 
 theme: readthedocs
 repo_url: https://github.com/moov-io/docs/

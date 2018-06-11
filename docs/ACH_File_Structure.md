@@ -1,5 +1,3 @@
-#ACH File Structure
-
 ## Sequence of Records and Description
 
 Each NACHA formatted file you originate consists of the following records:
