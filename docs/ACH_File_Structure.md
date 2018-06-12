@@ -198,7 +198,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
 | *8* | 30-35 | 6 | Alphameric | Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
 | *9* | 36-62 | 27 | Alphameric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
-| *10* | 63-77 | 2 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
+| *10* | 63-77 | 15 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
 | *11* | 78-79 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | R |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
