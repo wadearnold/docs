@@ -77,7 +77,7 @@ The File Header Record designates physical file characteristics. It also identif
 | *13* | 87-94 | 8 | Alphanumeric | Reference Code | You may use this field to describe the input file for internal accounting purposes or fill with spaces. | O |
 
 
-### RCK (Represented Check Entries)
+### RCK Represented Check Entries
 
 RCK Entry Detail Record is a physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
 
@@ -95,7 +95,7 @@ RCK Entry Detail Record is a physical check that was presented but returned beca
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-## POP (Point-of-Purchase)
+## POP Point-of-Purchase
 
 **Point-of-Purchase Entry.** A check presented in-person to a merchant for purchase is presented as an ACH entry instead of a physical check.
 
@@ -117,7 +117,7 @@ This ACH debit application is used by originators as a method of payment for the
 | *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
 | *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-## BOC (Back Office Conversation)
+## BOC Back Office Conversation
 
 **Back Office Conversion Entry.** A single entry debit initiated at the point of purchase or at a manned bill payment location to transfer funds through conversion to an ACH debit entry during back office processing. Unlike ARC entries, BOC conversions require the customer to be present and a notice that checks may be converted to BOC ACH entries be posted.
 
@@ -135,7 +135,7 @@ This ACH debit application is used by originators as a method of payment for the
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-## ARC (Accounts Receivable Entry)
+## ARC Accounts Receivable Entry
 
 **Accounts Receivable Entry.** A consumer check converted to a one-time ACH debit. The difference between ARC and POP is that ARC can result from a check mailed in where as POP is in-person.
 
@@ -163,7 +163,7 @@ number, account number and check serial number.
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-## POS (Point-of-Sale)
+## POS Point-of-Sale
 
 **Point of Sale Entry.** A POS Entry is a debit Entry initiated at an “electronic terminal” to a Consumer Account of the Receiver to pay an obligation incurred in a point- of-sale transaction, or to effect a point-of-sale terminal cash withdrawal.
 
@@ -198,7 +198,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
 | *8* | 30-35 | 6 | Alphameric | Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
 | *9* | 36-62 | 27 | Alphameric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
-| *10* | 63-77 | 2 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
+| *10* | 63-77 | 15 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | R |
 | *11* | 78-79 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | R |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
@@ -269,3 +269,153 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *3* | 04-83 | 80 | Alphameric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1.” | M |
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
+
+## IAT International ACH Transaction
+
+An IAT entry is a credit or debit ACH entry that is part of a payment transaction involving a financial agency’s office (i.e., depository financial institution or business issuing money orders) that is not located in the territorial jurisdiction of the United States. IAT entries can be made to or from a corporate or consumer account and must be accompanied by seven (7) mandatory addenda records identifying the name and physical address of the Originator, name and physical address of the Receiver, Receiver’s account number, Receiver’s bank identity and reason for the payment.
+
+**IAT Entry Detail**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-16 | 4 | Numeric | Number of Addenda Records | Number of Addenda Records | M |
+| *6* | 17-29 | 13 | blank | Reserved | Leave blank | M |
+| *7* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *8* | 40-74 | 35 | Alphanumeric | Foreign Receiver's Account Number/DFI Account Number | Receiver‟s account number at the RDFI domiciled in the territorial jurisdiction of the U.S. A value generally found on the MICR line of a check. Enter the MICR Dash Cue Symbol as a hyphen (“-”). Account numbers vary in format. If the account number has less than 35 characters, left-justify, blank-fill. Ignore any blank spaces within the account number. | M |
+| *9* | 75-76 | 2 | blank | Reserved | Leave Blank | n/a |
+| *10* | 77-77 | 1 | blank | Gateway Operator OFAC screening indicator | Assigned by the ACH Gateway operator | O |
+| *11* | 78-78 | 1 | blank | Secondary OFAC screening indicator | Assigned by the ACH Gateway operator | O |
+| *12* | 79-79 | 1 | "1" | Addenda Record indicator | "1" = Addenda records follow this entry | M |
+| *13* | 80-94 | 15 | Numeric | Trace Number | The field is constructed as follows: <br> Positions 80-87 should be the same as Field 16 of the IAT Company/Batch Header. Positions 88- 94 are filled with the Entry Detail Sequence Number. This number must be assigned in ascending order to entries within each batch, although the numbers need not be continuous. | M |
+
+**IAT Addenda Records**
+
+For IAT entries, the first seven Addenda Records are mandatory and contain additional information about the receiver, the ODFI and the RDFI as required by OFAC. The type '717' remittance addenda is optional and is used by the Originator to supply additional information about Entry Detail Record to the Receiver; a maximum of two type '717' addenda are allowed. The type '718' Foreign Correspondent Bank addenda must be included if a Foreign Correspondent Bank is involved in the processing of the IAT entry; a maximum of five type '718' addenda are allowed.
+Each Addenda Record must be included in the item count that is entered into the Company/Batch Control Record.
+
+**IAT First Addenda Record (710)**
+
+The First Addenda Record identifies the Receiver of the transaction and the dollar amount of the payment.
+
+ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '10' | Addenda Type Code | First Addenda REcord for IAT | M | 
+| *3* | 04-06 | 3 | Alphanumeric | Transaction Type Code | Describes the type of payment:<br> ANN = Annuity <br>BUS = Business/Commercial <br>DEP = Deposit<br>LOA = Loan<br>MIS = Miscellaneous<br>MOR = Mortgage<br>PEN = Pension<br>RLS = Rent/Lease<br>REM = Remittance2<br>SAL = Salary/Payroll<br>TAX = Tax<br>TEL = Telephone-Initiated Transaction <br>WEB = Internet-Initiated Transaction <br>ARC = Accounts Receivable Entry <br>BOC = Back Office Conversion Entry <br>POP = Point of Purchase Entry<br>RCK = Re-presented Check Entry | R |
+| *4* | 07-24 | 18 | $$$$$$$$$$$$$$$$¢¢ | Foreign Payment Amount | For inbound IAT payments this field should contain the USD amount or may be blank. | R |
+| *5* | 25-46 | 22 | Alphanumeric | Foreign Trace Number | Insert blanks or zeros| O |
+| *6* | 47-81 | 35 | Alphanumeric | Receiving Company Name/Individual Name | Insert receiver's name | M |
+| *7* | 82-87 | 6 | blank | Reserved | Leave blank | n/a |
+| *8* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Second Addenda Record (711)**
+
+The Second and Third Addenda Records identify key information related to the Originator of the entry.
+
+ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '11' | Addenda Type Code | Second Addenda Record for IAT | M | 
+| *3* | 04-38 | 35 | Alphanumeric | Originator Name | Contains the originators name (your company name) | M |
+| *4* | 39-73 | 35 | Alphanumeric | Originator Street Address | Contains the originators street address (your company's address) | m |
+| *5* | 74-87 | 14 | blank | Reserved | Leave blank | n/a |
+| *6* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Third Addenda Record (712)**
+
+ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '12' | Addenda Type Code | Third Addenda Record for IAT | M | 
+| *3* | 04-38 | 35 | Alphanumeric | Originator City & State / Province | City and State should be separated with an asterisk (*) as a delimiter and the field should end with a backslash (\).<br>For example: San Francisco*CA\. | M |
+| *4* | 39-73 | 35 | Alphanumeric | Originator Country & Postal Code | Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\ | M |
+| *5* | 74-87 | 14 | blank | Reserved | Leave blank | n/a |
+| *6* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Fourth Addenda Record (713)**
+
+The Fourth Addenda Record contains information related to the financial institution originating the entry. For inbound IAT entries, the Fourth Addenda Record must contain information to identify the foreign financial institution that is providing the funding and payment instruction for the IAT entry.
+
+
+ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '13' | Addenda Type Code | Fourth Addenda Record for IAT | M | 
+| *3* | 04-38 | 35 | Alphanumeric | Originating DFI Name | For Outbound IAT Entries, this field must contain the name of the U.S. ODFI.<br> For Inbound IATs: Name of the foreign bank providing funding for the payment transaction | M |
+| *4* | 39-40 | 2 | "01" | Originating DFI Identification Number Qualifier | “01” = National Clearing System <br>*For Inbound IATs:* The 2-digit code that identifies the numbering scheme used in the Foreign DFI Identification Number field: <br>01 = National Clearing System <br>02 = BIC Code <br>03 = IBAN Code | M |
+| *5* | 41-74 | 34 | Alphanumeric | Originating DFI Identification | This field contains the routing number that identifies the U.S. ODFI initiating the entry.<br>*For Inbound IATs:* This field contains the bank ID number of the Foreign Bank providing funding for the payment transaction. | M |
+| *6* | 75-77 | 3 | Alphanumeric | Originating DFI Branch Country Code | USb” = United States<br>(“b” indicates a blank space)<br>*For Inbound IATs:* This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that originated the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org. | M |
+| *7* | 78-87 | 10 | blank | Reserved | Leave blank | n/a |
+| *8* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Fifth Addenda Record (714)**
+
+The Fifth Addenda Record identifies the Receiving financial institution holding the Receiver's account.
+
+ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '14' | Addenda Type Code | Fifth Addenda Record for IAT | M | 
+| *3* | 04-38 | 35 | Alphanumeric | Receiving DFI Name | Name of the Receiver's bank | M |
+| *4* | 39-40 | 2 | Numeric | Receiving DFI Identification Number Qualifier | The 2-digit code that identifies the numbering scheme used in the Receiving DFI Identification Number field:<br>01 = National Clearing System<br>02 = BIC Code <br>03 = IBAN Code | M |
+| *5* | 41-74 | 34 | Alphanumeric | Receiving DFI Identification Number | The bank identification number of the DFI at which the Receiver maintains his account. | M |
+| *6* | 75-77 | 3 | Alphanumeric | Receiving DFI Branch Country Code | This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that receives the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org<br>“USb” = United States<br>(“b” indicates a blank space) | M |
+| *7* | 78-87 | 10 | blank | Reserved | Leave blank | n/a |
+| *8* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Sixth Addenda Record (715)**
+
+The Sixth and Seventh Addenda Records identify information related to the Receiver.
+
+Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '15' | Addenda Type Code | Sixth Addenda Record for IAT | M | 
+| *3* | 04-18 | 15 | Alphanumeric | Receiver Identification Number | This field contains the accounting number by which the Originator is known to the Receiver for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver's statement. | O |
+| *4* | 19-53 | 35 | Alphanumeric | Receiver Street Address | Receiver‟s physical address | M |
+| *5* | 54-87 | 34 | blank | Reserved | Leave blank | n/a |
+| *6* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Seventh Addenda Record (716)**
+
+Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '16' | Addenda Type Code | Seventh Addenda Record for IAT | M | 
+| *3* | 04-38 | 35 | Alphanumeric | Receiver City, State/Province | City and State should be separated with an asterisk (*) as a delimiter and the field should end with a backslash (\).<br>For example: San Francisco*CA\ | M |
+| *4* | 39-73 | 35 | Alphanumeric | Receiver Country & Postal Code| Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\ | M |
+| *5* | 74-87 | 34 | blank | Reserved | Leave blank | n/a |
+| *6* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Addenda Record for Remittance Information (717) (Optional)**
+
+This is an optional Addenda Record used to provide payment-related data. You may include up to two of these Addenda Records with each IAT entry.
+
+Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '17' | Addenda Type Code | Seventh Addenda Record for IAT | M | 
+| *3* | 04-83 | 80 | Alphanumeric | Payment Related Information | Payment information associated with the preceding Entry Detail Record. Must contain NACHA endorsed ANSI ASC X12 data segments or NACHA endorsed banking conventions. The asterisk (“*”) must be the delimiter between the data elements, and the back slash (“\”) must be the terminator between the data segments. | O |
+| *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each type “17” remittance addenda in ascending order beginning with 0001 | M |
+| *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**IAT Addenda Record for Foreign Correspondent Bank Information (718)**
+
+This Addenda Record is used to provide information on each Foreign Correspondent Bank involved in the processing of the IAT entry. If no Foreign Correspondent Bank is involved,the record should not be included.<br>
+NOTE: A maximum of five 'Type 18' addenda records may be included with each IAT entry.
+
+Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '18' | Addenda Type Code | Addenda Record for Foreign Correspondent Bank Information for IAT | M |
+| *3* | 04-38 | 35 | Alphanumeric | Foreign Correspondent Bank Name | This field contains the name of the Foreign Correspondent Bank | M |
+| *4* | 39-40 | 2 | Alphanumeric | Foreign Correspondent Bank Identification Number Qualifier | This field contains a 2-digit code that identifies the numbering scheme used in the Foreign Correspondent Bank Identification Number field. Code values for this field are:<br>“01” = National Clearing System<br>“02” = BIC Code <br>“03” =IBAN Code | M |
+| *5* | 51-74 | 34 | Alphanumeric | Foreign Correspondent Bank Identification Number | This field contains the bank ID number of the Foreign Correspondent Bank | M |
+| *6* | 75-77 | 3 | Alphanumeric | Foreign Correspondent Bank Branch Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the branch of the Foreign Correspondent Bank is located. Values can be found on the International Organization for Standardization website: www.iso.org | M |
+| *7* | 78-83 | 6 | blank | Reserved | Leave blank | n/a |
+| *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001” | M |
+| *9* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
