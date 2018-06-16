@@ -445,3 +445,21 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 ## CTX Corporate Trade Exchange
 
 The Corporate Trade Exchange (CTX) application provides the ability to collect and disburse funds and information between companies. Generally it is used by businesses paying one another for goods or services. These payments replace checks with an electronic process of debiting and crediting invoices between the financial institutions of participating companies.
+
+**CTX Entry Detail Record**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only) | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Right-justified, left zero-filled, without a decimal point. Enter 10 zeros for non-dollar prenote entries. | M |
+| *7* | 40-54 | 15 | Alphameric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | R |
+| *8* | 55-58 | 4 | Numeric | Number of Addenda Records | Number of addenda records associated with this transaction. | M |
+| *9* | 59-74 | 16 | Alphameric | Receiving Company Name/ID Number | Name of Receiver. | M |
+| *10* | 75-76 | 2 | blank | reserved | Leave blank | n/a |
+| *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included | O |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
