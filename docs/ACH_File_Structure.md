@@ -289,6 +289,12 @@ An IAT entry is a credit or debit ACH entry that is part of a payment transactio
 | *9* | 51-53 | 3 | 'IAT' | Standard Entry Class Code | A mnemonic, designated by NACHA, for International ACH Transactions | M |
 | *10* | 54-63 | 10 | Alphanumeric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Should describe the purpose of the entry, such as “PAYROLL” or “TRADE PAY | M |
 | *11* | 64-66 | 3 | Alphanumeric | ISO Originating Currency Code (Account Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry was first originated. If the source of funds is within the territorial jurisdiction of the U.S., enter 'USD', otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
+| *12* | 67-69 | 3 | Alphanumeric | ISO Destination Currency Code (Payment Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry will ultimately be settled. If the final destination of funds is within the territorial jurisdiction of the U.S., enter “USD”, otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
+| *13* | 70-75 | 6 | YYMMDD | Effective Entry Date | Date you desire funds to post to receiver‟s account | M |
+| *14* | 76-78 | 3 | blanks | Settlement Date (Julian) | The ACH Operator will populate the actual settlement date in this field. | M |
+| *15* | 79-79 | 1 | '1' | Originator Status Code | Identifies the Originator as a non-Federal Government entity. | M |
+| *16* | 80-87 | 8 | TTTTAAAA | Gateway Operator Identification/ ODFI Identification | For Inbound IAT Entries, this field contains the routing number of the U.S. Gateway Operator. For Outbound IAT Entries, this field contains the standard routing number, as assigned by Accuity, that identifies the U.S. ODFI initiating the Entry. | M |
+| *17* | 88-94 | 7 | Numeric | Batch Number | Assign batch number in ascending order in each batch | M |
 
 **IAT Entry Detail**
 
