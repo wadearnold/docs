@@ -274,6 +274,22 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 An IAT entry is a credit or debit ACH entry that is part of a payment transaction involving a financial agency’s office (i.e., depository financial institution or business issuing money orders) that is not located in the territorial jurisdiction of the United States. IAT entries can be made to or from a corporate or consumer account and must be accompanied by seven (7) mandatory addenda records identifying the name and physical address of the Originator, name and physical address of the Receiver, Receiver’s account number, Receiver’s bank identity and reason for the payment.
 
+**IAT Batch Header Record**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '5' | Record Type Code | The code identifying the Company/Batch Header Record | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. <br>“200” = mixed debits and credits <br>“220” = credits only<br>“225” = debits only | M |
+| *3* | 05-20 | 16 | blank | IAT Indicator | Leave blank | O |
+| *4* | 21-22 | 2 | 'FF' | Foreign Exchange Indicator | Fixed-to-Fixed - No currency conversion. Entry is originated in a fixed-value amount and is to be received in the same fixed-value amount in the same currency. Fixed-value entries will have spaces in the Foreign Exchange Reference field. | M |
+| *5* | 23-23 | 1 | '3' | Foreign Exchange Reference Indicator | Code used to indicate the content of the Foreign Exchange Reference Field.<br>“3” = Space filled | R |
+| *6* | 24-38 | 15 | blank | Foreign Exchange Reference | Space filled | R |
+| *7* | 39-40 | 2 | Alphanumeric | ISO Destination Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the entry is to be received. Values can be found on the International Organization for Standardization website: www.iso.org | M |
+| *8* | 41-50 | 10 | Alphanumeric | Originator Identification | For U.S. entities: the number assigned will be your tax ID<br>For non-U.S. entities: the number assigned will be your DDA number, or the last 9 characters of your account number if it exceeds 9 characters | M |
+| *9* | 51-53 | 3 | 'IAT' | Standard Entry Class Code | A mnemonic, designated by NACHA, for International ACH Transactions | M |
+| *10* | 54-63 | 10 | Alphanumeric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Should describe the purpose of the entry, such as “PAYROLL” or “TRADE PAY | M |
+| *11* | 64-66 | 3 | Alphanumeric | ISO Originating Currency Code (Account Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry was first originated. If the source of funds is within the territorial jurisdiction of the U.S., enter 'USD', otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
+
 **IAT Entry Detail**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
@@ -419,3 +435,7 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | *7* | 78-83 | 6 | blank | Reserved | Leave blank | n/a |
 | *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001” | M |
 | *9* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+## CTX Corporate Trade Exchange
+
+The Corporate Trade Exchange (CTX) application provides the ability to collect and disburse funds and information between companies. Generally it is used by businesses paying one another for goods or services. These payments replace checks with an electronic process of debiting and crediting invoices between the financial institutions of participating companies.
