@@ -274,6 +274,28 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 An IAT entry is a credit or debit ACH entry that is part of a payment transaction involving a financial agency’s office (i.e., depository financial institution or business issuing money orders) that is not located in the territorial jurisdiction of the United States. IAT entries can be made to or from a corporate or consumer account and must be accompanied by seven (7) mandatory addenda records identifying the name and physical address of the Originator, name and physical address of the Receiver, Receiver’s account number, Receiver’s bank identity and reason for the payment.
 
+**IAT Batch Header Record**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '5' | Record Type Code | The code identifying the Company/Batch Header Record | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. <br>“200” = mixed debits and credits <br>“220” = credits only<br>“225” = debits only | M |
+| *3* | 05-20 | 16 | blank | IAT Indicator | Leave blank | O |
+| *4* | 21-22 | 2 | 'FF' | Foreign Exchange Indicator | Fixed-to-Fixed - No currency conversion. Entry is originated in a fixed-value amount and is to be received in the same fixed-value amount in the same currency. Fixed-value entries will have spaces in the Foreign Exchange Reference field. | M |
+| *5* | 23-23 | 1 | '3' | Foreign Exchange Reference Indicator | Code used to indicate the content of the Foreign Exchange Reference Field.<br>“3” = Space filled | R |
+| *6* | 24-38 | 15 | blank | Foreign Exchange Reference | Space filled | R |
+| *7* | 39-40 | 2 | Alphanumeric | ISO Destination Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the entry is to be received. Values can be found on the International Organization for Standardization website: www.iso.org | M |
+| *8* | 41-50 | 10 | Alphanumeric | Originator Identification | For U.S. entities: the number assigned will be your tax ID<br>For non-U.S. entities: the number assigned will be your DDA number, or the last 9 characters of your account number if it exceeds 9 characters | M |
+| *9* | 51-53 | 3 | 'IAT' | Standard Entry Class Code | A mnemonic, designated by NACHA, for International ACH Transactions | M |
+| *10* | 54-63 | 10 | Alphanumeric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Should describe the purpose of the entry, such as “PAYROLL” or “TRADE PAY | M |
+| *11* | 64-66 | 3 | Alphanumeric | ISO Originating Currency Code (Account Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry was first originated. If the source of funds is within the territorial jurisdiction of the U.S., enter 'USD', otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
+| *12* | 67-69 | 3 | Alphanumeric | ISO Destination Currency Code (Payment Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry will ultimately be settled. If the final destination of funds is within the territorial jurisdiction of the U.S., enter “USD”, otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
+| *13* | 70-75 | 6 | YYMMDD | Effective Entry Date | Date you desire funds to post to receiver‟s account | M |
+| *14* | 76-78 | 3 | blanks | Settlement Date (Julian) | The ACH Operator will populate the actual settlement date in this field. | M |
+| *15* | 79-79 | 1 | '1' | Originator Status Code | Identifies the Originator as a non-Federal Government entity. | M |
+| *16* | 80-87 | 8 | TTTTAAAA | Gateway Operator Identification/ ODFI Identification | For Inbound IAT Entries, this field contains the routing number of the U.S. Gateway Operator. For Outbound IAT Entries, this field contains the standard routing number, as assigned by Accuity, that identifies the U.S. ODFI initiating the Entry. | M |
+| *17* | 88-94 | 7 | Numeric | Batch Number | Assign batch number in ascending order in each batch | M |
+
 **IAT Entry Detail**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
@@ -419,3 +441,37 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | *7* | 78-83 | 6 | blank | Reserved | Leave blank | n/a |
 | *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001” | M |
 | *9* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+## CTX Corporate Trade Exchange
+
+The Corporate Trade Exchange (CTX) application provides the ability to collect and disburse funds and information between companies. Generally it is used by businesses paying one another for goods or services. These payments replace checks with an electronic process of debiting and crediting invoices between the financial institutions of participating companies.
+
+**CTX Entry Detail Record**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only) | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Right-justified, left zero-filled, without a decimal point. Enter 10 zeros for non-dollar prenote entries. | M |
+| *7* | 40-54 | 15 | Alphameric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | R |
+| *8* | 55-58 | 4 | Numeric | Number of Addenda Records | Number of addenda records associated with this transaction. | M |
+| *9* | 59-74 | 16 | Alphameric | Receiving Company Name/ID Number | Name of Receiver. | M |
+| *10* | 75-76 | 2 | blank | reserved | Leave blank | n/a |
+| *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included | O |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+**CTX Addenda Record**
+
+Up to 9,999 Addenda Records may be included with a CTX Entry Detail Record. The addenda should not be used with prenotes.
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
+| *3* | 04-83 | 80 | Alphameric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
+| *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1.” | M |
+| *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
