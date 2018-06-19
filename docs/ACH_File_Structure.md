@@ -76,7 +76,6 @@ The File Header Record designates physical file characteristics. It also identif
 | *12* | 64-86 | 23 | Alphanumeric | Immediate Origin or Company Name | This field contains the name of the ACH Operator or Sending Point that is Transmitting the File | M |
 | *13* | 87-94 | 8 | Alphanumeric | Reference Code | You may use this field to describe the input file for internal accounting purposes or fill with spaces. | O |
 
-
 ### RCK Represented Check Entries
 
 RCK Entry Detail Record is a physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
@@ -475,3 +474,18 @@ Up to 9,999 Addenda Records may be included with a CTX Entry Detail Record. The 
 | *3* | 04-83 | 80 | Alphameric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1.” | M |
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
+
+## File Control Record - All Formats
+
+The File Control record contains dollar, entry, and hash totals from the file‟s Company/Batch Control Records. This record also contains counts of the blocks and batches in the file.
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Header Record is '9' | M |
+| *2* | 02-07 |  | Numeric | Batch Count | Total number of Company/Batch Header Records (Record Type “5”) in the file. | M |
+| *3* | 08-13 | 6 | Numeric | Block Count | Total number of physical blocks in the file, including the File Header and File Control Records. | M |
+| *4* | 14-21 | 8 | Numeric | Entry / Addenda Count | Total number of Entry Detail and Addenda Records (Record Types “6” and “7”) in the file. | M |
+| *5* | 22-31 | 10 | Numeric | Entry Hash | Total of eight character Transit Routing/ABA numbers in the file (Field 3 of the Entry Detail Record). Do not include the Transit Routing Check Digit. Enter the 10 low-order (right most) digits of this number. For example,if this sum is 998877665544, enter 8877665544. | M |
+| *6* | 32-43 | 12 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in File | Dollar total of debit entries in the file. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill. | M |
+| *7* | 44-55 | 12 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in File | Dollar total of credit entries in the file. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill. | M |
+| *8* | 56-94 | 39 | blank | Reserved | Leave this field blank. | n/a |
