@@ -76,6 +76,27 @@ The File Header Record designates physical file characteristics. It also identif
 | *12* | 64-86 | 23 | Alphanumeric | Immediate Origin or Company Name | This field contains the name of the ACH Operator or Sending Point that is Transmitting the File | M |
 | *13* | 87-94 | 8 | Alphanumeric | Reference Code | You may use this field to describe the input file for internal accounting purposes or fill with spaces. | O |
 
+## Company/Batch Header Record Formats
+
+A batch is a collection of like entries within a file. You must use a separate batch if any of the batch-level information, such as effective date or company name or company description changes.
+
+**Batch Header Record - All SECs Except IAT**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '5' | Record Type Code | Code Identifying the Company /Batch Header Record is '5' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-54 | 15 | Alphameric | Check Serial Number |The serial number of the check being represented | M |
+| *8* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | M |
+| *9* | 77-78 | 2 | Alphameric | Discretionary Data | The use of this field is defined byu the ODFI | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+
 ### RCK Represented Check Entries
 
 RCK Entry Detail Record is a physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
@@ -103,18 +124,18 @@ This ACH debit application is used by originators as a method of payment for the
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
-| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alphameric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
-| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-48 | 9 | Alphameric | Check Serial Number |The serial number of the check being represented | M |
-| *8* | 49-52 | 22 | Alphameric | Terminal City | Identifies the city in which the electronic terminal is located | M |
-| *9* | 53-54 | 2 | Alphameric | Terminal State | Identifies the state in which the electronic terminal is located | M |
-| *10* | 55-76 | 22 | Alphameric | Individual Name | Receiver's Name | O |
-| *11* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI | O |
-| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Code “200” indicates a mixed batch, i.e., one containing debit and/or credit entries; “220” is for credits only; “225” is for debits only. | M |
+| *3* | 05-20 | 16 | Alphanumeric | Company Name | Your company name. NACHA rules require the RDFI to print this value on the receiver‟s statement so you will want to make this value as clear as possible. | M |
+| *4* | 21-40 | 20 | Alphanumeric | Company Discretionary Data | For your company's internal use. | O |
+| *5* | 41-50 | 10 | NNNNNNNNN | Company Identification | The Company Identification field carries the Originator’s unique identification number. | M |
+| *6* | 51-53 | 3 | 'WEB', 'PPD', etc | Standard Entry Class Code | A mnemonic, designated by NACHA, which permits entries to be distinguished. Identifies the specific record format used to carry payment and payment-related information. | M |
+| *7* | 54-63 | 10 | Alphameric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Description should describe the purpose of the entries, such as “PAYROLL” or “ECHECKPAY” for consumer entries or “TRADE PAY” for corporate receivers. NACHA Rules require that RDFIs print this value on the Receiver's account statement. | M |
+| *8* | 64-69 | 6 | Alphameric | Company Descriptive Date | Description you choose to identify the date. NACHA recommends, but does not require, that RDFIs print this value on the receiver's statement. | O |
+| *9* | 70-75 | 6 | YYMMDD | Effective Entry Date | Date you desire funds to post to receiver's account in YYMMDD format. | R |
+| *10* | 76-78 | 3 | blanks | Settlement Date (Julian) | The ACH Operator will populate the actual settlement date in this field. | R |
+| *11* | 79-79 | 1 | '1' | Originator Status Code | Identifies the Originator as a non-Federal Government entity. | M |
+| *12* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | The Originating institutions Routing Number | M |
+| *13* | 88-94 | 7 | Numeric | Batch Number | Assign batch numbers in ascending order within each file. | M |
 
 ## BOC Back Office Conversation
 
@@ -477,11 +498,11 @@ Up to 9,999 Addenda Records may be included with a CTX Entry Detail Record. The 
 
 ## File Control Record - All Formats
 
-The File Control record contains dollar, entry, and hash totals from the file‟s Company/Batch Control Records. This record also contains counts of the blocks and batches in the file.
+The File Control record contains dollar, entry, and hash totals from the file's Company/Batch Control Records. This record also contains counts of the blocks and batches in the file.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Header Record is '9' | M |
+| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Control Record is '9' | M |
 | *2* | 02-07 |  | Numeric | Batch Count | Total number of Company/Batch Header Records (Record Type “5”) in the file. | M |
 | *3* | 08-13 | 6 | Numeric | Block Count | Total number of physical blocks in the file, including the File Header and File Control Records. | M |
 | *4* | 14-21 | 8 | Numeric | Entry / Addenda Count | Total number of Entry Detail and Addenda Records (Record Types “6” and “7”) in the file. | M |
