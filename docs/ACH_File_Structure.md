@@ -456,7 +456,7 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | *2* | 02-03 | 2 | '18' | Addenda Type Code | Addenda Record for Foreign Correspondent Bank Information for IAT | M |
 | *3* | 04-38 | 35 | Alphanumeric | Foreign Correspondent Bank Name | This field contains the name of the Foreign Correspondent Bank | M |
 | *4* | 39-40 | 2 | Alphanumeric | Foreign Correspondent Bank Identification Number Qualifier | This field contains a 2-digit code that identifies the numbering scheme used in the Foreign Correspondent Bank Identification Number field. Code values for this field are:<br>“01” = National Clearing System<br>“02” = BIC Code <br>“03” =IBAN Code | M |
-| *5* | 51-74 | 34 | Alphanumeric | Foreign Correspondent Bank Identification Number | This field contains the bank ID number of the Foreign Correspondent Bank | M |
+| *5* | 41-74 | 34 | Alphanumeric | Foreign Correspondent Bank Identification Number | This field contains the bank ID number of the Foreign Correspondent Bank | M |
 | *6* | 75-77 | 3 | Alphanumeric | Foreign Correspondent Bank Branch Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the branch of the Foreign Correspondent Bank is located. Values can be found on the International Organization for Standardization website: www.iso.org | M |
 | *7* | 78-83 | 6 | blank | Reserved | Leave blank | n/a |
 | *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001” | M |
