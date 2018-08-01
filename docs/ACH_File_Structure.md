@@ -316,11 +316,11 @@ An IAT entry is a credit or debit ACH entry that is part of a payment transactio
 | *16* | 80-87 | 8 | TTTTAAAA | Gateway Operator Identification/ ODFI Identification | For Inbound IAT Entries, this field contains the routing number of the U.S. Gateway Operator. For Outbound IAT Entries, this field contains the standard routing number, as assigned by Accuity, that identifies the U.S. ODFI initiating the Entry. | M |
 | *17* | 88-94 | 7 | Numeric | Batch Number | Assign batch number in ascending order in each batch | M |
 
-**NOTE**: For IAT Return Entries, each field of the Company Batch Header Record remains unchanged from the original Record, except: 
+**NOTE**: For IAT Return Entries, each field of the Company Batch Header Record remains unchanged from the original record, except: 
 1) Foreign Exchange Reference - For the return of an outbound International ACH transaction originated by a U.S. ODFI, this field will contain the foreign exchange rate that is applicable at the time of the return entry if a foreign exchange rate is provided within this field on the forward entry.
 2) Originator Status Code - Changed to reflect the Originator Status Code of the institution initiating the Return Entry (i.e., the RDFI of the original entry).
 3) Gateway Operator Identification/ ODFI Identification - Changed to reflect the Routing number of the institution initiating the Return Entry (i.e., the RDFI of the original entry).
-4) Batch Number - Changed to the batch number assigned by the institution preparing the Automated Return Entry
+4) Batch Number - Changed to the batch number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Entry Detail**
 
@@ -339,6 +339,13 @@ An IAT entry is a credit or debit ACH entry that is part of a payment transactio
 | *11* | 78-78 | 1 | blank | Secondary OFAC screening indicator | Assigned by the ACH Gateway operator | O |
 | *12* | 79-79 | 1 | "1" | Addenda Record indicator | "1" = Addenda records follow this entry | M |
 | *13* | 80-94 | 15 | Numeric | Trace Number | The field is constructed as follows: <br> Positions 80-87 should be the same as Field 16 of the IAT Company/Batch Header. Positions 88- 94 are filled with the Entry Detail Sequence Number. This number must be assigned in ascending order to entries within each batch, although the numbers need not be continuous. | M |
+
+**NOTE**: For IAT Return Entries, each field of the Entry Detail Record remains unchanged from the original entry, except: 
+1) Transaction Code -Changed to the appropriate Return Entry Transaction Code.
+2) Receiving DFI Identification - Changed to the routing number of the institution receiving the return entry (i.e., OFI of original entry).
+3) Check Digit - Changed to the check digit according to NACH standards and based on the Routing Number contained in position 04-11.
+4) Amount - For the return of an outbound International ACH Transaction originated by a U.S ODFI, this amount will be different from the amount reflected in the original forward entry if the exchange rate is different at the time of the return.
+5) Trace Number - Changed to the trace number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Addenda Records**
 
