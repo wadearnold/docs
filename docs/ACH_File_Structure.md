@@ -354,6 +354,8 @@ The First Addenda Record identifies the Receiver of the transaction and the doll
 | *7* | 82-87 | 6 | blank | Reserved | Leave blank | n/a |
 | *8* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
+NOTE: For IAT Return Entries, each field of the 1st Addenda Record remains unchanged from the original 1st Addenda Record, except Entry Detail Sequence Number which reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+
 **IAT Second Addenda Record (711)**
 
 The Second and Third Addenda Records identify key information related to the Originator of the entry.
