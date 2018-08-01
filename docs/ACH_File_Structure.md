@@ -488,6 +488,23 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001” | M |
 | *9* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
+**IAT Addenda Record for IAT Returns (799)**
+
+This Addenda Record is used to provide return data for a returned IAT entry
+
+Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
+| *2* | 02-03 | 2 | '99' | Addenda Type Code | Addenda Record IAT Returns | M |
+| *3* | 04-06 | 3 | Alphanumeric | Return Reason Code | This field contains code associated with the reason for the return | M |
+| *4* | 07-21 | 15 | Numeric | Original Trace Number | This field contains the Trace Number as originally included on the forward Entry | M |
+| *5* | 22-27 | 6 | YYMMDD | Date of Death | This field is used for Return Reason Code R14 or R15 | O |
+| *6* | 28-35 | 8 | Alphanumeric | Original DFI | This field contains the Receiving DFI Identification as originally included on the forward Entry that the RDFI is returning or correcting | R |
+| *7* | 36-45 | 10 | Numeric | Original Payment Amount | Original Payment of the forward Entry | R |
+| *8* | 46-79 | 34 | Alphanumeric| Addenda Information | Addenda Information | O |
+| *9* | 80-94 | 15 | Numeric | Trace Number | The Trace Number of the entry being returned | M |
+
+
 ## CTX Corporate Trade Exchange
 
 The Corporate Trade Exchange (CTX) application provides the ability to collect and disburse funds and information between companies. Generally it is used by businesses paying one another for goods or services. These payments replace checks with an electronic process of debiting and crediting invoices between the financial institutions of participating companies.
