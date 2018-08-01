@@ -369,6 +369,8 @@ The Second and Third Addenda Records identify key information related to the Ori
 | *5* | 74-87 | 14 | blank | Reserved | Leave blank | n/a |
 | *6* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
+**NOTE**: For IAT Return Entries, each field of the 2nd Addenda Record remains unchanged from the original 2nd Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+
 **IAT Third Addenda Record (712)**
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
@@ -380,10 +382,11 @@ The Second and Third Addenda Records identify key information related to the Ori
 | *5* | 74-87 | 14 | blank | Reserved | Leave blank | n/a |
 | *6* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
+**NOTE**: For IAT Return Entries, each field of the 3rd Addenda Record remains unchanged from the original 3rd Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+
 **IAT Fourth Addenda Record (713)**
 
 The Fourth Addenda Record contains information related to the financial institution originating the entry. For inbound IAT entries, the Fourth Addenda Record must contain information to identify the foreign financial institution that is providing the funding and payment instruction for the IAT entry.
-
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -395,6 +398,8 @@ The Fourth Addenda Record contains information related to the financial institut
 | *6* | 75-77 | 3 | Alphanumeric | Originating DFI Branch Country Code | USb” = United States<br>(“b” indicates a blank space)<br>*For Inbound IATs:* This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that originated the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org. | M |
 | *7* | 78-87 | 10 | blank | Reserved | Leave blank | n/a |
 | *8* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**NOTE**: For IAT Return Entries, each field of the 4th Addenda Record remains unchanged from the original 4th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
 
 **IAT Fifth Addenda Record (714)**
 
@@ -411,6 +416,8 @@ The Fifth Addenda Record identifies the Receiving financial institution holding 
 | *7* | 78-87 | 10 | blank | Reserved | Leave blank | n/a |
 | *8* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
+**NOTE**: For IAT Return Entries, each field of the 5th Addenda Record remains unchanged from the original 5th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+
 **IAT Sixth Addenda Record (715)**
 
 The Sixth and Seventh Addenda Records identify information related to the Receiver.
@@ -424,6 +431,8 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | *5* | 54-87 | 34 | blank | Reserved | Leave blank | n/a |
 | *6* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
+**NOTE**: For IAT Return Entries, each field of the 6th Addenda Record remains unchanged from the original 6th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+
 **IAT Seventh Addenda Record (716)**
 
 Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
@@ -434,6 +443,8 @@ Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | *4* | 39-73 | 35 | Alphanumeric | Receiver Country & Postal Code| Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\ | M |
 | *5* | 74-87 | 34 | blank | Reserved | Leave blank | n/a |
 | *6* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+
+**NOTE**: For IAT Return Entries, each field of the 7th Addenda Record remains unchanged from the original 7th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
 
 **IAT Addenda Record for Remittance Information (717) (Optional)**
 
