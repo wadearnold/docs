@@ -316,10 +316,14 @@ An IAT entry is a credit or debit ACH entry that is part of a payment transactio
 | *16* | 80-87 | 8 | TTTTAAAA | Gateway Operator Identification/ ODFI Identification | For Inbound IAT Entries, this field contains the routing number of the U.S. Gateway Operator. For Outbound IAT Entries, this field contains the standard routing number, as assigned by Accuity, that identifies the U.S. ODFI initiating the Entry. | M |
 | *17* | 88-94 | 7 | Numeric | Batch Number | Assign batch number in ascending order in each batch | M |
 
-**NOTE**: For IAT Return Entries, each field of the Company Batch Header Record remains unchanged from the original record, except: 
+**NOTE**: For IAT Return Entries, each field of the Company Batch Header Record remains unchanged from the original record, except:
+
 1) Foreign Exchange Reference - For the return of an outbound International ACH transaction originated by a U.S. ODFI, this field will contain the foreign exchange rate that is applicable at the time of the return entry if a foreign exchange rate is provided within this field on the forward entry.
+
 2) Originator Status Code - Changed to reflect the Originator Status Code of the institution initiating the Return Entry (i.e., the RDFI of the original entry).
+
 3) Gateway Operator Identification/ ODFI Identification - Changed to reflect the Routing number of the institution initiating the Return Entry (i.e., the RDFI of the original entry).
+
 4) Batch Number - Changed to the batch number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Entry Detail**
