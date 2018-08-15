@@ -9,7 +9,7 @@ Each NACHA formatted file you originate consists of the following records:
 * A File Control Record.
 
 Each file begins with a File Header record. Following the File Header Record may be any number of batches. Each batch is identified by a Batch Header Record and contains one or more Entry Detail Records. At the end of each batch is a Batch Control Record. Each file is ended with a File Control Record.
-The diagram on the following page illustrates the Sequence of Records for ACH entries. The sequence of records will always be the same, regardless of SEC code. Out-of- sequence records or lack of a mandatory record will cause all or portions of the file to reject. Padding with “9” records at the end of the file is optional.
+The diagram on the following page illustrates the Sequence of Records for ACH entries. The sequence of records will always be the same, regardless of SEC code. Out-of-sequence records or lack of a mandatory record will cause all or portions of the file to reject. Padding with “9” records at the end of the file is optional.
 
 ## Input File Descriptions
 
