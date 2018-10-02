@@ -148,6 +148,10 @@ All amounts fields have two implied decimal points, e.g., $1,234.67 is entered a
 
 Most records of the file provide for User Fields. Users of the standard utilize these fields at their discretion. The standard does not define particular uses for, or the internal contents of, these fields. In many cases, the user fields within the records are more than one character in length. Users are free to use the field as a single field or divide it into multiple fields.
 
+### Usage 
+M - Mandatory
+C - Conditional
+
 ## Annotated X9 Record Formats
 
 ### 01 File Header Record
