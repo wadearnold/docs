@@ -30,7 +30,7 @@ You only have a fresh set of eyes once! The easiest way to contribute is to give
 
 - [moov.io](https://moov.io/)
 - [api.moov.io](https://api.moov.io/)
-- [docs.moov.io](https://docs.moov.io/)
+- [docs.moov.io](https://docs.moov.io/) (This project)
 
 ## License
 
