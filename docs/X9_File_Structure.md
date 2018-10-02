@@ -1,5 +1,5 @@
 
-### File Structure and Record Types
+## File Structure and Record Types
 
 The following record types are established for Electronic Exchange:
 
@@ -25,10 +25,130 @@ The following record types are established for Electronic Exchange:
  * 90 Cash Letter Control Record
  * 99 File Control Record
 
+
+## X9 Data Types
+
+###  Alphabetic (A)
+The alphabetic characters are the upper case letters A through Z; the lower case letters a through z, and the blank (space) character. When lower case letters are used, they shall be interpreted to have the same meaning as their respective upper case letters, e.g., no distinction shall be made between the upper case letter A and the lower case letter a.
+
+### Numeric (N)
+The numeric characters are the numbers zero (0) through nine (9).
+
+### Blank (B)
+The blank character is defined in ASCII with the hexadecimal value ‘20’ and in EBCDIC with the hexadecimal value ‘40’; also referred to as a space.
+
+### Special characters (S)
+Special characters are any of the printable characters listed in the table below. (IBM Corporation EBCDIC code page: Code Page CPGID 00037)
+
+
+| Special Printable | Character	ASCII hex |	EBCDIC hex |
+| :---: | :---: | :---: |
+| !	| 21 | 5A |
+| "	| 22 | 7F | 
+| #	| 23 | 7B | 
+| $	| 24 | 5B |
+| %	| 25 | 6C | 
+| &	| 26 | 50 |
+| '	| 27 | 7D |
+| (	| 28 | 4D | 
+| )	| 29 | 5D |
+| *	| 2A | 5C |
+| +	| 2B | 4E |		
+| ,	| 2C | 6B |
+| -	| 2D | 60 |
+| .	| 2E | 4B |
+| /	| 2F | 61 |
+| :	| 3A | 7A |
+| ;	| 3B | 5E |
+| <	| 3C | 4C |
+| =	| 3D | 7E |
+| >	| 3E | 6E |
+| ? | 3F | 6F |
+| @ | 40 | 7C |
+| [	| 5B | BA |
+| \	| 5C | E0 |
+| ]	| 5D | BB |
+| ^	| 5E | B0 |
+| _ | 5F | 6D |
+| `	| 60 | 79 |
+| {	| 7B | C0 |
+| Bar | 7C | 4F |
+| } | 7D | D0 |
+| ~ | 7E | A1 |
+
+### Alphameric (AN) 
+An alphameric character is any of the alphabetic or numeric characters.
+
+### Alphameric/special (ANS)
+An Alphameric/special character is any one of the alphabetic, numeric, or special characters.
+ 
+### X9.100-187–2016
+
+Numericblank (NB): A numericblank character is any one of the numeric characters or the blank character. Blanks shall not be embedded within the numeric digits. Blanks may be used only to fill out a field when the numeric value length is shorter than the actual field length. Leading zeros may be present but shall not be removed or added. Numericblank fields, when present, shall contain at least one numeric character and shall not be all blanks.
+
+Numeric/special (NS): A numeric/special is any one of the numeric characters or special characters.
+
+Binary: The binary data type is composed of a sequence of bytes where each byte ranges in value from binary 00000000 to 11111111 (8-bit encoding). The syntax, semantics, and number of bytes in the string are specified in the standard for each occurrence of the binary data type.
+
+### Special MICR line data types
+
+The MICR line on a check is composed of a series of symbols. The MICR symbols for numbers shall be represented by the numeric values zero (0) through nine (9).
+
+However, the MICR symbols for delineation of data on the MICR line do not have any graphic equivalents. Therefore, certain special characters shall be used to interpret these MICR symbols. These special characters shall have these special meanings only when used in fields directly read from the MICR line. When these same special characters are used elsewhere in other fields they shall represent their actual value.
+
+Asterisk (*): The asterisk character shall be used to represent the presence of MICR when the processing system cannot interpret the MICR as a specific valid MICR character.
+
+Dash (-): The dash character shall be used to represent the presence of the MICR symbol for a dash.
+
+Forward slash (/): The forward slash character shall be used to represent the presence of the MICR symbol for ‘On-Us’.
+
+Numericblank/special MICR (NBSM): A numericblank/special MICR character is any one of the numeric characters, the blank character, the dash character, or asterisk character.
+
+Numericblank/special MICR On-Us (NBSMOS): A numericblank/special MICR On-Us character is any one of the numeric characters, the blank character, the asterisk character, the dash character, or the forward slash character.
+ 
+
+### Fill data
+Fill data are any characters used to fill up unused bytes in a field. Fill characters shall be blanks or zeros.
+
+###	Data justification
+Justification is the act of aligning data as it is placed into a field, based on its right or leftmost character.
+
+### Right justification
+A field is right justified when the data is aligned based on its rightmost character.
+
+### Left justification
+A field is left justified when the data is aligned based on its leftmost character.
+
+### General Field Format
+
+The following shall apply to all fields on all records in the standard:
+
+* A field defined as alphameric (AN), alphabetic (A), Alphameric/special (ANS), or numericblank (NB) shall be left justified and blank filled.
+
+* A field defined as numeric (N) shall be right justified and zero filled
+
+* A field defined as numericblank/special MICR (NBSM) or numericblank/special MICR On-Us (NBSMOS) shall be right justified and blank filled
+
+* A field defined as numeric/special (NS) shall be left justified and blank filled.
+
+* A field defined as special (S) shall be left justified and blank filled.
+
+* If a field is mandatory or conditional and not blank, and has predefined values, it shall contain one of these predefined values or it is invalid.
+
+* If a field is conditional and not used then it shall contain all blanks regardless of the data type.
+
+* Fixed length fields that are conditional and are not used shall be filled with Blanks.  Variable length
+  fields that are not used (i.e. size =0) are omitted.
+
+### Amount Fields
+
+All amounts fields have two implied decimal points, e.g., $1,234.67 is entered as 0000123467.
+
+###	User Fields
+
 ## Annotated X9 Record Formats
 
-Fixed length fields that are conditional and are not used shall be filled with Blanks.  Variable length
-fields that are not used (i.e. size =0) are omitted.
+Most records of the file provide for User Fields. Users of the standard utilize these fields at their discretion. The standard does not define particular uses for, or the internal contents of, these fields. In many cases, the user fields within the records are more than one character in length. Users are free to use the field as a single field or divide it into multiple fields.
 
 ### 01 File Header Record
 
