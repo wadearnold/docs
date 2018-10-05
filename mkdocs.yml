@@ -4,6 +4,7 @@ pages:
 - Developers Guide: 
     - Reference: reference.md
     - 'ACH File Structure': ACH_File_Structure.md
+    - 'X9 File Structure': X9_File_Structure.md
 - About: about.md
 
 theme: readthedocs
