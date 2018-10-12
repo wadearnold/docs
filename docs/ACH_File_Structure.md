@@ -118,7 +118,7 @@ PPD Prearranged Payment and Deposit Entries is a recurring entry for direct depo
 
 ### WEB Internet Authorized Entries
 
-Entry submitted pursuant to an authorization obtained solely via the the internet or wireless network.
+Entry submitted pursuant to an authorization obtained via the the internet, mobile device, or wireless network.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
