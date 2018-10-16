@@ -482,7 +482,6 @@ C - Conditional
 | *7* | 39-45 | 7 | N| Length of User Data | M |
 | *8* | 46-(45+X) | X | user Discretion | User Data, X = value in Length of User Data (Field 7) | M |
 
-
 ### 68 User Payee Endorsement Record
 
 | Field | Position | Size | Type | Field Name | Usage - M, C |
