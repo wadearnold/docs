@@ -451,6 +451,44 @@ C - Conditional
 | *28* | 46-65 | 20 | ANS | User Field | C |
 | *29* | 66-80 | 15 | B | Reserved | M |
 
+### 62 Credit Item Record
+
+| Field | Position | Size | Type | Field Name | Usage - M, C |
+| :---: | :---: | :---: | :---: | :--- | :---: |
+| *1* | 01-02 | 2 | N | Record Type | M |
+| *2* | 03-17 | 15| NBSM | Auxiliary On-Us | C |
+| *3* | 18-18 | 1 | NS | External Processing Code | C |
+| *4* | 19-27 | 9 | N | Posting Bank Routing Number | M |
+| *5* | 28-47 | 20 | NBSMOS | On-Us | C |
+| *6* | 48-61 | 14 | N | Item Amount | M |
+| *7* | 62-76 | 15 | NB | Credit Item Sequence Number | C |
+| *8* | 77-77 | 1 | AN | Documentation Type Indicator | C |
+| *9* | 78-78 | 1 | AN | Type of Account Code | C |
+| *10* | 79-80 | 2 | N | Source of Work Code | C |
+| *11* | 81-96 | 16 | ANS | User Field | C |
+| *12* | 97-100 | 4 | B | Reserved | M|
+
+
+### 68 User General Format Record
+
+| Field | Position | Size | Type | Field Name | Usage - M, C |
+| :---: | :---: | :---: | :---: | :--- | :---: |
+| *1* | 01-02 | 2 | N | Record Type | M |
+| *2* | 03-03 | 1 | AN | Owner Identifier Indicator | M |
+| *3* | 04-12 | 9 | ANS | Owner Identifier | C |
+| *4* | 13-32 | 20 | ANS | Owner Identifier Modifier | C |
+| *5* | 33-35 | 3 | AN | User Record Format Type | M |
+| *6* | 36-38 | 3 | N | Format Type Version Level | M |
+| *7* | 39-45 | 7 | N| Length of User Data | M |
+| *8* | 46-(45+X) | X | user Discretion | User Data, X = value in Length of User Data (Field 7) | M |
+
+
+### 68 User Payee Endorsement Record
+
+| Field | Position | Size | Type | Field Name | Usage - M, C |
+| :---: | :---: | :---: | :---: | :--- | :---: |
+| *1* | 01-02 | 2 | N | Record Type | M |
+
 ### 70 Bundle Control Record 
 
 | Field | Position | Size | Type | Field Name | Usage - M, C |

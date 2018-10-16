@@ -130,7 +130,7 @@ Entry submitted pursuant to an authorization obtained via the the internet, mobi
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
 | *7* | 40-54 | 15 | Alpha-Numeric | Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution | M |
 | *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | M |
-| *9* | 77-78 | 2 | Alpha-Numeric | Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment | O |
+| *9* | 77-78 | 2 | Alpha-Numeric | Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment | R |
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
