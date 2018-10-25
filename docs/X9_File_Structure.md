@@ -482,12 +482,33 @@ C - Conditional
 | *7* | 39-45 | 7 | N| Length of User Data | M |
 | *8* | 46-(45+X) | X | user Discretion | User Data, X = value in Length of User Data (Field 7) | M |
 
-
 ### 68 User Payee Endorsement Record
 
 | Field | Position | Size | Type | Field Name | Usage - M, C |
 | :---: | :---: | :---: | :---: | :--- | :---: |
 | *1* | 01-02 | 2 | N | Record Type | M |
+| *2* | 03-03 | 1 | AN | Owner Identifier Indicator | M |
+| *3* | 04-12 | 9 | ANS | Owner Identifier | C |
+| *4* | 13-32 | 20 | ANS | Owner Identifier Modifier | C |
+| *5* | 33-35 | 3 | AN | User Record Format Type | M|
+| *6* | 36-38 | 3 | N | Format Type Version Level | M |
+| *7* | 39-45 | 7 | N | Length of User Data | M |
+| *8* | 46-95 | 50 | ANS | Name of Payee | C |
+| *9* | 96-103 | 8 | NB | Endorsement Date | C |
+| *10* | 104-112 | 9 | N | Bank Routing Number | C |
+| *11* | 113-132 | 20 | ANS | Bank Account Number | C |
+| *12* | 133-152 | 20 | ANS | Customer Identifier | C |
+| *13* | 153-202 | 50 | ANS | Customer Contact Information | C |
+| *14* | 203-210 | 8 | ANS | Store / Merchant / Processing Site Number | C |
+| *15* | 211-235 | 25 | ANS | Internal Control / Sequence Number | C |
+| *16* | 236-239 | 4 | N | Time | C |
+| *17* | 240-269 | 30 | ANS | Operator Name/Initials | C |
+| *18* | 270-274 | 5 | ANS | Operator Number | C |
+| *19* | 275-304 | 30 | ANS | Manager / Supervisor Name / Initials | C |
+| *20* | 305-309 | 5 | ANS | Manager / Supervisor Number | C |
+| *21* | 310-324 | 15 | ANS | Equipment Number | C |
+| *22* | 325-325 | 1 | AN | Endorsement Indicator | C |
+| *23* | 326-335| 10 | ANS | User Field | C |
 
 ### 70 Bundle Control Record 
 
