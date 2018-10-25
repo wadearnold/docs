@@ -168,7 +168,6 @@ A batch is a collection of like entries within a file. You must use a separate b
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1”. | M |
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
 
-
 ### RCK Represented Check Entries
 
 **Represented Check** entry is a physical check that was presented but returned because of insufficient funds may be represented as an ACH entry.
