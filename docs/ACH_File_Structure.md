@@ -295,7 +295,35 @@ Death Notification Entry (DNE) is a batch file sent from United States Federal a
 
 ## ENR Automated Enrollment Entry
 
-[Support ENR](https://github.com/moov-io/ach/issues/343)
+ENR (Automated Enrollment Entry) is a non-monetary entry that enrolls a person with an agency of the US government for a depository financial institution.
+
+**ENR Entry Detail**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Must be 10 zeros for ENR. | M |
+| *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | O |
+| *8* | 55-58 | 4 | Numeric | Number of Addenda Records | How many Addenda05 records are on this entry. | M |
+| *9* | 59-74 | 35 | Alphanumeric | Receiving Company Name/Individual Name | Insert receiver's name | M |
+| *10* | 75-76 | 2 | Blank | Reserved | N/A | M |
+| *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | M |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+**ENR Addenda**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
+| *3* | 04-83 | 80 | Alpha-Numeric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | R |
+| *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1”. | M |
+| *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
 
 ## MTE Machine Transfer Entry
 
