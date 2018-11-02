@@ -51,7 +51,7 @@ Do not use characters that do not meet these requirements.
 
 The following information defines the requirement for inclusion of certain data fields in ACH entries. These designations are: Mandatory (M), Required (R), and Optional (O).
 
-* **Mandatory.** A “Mandatory” field contains information necessary to ensure the proper routing and/or posting of an ACH entry. The ACH Operator will reject any entry or batch, which does not have appropriate values in a Mandatory field. Bank of America will edit for these same values so that your entries will not reject further down in the processing stream.
+* **Mandatory.** A “Mandatory” field contains information necessary to ensure the proper routing and/or posting of an ACH entry. The ACH Operator will reject any entry or batch, which does not have appropriate values in a Mandatory field.
 * **Required.** The omission of a “Required” field will not cause an entry reject at the ACH Operator, but may cause a reject at the RDFI. For example, if the DFI Account Number field in the Entry Detail Record is omitted, the RDFI may return the entry because it cannot be posted. You should include appropriate values in “Required” fields to avoid processing and control problems at the RDFI.
 * **Optional.** The inclusion or omission of an “Optional” data field is at the discretion of the Originator. If you do include optional fields, the RDFI must include them in any return.
 
@@ -98,6 +98,22 @@ A batch is a collection of like entries within a file. You must use a separate b
 | *11* | 79-79 | 1 | Numeric | Originator Status Code | "1" | M |
 | *12* | 80-87 | 8 | Numeric | Originating DFI Identification | Standard Entry Detail Trace Number | M |
 | *13* | 88-94 | 9 | Numeric | Batch Number | Number Batches Sequentially | M |
+
+## Company/Batch Control Record Formats
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '8' | Record Type Code | Code Identifying the Company /Batch Header Record is '8' | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record | M |
+| *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill | M |
+| *4* | 11-20 | 20 | Numeric | Entry Hash | Total of eigh-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number | M |
+| *5* | 21-32 | 12 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in Batch | Dollar total of debit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
+| *6* | 33-44 | 12 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
+| *7* | 45-54 | 10 | NNNNNNNNNN | Company Identification | 10 Digit Company Number  | M |
+| *8* | 55-73 | 19 | Alpha-Numeric | Message Authentication Code  | The MAC is an-eight character code derived from a special key used in conjunction with the DES algorithm. The MAC is used to validate the authenticity of ACH Entries. The DES algorithm and key message standards must be in accordance with standards adopted by the American National Standards Institute. The remaining eleven characters of this field are blank. | O |
+| *9* | 74-79 | 6 | Alpha-Numeric | Reserved| Leave Blank | n/a |
+| *10* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Standard Entry Detail Trace Number | M |
+| *11* | 88-94 | 9 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M |
 
 ## ADV Automated Account Advice
 
