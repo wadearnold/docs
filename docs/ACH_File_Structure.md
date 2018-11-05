@@ -586,6 +586,8 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 ##  TRC/TRC Truncated Entries
 
+**Truncated Entries** This Standard Entry Class Code is used to identify batches of truncated checks. 
+
 [Support TRC/TRX](https://github.com/moov-io/ach/issues/346)
 
 ### WEB Internet Authorized Entries
@@ -605,17 +607,34 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *7* | 40-54 | 15 | Alpha-Numeric | Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution | M |
 | *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | M |
 | *9* | 77-78 | 2 | Alpha-Numeric | Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment | R |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator |  0" = no addenda <br>"1" = one addenda included | M |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator |  "0" = no addenda <br>"1" = one addenda included | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ## XCK Destroyed Check Entry
 
-[Support XCK](https://github.com/moov-io/ach/issues/347)
+**Destroyed Check Entry** This application can be utilized by a collecting institution for the collection of certain checks when those checks have been destroyed.
+
+** XCK Entry Detail Record** 
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-54 | 15 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | M |
+| *8* | 55-60 | 6 | Alpha-Numeric | Process Control Field | This field contains an optional code, as obtained from a check or sharedraft, which generally indentifies the document type. The field is usally located to the right of the account number in the on-us field of the MICR line and is sometimes called a transaction code. | R |
+| *9* | 61-76 | 16 | Alpha-Numeric | Item Research Number | This field contains the MICR locator number for Check item research. | R |
+| *10* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI.  | 0 |
+| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ## IAT International ACH Transaction
 
 **International ACH Transaction** entry is a credit or debit ACH entry that is part of a payment transaction involving a financial agency’s office (i.e., depository financial institution or business issuing money orders) that is not located in the territorial jurisdiction of the United States. IAT entries can be made to or from a corporate or consumer account and must be accompanied by seven (7) mandatory addenda records identifying the name and physical address of the Originator, name and physical address of the Receiver, Receiver’s account number, Receiver’s bank identity and reason for the payment.
-0
+
 **IAT Batch Header Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
