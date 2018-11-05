@@ -568,7 +568,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 ## TEL Telephone-Initiated Entry
 
-**Telephone-Initiated Entry Detail Record**
+**Telephone-Initiated Entry Detail Record** is used for the origination of a Single Entry debit transaction to a consumer’s account pursuant to an oral authorization obtained from the consumer via the telephone.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
