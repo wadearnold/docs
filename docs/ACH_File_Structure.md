@@ -391,7 +391,7 @@ ENR (Automated Enrollment Entry) is a non-monetary entry that enrolls a person w
 
 ## MTE Machine Transfer Entry
 
-A **Machine Transfer Entry** is created when a consumer uses their debit card at an Automated Teller Machine (ATM) to withdraw cash.
+Machine Transfer Entry (MTE) supports the clearing of transactions from automated teller machines.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -586,7 +586,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 ##  TRC/TRC Truncated Entries
 
-**Truncated Entries** This Standard Entry Class Code is used to identify batches of truncated checks. 
+**Truncated Entries** This Standard Entry Class Code is used to identify batches of truncated checks.
 
 [Support TRC/TRX](https://github.com/moov-io/ach/issues/346)
 
@@ -614,7 +614,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 **Destroyed Check Entry** This application can be utilized by a collecting institution for the collection of certain checks when those checks have been destroyed.
 
-** XCK Entry Detail Record** 
+** XCK Entry Detail Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
