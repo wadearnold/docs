@@ -614,7 +614,7 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 **Destroyed Check Entry** This application can be utilized by a collecting institution for the collection of certain checks when those checks have been destroyed.
 
-** XCK Entry Detail Record**
+**XCK Entry Detail Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
