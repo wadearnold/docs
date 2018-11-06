@@ -391,7 +391,39 @@ ENR (Automated Enrollment Entry) is a non-monetary entry that enrolls a person w
 
 ## MTE Machine Transfer Entry
 
-[Support MTE](https://github.com/moov-io/ach/issues/344)
+A **Machine Transfer Entry** is created when a consumer uses their debit card at an Automated Teller Machine (ATM) to withdraw cash.
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Must be 10 zeros for ENR. | M |
+| *7* | 40-54 | 15 | Alpha-Numeric | Individual Name | Receiver's Name | M |
+| *8* | 55-76 | 22 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | M |
+| *9* | 77-78 | 2 | Alphanumeric | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+
+
+**MTE Addenda**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *2* | 02-03 | 2 | '02' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
+| *3* | 04-10 | 7 | Alphanumeric | Transaction Description |  | R | // TODO
+| *4* | 11-13 | 4 | Alphanumeric | Network Identification Code | | O | // TODO
+| *5* | 14-19 | 6 | Alphanumeric | Terminal Identification code | | R |  // TODO
+| *6* | 20-25 | 6 | Alpha-Numeric | Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
+| *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
+| *8* | 30-35 | 6 | HHMMSS | Transaction Time | This time, expressed HHMMSS, identifies the time on which the transaction occurred. | R |
+| *9* | 36-62 | 27 | Alpha-Numeric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
+| *10* | 63-77 | 15 | Alpha-Numeric | Terminal City | Identifies the city in which the electronic terminal is located | R |
+| *11* | 78-79 | 2 | Alpha-Numeric | Terminal State | Identifies the state in which the electronic terminal is located | R |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ## POP Point-of-Purchase
 
