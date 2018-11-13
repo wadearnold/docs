@@ -159,8 +159,8 @@ to participating DFI's.  It's an optional service provided by ACH operators and 
 | *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record | M |
 | *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill | M |
 | *4* | 11-20 | 10 | Numeric | Entry Hash | Total of eight-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number | M |
-| *5* | 21-40 | 20 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in Batch | Dollar total of debit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
-| *6* | 41-60 | 20 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
+| *5* | 21-40 | 20 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in Batch | Dollar total of debit entries in the batch. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
+| *6* | 41-60 | 20 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
 | *7* | 61-79 | 19 | Alpha-Numeric | ACH Operator Data |  This field is used as specified by the ACH operator | O |
 | *8* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Originating DFI Identification | M |
 | *9* | 88-94 | 7 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M 
