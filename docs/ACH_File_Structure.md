@@ -146,8 +146,59 @@ The ACK entry is an acknowledgement by the Receiving Depository Financial Instit
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
 
 ## ADV Automated Account Advice
-
 [Not yet supported](https://github.com/moov-io/ach/issues/340)
+
+The ADV entry identifies a Non-Monetary Entry that is used by an ACH Operator to provide accounting information regarding an entry 
+to participating DFI's.  It's an optional service provided by ACH operators and must be requested by a DFI wanting the service.
+
+**ADV Batch Control Record** 
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '8' | Record Type Code | Code Identifying the Company /Batch Header Record is '8' | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record | M |
+| *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill | M |
+| *4* | 11-20 | 10 | Numeric | Entry Hash | Total of eight-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number | M |
+| *5* | 21-40 | 20 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in Batch | Dollar total of debit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
+| *6* | 41-60 | 20 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
+| *7* | 61-79 | 19 | Alpha-Numeric | ACH Operator Data |  This field is used as specified by the ACH operator | O |
+| *8* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Originating DFI Identification | M |
+| *9* | 88-94 | 7 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M 
+
+**ADV File Control Record**
+
+The File Control record contains dollar, entry, and hash totals from the file's Company/Batch Control Records. This record also contains counts of the blocks and batches in the file.
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Control Record is '9' | M |
+| *2* | 02-07 | 6 | Numeric | Batch Count | Total number of Company/Batch Header Records (Record Type “5”) in the file. | M |
+| *3* | 08-13 | 6 | Numeric | Block Count | Total number of physical blocks in the file, including the File Header and File Control Records. | M |
+| *4* | 14-21 | 8 | Numeric | Entry / Addenda Count | Total number of Entry Detail and Addenda Records (Record Types “6” and “7”) in the file. | M |
+| *5* | 22-31 | 10 | Numeric | Entry Hash | Total of eight character Transit Routing/ABA numbers in the file (Field 3 of the Entry Detail Record). Do not include the Transit Routing Check Digit. Enter the 10 low-order (right most) digits of this number. For example,if this sum is 998877665544, enter 8877665544. | M |
+| *6* | 32-51 | 20| $$$$$$$$$$$$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in File | Dollar total of debit entries in the file. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill. | M |
+| *7* | 52-71 | 20 | $$$$$$$$$$$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in File | Dollar total of credit entries in the file. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill. | M |
+| *8* | 72-94 | 23 | blank | Reserved | Leave this field blank. | n/a |
+
+**ADV Detail Entry**
+
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-27 | 15 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 28-39 | 12 | $$$$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-48 | 9 | Numeric | Advice Routing Number | This field contains the Routing Number and Check Digit of the DFI or Correspondent, as defined by the ACH Operator | M |
+| *8* | 49-53 | 5 | Alpha-Numeric | File Identification | This field contains the File Creation Date and File ID Modifier  | O |
+| *9* | 54-54 | 1 | Alpha-Numeric | ACH Operator Data | This field is used as specified by the ACH operator | O |
+| *10* | 55-76 | 22 | Alpha-Numeric| Individual Name | The name associated with the advice routing number | R |
+| *11* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
+| *13* | 80-87 | 8 | TTTTAAAA | Routing Number of ACH Operator | The Routing number of th ACH operator | M |
+| *14* | 87-90 | 3 | Numeric| Julian Date |  Julian Date on which this advice is Created | M |
+| *15* | 91-94 | 4 | Numeric | Sequence Number | Sequence Number Within Batch | M |
 
 ## ARC Accounts Receivable Entry
 
