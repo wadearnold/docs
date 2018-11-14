@@ -145,11 +145,9 @@ The ACK entry is an acknowledgement by the Receiving Depository Financial Instit
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1.” | M |
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
 
-## ADV Automated Account Advice
-[Not yet supported](https://github.com/moov-io/ach/issues/340)
+## ADV Automated Accounting Advice
 
-The ADV entry identifies a Non-Monetary Entry that is used by an ACH Operator to provide accounting information regarding an entry 
-to participating DFI's.  It's an optional service provided by ACH operators and must be requested by a DFI wanting the service.
+The ADV entry identifies a Non-Monetary Entry that is used by an ACH Operator to provide accounting information regarding an entry to participating DFI's.  It's an optional service provided by ACH operators and must be requested by a DFI wanting the service.
 
 **ADV Batch Control Record** 
 
@@ -214,7 +212,6 @@ the customer’s check will be deemed as the authorization for an ARC debit entr
 account. The provision of the notice and the receipt of the check together constitute authorization
 for the ARC entry. The customer’s check is solely be used as a source document to obtain the routing
 number, account number and check serial number.
-
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -637,9 +634,22 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 ##  TRC/TRC Truncated Entries
 
-**Truncated Entries** This Standard Entry Class Code is used to identify batches of truncated checks.
+**Truncated Entries** This Standard Entry Class Code is used to identify a debit entry of a truncated check.
 
-[Support TRC/TRX](https://github.com/moov-io/ach/issues/346)
+| Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | O |
+| *8* | 55-60 | 6 | Alpha-Numeric | Process Control Field | Optional code which identifies the document type  | R |
+| *9* | 55-60 | 16 | Alpha-Numeric | Item Research Number | The MICR location number for check item research | R |
+| *10* | 77-78 | 2 | Blank | Item Type Indicator | Indicates the type of items being truncated. Code 01 - Value NACS Truncated Items | O |
+| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ### WEB Internet Authorized Entries
 
