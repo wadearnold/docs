@@ -645,9 +645,9 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
 | *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | O |
-| *8* | 55-60 | 6 | Alpha-Numeric | Process Control Field | Optional code which identifies the document type  | R |
+| *8* | 55-60 | 6 | Alpha-Numeric | Process Control Field | Code which identifies the document type  | R |
 | *9* | 55-60 | 16 | Alpha-Numeric | Item Research Number | The MICR location number for check item research | R |
-| *10* | 77-78 | 2 | Blank | Item Type Indicator | Indicates the type of items being truncated. Code 01 - Value NACS Truncated Items | O |
+| *10* | 77-78 | 2 | Blank | Item Type Indicator | Indicates the type of items being truncated. Code: 01 - Value: NACS Truncated Items | O |
 | *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
