@@ -1,0 +1,5 @@
+/* Make visited links the same as non-visisted. */
+
+a:visited {
+    color: #2980B9;
+}

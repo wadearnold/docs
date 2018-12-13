@@ -10,5 +10,7 @@ pages:
 - About: about.md
 
 theme: readthedocs
+extra_css:
+  - extra.css
 repo_url: https://github.com/moov-io/docs/
 google_analytics: ['UA-118148273-1', 'moov.io']
