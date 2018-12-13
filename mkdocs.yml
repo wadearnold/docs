@@ -7,6 +7,7 @@ pages:
     - 'X9 File Structure': X9_File_Structure.md
 - Tutorials:
     - 'Running ACH Server': ach-server.md
+    - 'Local Dev with Moov': local-dev.md
 - About: about.md
 
 theme: readthedocs
