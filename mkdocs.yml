@@ -1,5 +1,5 @@
 site_name: Moov Documentation
-nav:
+pages:
 - Overview: index.md
 - About: about.md
 - ACH: ach/index.md
