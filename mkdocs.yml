@@ -2,9 +2,11 @@ site_name: Moov Documentation
 pages:
 - Overview: index.md
 - About: about.md
-- ACH: ach/index.md
+- ACH:
+  - Overview: ach/index.md
   - 'ACH File Structure': ach/file-structure.md
-- X9: x9/index.md
+- X9:
+  - Overview: x9/index.md
   - 'X9 File Structure': x9/file-structure.md
 - Tutorials:
     - 'Running ACH Server': tutorials/ach-server.md
