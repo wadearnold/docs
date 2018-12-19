@@ -2,12 +2,13 @@ site_name: Moov Documentation
 pages:
 - Overview: index.md
 - Developers Guide:
-    - Reference: reference.md
-    - 'ACH File Structure': ACH_File_Structure.md
-    - 'X9 File Structure': X9_File_Structure.md
+    - ACH: ach/index.md
+      - 'ACH File Structure': ach/file-structure.md
+    - X9: x9/index.md
+      - 'X9 File Structure': x9/file-structure.md
 - Tutorials:
-    - 'Running ACH Server': ach-server.md
-    - 'Local Dev with Moov': local-dev.md
+    - 'Running ACH Server': tutorials/ach-server.md
+    - 'Local Dev with Moov': tutorials/local-dev.md
 - About: about.md
 
 theme: readthedocs
