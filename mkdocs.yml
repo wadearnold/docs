@@ -1,17 +1,15 @@
 site_name: Moov Documentation
-pages:
+nav:
 - Overview: index.md
-- Developers Guide:
-    - ACH: ach/index.md
-      - 'ACH File Structure': ach/file-structure.md
-      - 'Picking an SEC Code': ach/sec-codes-table.md
-    - X9: x9/index.md
-      - 'X9 File Structure': x9/file-structure.md
+- About: about.md
+- ACH: ach/index.md
+  - 'ACH File Structure': ach/file-structure.md
+  - 'Picking an SEC Code': ach/sec-codes-table.md
+- X9: x9/index.md
+  - 'X9 File Structure': x9/file-structure.md
 - Tutorials:
     - 'Running ACH Server': tutorials/ach-server.md
     - 'Local Dev with Moov': tutorials/local-dev.md
-- About: about.md
-
 theme: readthedocs
 extra_css:
   - extra.css
