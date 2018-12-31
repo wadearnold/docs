@@ -8,13 +8,13 @@ The [NACHA Corporate Rules and Guidelines](https://github.com/moov-io/ach/blob/m
 
 - Customer uses their debit card at a POS terminal.
 
-<p>Proper SEC Code: **POS**</p>
+<p>Proper SEC Code: <strong>POS</strong></p>
 
 #### Internet Enrollment
 
 - Customer uses their debit card at a POS terminal.
 
-<p>Proper SEC Code: **POS**</p>
+<p>Proper SEC Code: <strong>POS</strong></p>
 
 ### Internet Transactions
 
@@ -23,7 +23,7 @@ The [NACHA Corporate Rules and Guidelines](https://github.com/moov-io/ach/blob/m
 - Customer initiates debits via the bank’s web site or individual bill payments at a merchant web site.
 - Customer uses their ACH based debit card to make a purchase at a web site.
 
-<p>Proper SEC Code: **PPD**</p>
+<p>Proper SEC Code: <strong>PPD</strong></p>
 
 #### Internet Enrollment
 
@@ -31,7 +31,7 @@ The [NACHA Corporate Rules and Guidelines](https://github.com/moov-io/ach/blob/m
 - Customer initiates bill payments at a merchant web site on their debit card.
 - Customer uses their ACH based debit card to make a purchase at a web site.
 
-<p>Proper SEC Code: **WEB**</p>
+<p>Proper SEC Code: <strong>WEB</strong></p>
 
 ## ATM Transactions
 
@@ -39,10 +39,10 @@ The [NACHA Corporate Rules and Guidelines](https://github.com/moov-io/ach/blob/m
 
 - Customer uses the card at an ATM to withdraw cash.
 
-<p>Proper SEC Code: **MTE**</p>
+<p>Proper SEC Code: <strong>MTE</strong></p>
 
 #### Internet Enrollment
 
 - Customer uses an ATM to withdraw cash:
 
-<p>Proper SEC Code: **MTE**</p>
+<p>Proper SEC Code: <strong>MTE</strong></p>
