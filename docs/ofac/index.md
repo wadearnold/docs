@@ -5,16 +5,7 @@ The Office of Foreign Assets Control administers and enforces economic sanctions
 
 [source: U.S. DEPARTMENT OF THE TREASURY](https://www.treasury.gov/resource-center/faqs/Sanctions/Pages/faq_general.aspx#basic)
 
-## How Does OFAC Work
-
-[source:](www.)
-
-[source: ](https://www.)
-
 ## FAQ
 
 [FAQ](https://www.treasury.gov/resource-center/faqs/Sanctions/Pages/ques_index.aspx)
 
-## ASCII Table and Description
-
-[ASCII Table and Description](http://www.asciitable.com/)

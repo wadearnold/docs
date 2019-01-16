@@ -81,3 +81,7 @@ Comma delimited: sdn.csv, add.csv, alt.csv, sdn_comments.csv
 | Field (value) delimiter | , | 44 | |
 | Text value quotes | " | 34 | |
 | Null | -0- | 45, 48, 45 | |
+
+## ASCII Table and Description
+
+[ASCII Table and Description](http://www.asciitable.com/)
