@@ -9,7 +9,7 @@ Format *.csv consists of records separated by carriage returns (ASCII character
 
 Null values consist of "-0-" (ASCII characters 45, 48, 45).
 
-The Comma Seperated Values (.csv), release consist of three  ASCII text files--a main
+The Comma Separated Values (.csv), release consist of three  ASCII text files--a main
 file listing the name of the SDN and other information unique to that entity
 (sdn.csv), a file of addresses (add.csv),  and a file of alternate names (alt.csv).
 Addresses and alternate names are linked to particular SDNs using unique integer
@@ -51,7 +51,7 @@ Comma delimited: sdn.csv, add.csv, alt.csv, sdn_comments.csv
 | :---: | :---: | :---: | :--- | :--- |
 | 1 | Ent_num | number | | link to unique listing |
 | 2 | Add_num | number | | unique record identifier |
-| 3 | Address | text | | 750 | street address of SDN |
+| 3 | Address | text | 750 | street address of SDN |
 | 4 | City/State/Province/Postal Code | text | 116 | city, state/province, zip/postal code |
 | 5 | Country | text | 250 | country of address |
 | 6 | Add_remarks | text | 200 | remarks on address |
