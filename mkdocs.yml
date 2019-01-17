@@ -6,6 +6,9 @@ pages:
   - Overview: ach/index.md
   - 'ACH File Structure': ach/file-structure.md
   - 'Picking an SEC Code': ach/sec-codes-table.md
+- OFAC:
+  - Overview: ofac/index.md
+  - 'OFAC File Structure': ofac/file-structure.md
 - X9:
   - Overview: x9/index.md
   - 'X9 File Structure': x9/file-structure.md
