@@ -18,6 +18,8 @@ ts=2018-12-11T23:36:22.0301927Z caller=main.go:65 startup="Starting ach server v
 ts=2018-12-11T23:36:22.0319685Z caller=main.go:118 transport=HTTP addr=:8080
 ts=2018-12-11T23:36:22.0321508Z caller=main.go:108 admin="listening on :9090"
 ```
+(On OS X, you'll need to use [port forwarding](https://docs.docker.com/docker-for-mac/networking/#known-limitations-use-cases-and-workarounds): 
+`$ docker run -p 8080:8080 -p 9090:9090 moov/ach:v0.5.0`)
 
 Then, (in a new terminal/shell) you can start making HTTP requests towards the ACH Server:
 
