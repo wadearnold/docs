@@ -4,7 +4,7 @@ Running all of Moov's services locally lets you write code against our services 
 
 Before starting please make sure you have Go setup [and can build our projects from source](https://github.com/moov-io/ach#from-source).
 
-Once you're setup, run each service locally. This requires 3 terminals / shells:
+Once you're setup, run each service locally. This requires 4 terminals / shells:
 
 ```
 # ACH
@@ -35,6 +35,20 @@ ts=2018-12-13T19:18:11.97221Z caller=database.go:100 sqlite="finished migrations
 ts=2018-12-13T19:18:11.974316Z caller=main.go:96 ach="Pong successful to ACH service"
 ts=2018-12-13T19:18:11.975093Z caller=main.go:155 transport=HTTP addr=:8082
 ts=2018-12-13T19:18:11.975177Z caller=main.go:124 admin="listening on :9092"
+
+# OFAC
+$ go run ./cmd/server/
+ts=2019-02-21T16:56:29.655Z caller=main.go:42 startup="Starting ofac server version v0.5.1-dev"
+ts=2019-02-21T16:56:29.655123Z caller=main.go:55 main="sqlite version 3.25.2"
+ts=2019-02-21T16:56:29.65678Z caller=sqlite.go:73 sqlite="starting database migrations"
+ts=2019-02-21T16:56:29.656886Z caller=sqlite.go:83 sqlite="migration #0 [create table if not exists customer_name...] changed 0 rows"
+... (more database migration log lines)
+ts=2019-02-21T16:56:29.657435Z caller=sqlite.go:87 sqlite="finished migrations"
+ts=2019-02-21T16:56:29.657912Z caller=download.go:74 download="Starting refresh of OFAC data"
+ts=2019-02-21T16:56:29.658027Z caller=main.go:103 admin="listening on :9094"
+ts=2019-02-21T16:56:30.499764Z caller=download.go:117 download="Finished refresh of OFAC data"
+ts=2019-02-21T16:56:30.502639Z caller=main.go:125 main="OFAC data refreshed - Addresses=11770 AltNames=9743 SDNs=7437"
+ts=2019-02-21T16:56:30.503054Z caller=main.go:158 transport=HTTP addr=:8084
 ```
 
 OPTIONAL:
@@ -62,6 +76,24 @@ $ apitest -local
 2018/12/13 19:21:54.271595 main.go:149: SUCCESS: Created Customer (id=f01861ddaa466f33dfcde1600472dcefad8f1739) for user
 2018/12/13 19:21:54.284106 main.go:156: SUCCESS: Created USD 216.76 transfer (id=54fa8e9e045f3a0e70de4ae28e47d1712eac413d) for user
 2018/12/13 19:21:54.284716 main.go:162: SUCCESS: invalid login credentials were rejected
+```
+
+We support a similar `ofactest` tool to verify an OFAC instance is working as expected.
+
+```
+# Disable Go Modules to install at $GOPATH/bin/ofactest
+$ GO111MODULE=off go get -u github.com/moov-io/ofac/cmd/ofactest
+
+# Run ofactest and hit local services
+$ ofactest -local
+2019/02/21 16:58:18.777244 main.go:57: Starting moov/ofactest v0.5.1-dev
+2019/02/21 16:58:18.777302 main.go:83: [INFO] using http://localhost:8084 for address
+2019/02/21 16:58:18.784140 main.go:101: [SUCCESS] ping
+2019/02/21 16:58:18.787780 main.go:108: [SUCCESS] last download was: 2s ago
+2019/02/21 16:58:18.794475 main.go:121: [SUCCESS] name search passed, query="alh"
+2019/02/21 16:58:18.800519 main.go:135: [SUCCESS] added company=21206 watch
+2019/02/21 16:58:18.804408 main.go:143: [SUCCESS] alt name search passed
+2019/02/21 16:58:18.808354 main.go:148: [SUCCESS] address search passed
 ```
 
 Great! If you want to hit multiple services outisde of `apitest` use our [`local.Transport`](https://godoc.org/github.com/moov-io/api/cmd/apitest/local#Transport) to route requests to each local app.
