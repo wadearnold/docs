@@ -12,7 +12,7 @@ First download the [latest Moov ACH server release](https://github.com/moov-io/a
 
 ```
 # Download latest ACH binary from https://github.com/moov-io/ach/releases
-# Example: wget https://github.com/moov-io/ach/releases/download/v0.6.0/ach-darwin-amd64
+# Example: https://github.com/moov-io/ach/releases/download/v0.6.0/ach-darwin-amd64
 
 # Run Moov's ACH server
 $ ach-linux-amd64
