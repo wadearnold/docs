@@ -4,7 +4,7 @@ The [Moov ACH Project](https://github.com/moov-io/ach) offers an HTTP Server for
 
 ### Getting Started
 
-To start using Moov's ACH service you'll first need to obtain a binary of the project. These can be downloaded [from the releases page](https://github.com/moov-io/ach/releases) or from [Docker Hub](https://hub.docker.com/r/moov/ach). If you're using Docker please [read over their getting started guide](https://docs.docker.com/get-started/).
+To start using Moov's ACH service you'll first need to obtain a binary of the project. These can be downloaded [from the releases page](https://github.com/moov-io/ach/releases) or from [Docker Hub](https://hub.docker.com/r/moov/ach).
 
 #### Running ACH Server from a binary
 
@@ -31,9 +31,11 @@ $ curl http://localhost:8080/files
 {"files":[],"error":null}
 ```
 
+You can also send [an example PPD ACH file we have](https://github.com/moov-io/ach/blob/master/test/testdata/ppd-valid.json) to any ACH service or read through HTTP examples in [Ruby](https://github.com/moov-io/ruby-ach-demo) and [Go](https://github.com/moov-io/ach/blob/master/examples/http/main.go).
+
 #### Running ACH Server on a local Docker host
 
-To run the ACH Server locally simply run:
+First, please [read over their getting started guide](https://docs.docker.com/get-started/) then to run the ACH Server locally:
 
 ```
 $ docker run moov/ach:v0.6.0 # Use the latest released version
