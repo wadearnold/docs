@@ -1,34 +1,41 @@
-## AchParticipant
+# FedACH Directory File Format
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**RoutingNumber** | **string** | The institution&#39;s routing number |
-**OfficeCode** | **string** | Main/Head Office or Branch. O&#x3D;main B&#x3D;branch |
-**ServicingFRBNumber** | **string** | Servicing Fed&#39;s main office routing number |
-**RecordTypeCode** | **string** | The code indicating the ABA number to be used to route or send ACH items to the RDFI 0 &#x3D; Institution is a Federal Reserve Bank 1 &#x3D; Send items to customer routing number 2 &#x3D; Send items to customer using new routing number field | 
-**Revised** | **string** | Date of last revision |
-**NewRoutingNumber** | **string** | Financial Institution&#39;s new routing number resulting from a merger or renumber |
-**CustomerName** | **string** | Financial Institution Name |
-**Address** | **string** | Street Address |
-**City** | **string** | City | 
-**State** | **string** | State |
-**PostalCode** | **string** | Postal Code |
-**PostalExtension** | **string** | Postal Code Extension |
-**PhoneNumber** | **string** | The Financial Institution&#39;s phone number |
-**StatusCode** | **string** | Code is based on the customers receiver code 1 &#x3D; Receives Gov/Comm |
-**ViewCode** | **string** | Code is current view 1 &#x3D; Current view |
+**Source:** [achFormat](https://frbservices.org/EPaymentsDirectory/achFormat.html)
 
-# WireParticipant
+| Field Name | Length | Position | Description |
+| --- | --- | --- | --- |
+| Routing Number | 9 | 1-9 | The institution's routing number |
+| Office Code | 1 | 10 | Main office or branch O=main B=branch |
+| Servicing FRB Number | 9 | 11-19 | Servicing Fed's main office routing number |
+| Record Type Code | 1 | 20 | The code indicating the ABA number to be used to route or send ACH items to the RFI <br/> 0 = Institution is a Federal Reserve Bank <br/> 1 = Send items to customer routing number <br/> 2 = Send items to customer using new routing number field |
+| Change Date | 6 | 21-26 | Date of last change to CRF information (MMDDYY) |
+| New Routing Number | 9 | 27-35 | Institution's new routing number resulting from a merger or renumber |
+| Customer Name | 36 | 36-71 | Commonly used abbreviated name |
+| Address | 36 | 72-107 | Delivery address |
+| City| 20 | 108-127 | City name in the delivery address |
+| State | 2 | 128-129 | State code of the state in the delivery address |
+| Zipcode | 5 | 130-134 | Zipcode in the delivery address |
+| Zipcode Extension | 4 | 135-138 | Zipcode extension in the delivery address |
+| Telephone Area Code | 3 | 139-141 | Area code of the CRF contact telephone number |
+| Telephone Prefix Number | 3 | 142-144 | Prefix of the CRF contact telephone number |
+| Telephone Suffix Number | 4 | 145-148 | Suffix of the CRF contact telephone number |
+| Institution Status Code | 1 | 149 | Code is based on the customers receiver code<br/>1 = Receives Gov/Comm |
+| Data View Code | 1 | 150 | 1 = Current view |
+| Filler | 5 | 151-155 | Spaces |
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**RoutingNumber** | **string** | The institution&#39;s routing number |
-**TelegraphicName** | **string** | Short name of financial institution |
-**CustomerName** | **string** | Financial Institution Name |
-**City** | **string** | City | [optional] 
-**State** | **string** | State | [optional]  
-**FundsTransferStatus** | **string** | Designates funds transfer status Y &#x3D; Eligible N &#x3D; Ineligible |
-**FundsSettlementOnlyStatus** | **string** | Designates funds settlement only status S &#x3D; Settlement-Only or blank |
-**BookEntrySecuritiesTransferStatus** | **string** | Designates book entry securities transfer status Y &#x3D; Eligible N &#x3D; Ineligible |
-**Date** | **string** | Date of last revision |
+# Fedwire Directory File Format
+
+**Source:** [FedWireFormat](https://frbservices.org/EPaymentsDirectory/fedwireFormat.html)
+
+| Field Name | Length | Columns |
+| --- | --- | --- |
+| Routing Number | 9 | 1-9 |
+| Telegraphic Name | 18 | 10-27 |
+| Customer Name | 36 | 28-63 |
+| State  | 2 | 64-65 |
+| City | 25 | 66-90 |
+| Funds transfer status: <br/> Y - Eligible <br/> N - Ineligible | 1 | 91 |
+| Funds settlement-only status: <br/> S - Settlement-Only | 1 | 92 |
+| Book-Entry Securities transfer status: <br/> Y - Eligible <br/> N - Ineligible | 1 | 93 |
+| Date of last revision: YYYYMMDD, or blank | 8 | 94-101 |
 
