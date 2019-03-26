@@ -9,13 +9,13 @@ Once you're setup, run each service locally. This requires 4 terminals / shells:
 ```
 # ACH
 $ go run ./cmd/server/
-ts=2018-12-13T19:18:10.340963Z caller=main.go:69 startup="Starting ach server version v0.6.0-rc2"
+ts=2018-12-13T19:18:10.340963Z caller=main.go:69 startup="Starting ach server version v0.1.0"
 ts=2018-12-13T19:18:10.341843Z caller=main.go:122 transport=HTTP addr=:8080
 ts=2018-12-13T19:18:10.34192Z caller=main.go:112 admin="listening on :9090"
 
 # Auth
 $ go run .
-ts=2018-12-13T19:18:11.062095Z caller=main.go:80 startup="Starting auth server version v0.4.3-dev"
+ts=2018-12-13T19:18:11.062095Z caller=main.go:80 startup="Starting auth server version v0.7.0"
 ts=2018-12-13T19:18:11.062633Z caller=main.go:103 main="sqlite version 3.25.2"
 ts=2018-12-13T19:18:11.062617Z caller=main.go:92 admin="listening on :9091"
 ts=2018-12-13T19:18:11.064059Z caller=sqlite.go:96 sqlite="starting database migrations..."
@@ -26,7 +26,7 @@ ts=2018-12-13T19:18:11.066804Z caller=main.go:189 transport=HTTP addr=:8081
 
 # Paygate
 $ go run .
-ts=2018-12-13T19:18:11.970293Z caller=main.go:55 startup="Starting paygate server version v0.1.0-rc3"
+ts=2018-12-13T19:18:11.970293Z caller=main.go:55 startup="Starting paygate server version v0.4.0"
 ts=2018-12-13T19:18:11.970391Z caller=main.go:59 main="sqlite version 3.25.2"
 ts=2018-12-13T19:18:11.971777Z caller=database.go:88 sqlite="starting database migrations"
 ts=2018-12-13T19:18:11.971886Z caller=database.go:97 sqlite="migration #0 [create table if not exists customers(cus...] changed 0 rows"
@@ -38,7 +38,7 @@ ts=2018-12-13T19:18:11.975177Z caller=main.go:124 admin="listening on :9092"
 
 # OFAC
 $ go run ./cmd/server/
-ts=2019-02-21T16:56:29.655Z caller=main.go:42 startup="Starting ofac server version v0.5.1-dev"
+ts=2019-02-21T16:56:29.655Z caller=main.go:42 startup="Starting ofac server version v0.7.0"
 ts=2019-02-21T16:56:29.655123Z caller=main.go:55 main="sqlite version 3.25.2"
 ts=2019-02-21T16:56:29.65678Z caller=sqlite.go:73 sqlite="starting database migrations"
 ts=2019-02-21T16:56:29.656886Z caller=sqlite.go:83 sqlite="migration #0 [create table if not exists customer_name...] changed 0 rows"
@@ -61,7 +61,7 @@ $ GO111MODULE=off go get -u github.com/moov-io/api/cmd/apitest
 
 # Run apitest and hit local services
 $ apitest -local
-2018/12/13 19:21:54.118542 main.go:46: Starting apitest v0.4.3-dev
+2018/12/13 19:21:54.118542 main.go:46: Starting apitest v0.7.0
 2018/12/13 19:21:54.118573 main.go:61: Using http://localhost as base API address
 2018/12/13 19:21:54.118585 main.go:83: Using X-Request-ID: 98d9d606167f03e6493c1dd09c22f085d8af2ea5
 2018/12/13 19:21:54.121004 main.go:190: ACH PONG
@@ -86,7 +86,7 @@ $ GO111MODULE=off go get -u github.com/moov-io/ofac/cmd/ofactest
 
 # Run ofactest and hit local services
 $ ofactest -local
-2019/02/21 16:58:18.777244 main.go:57: Starting moov/ofactest v0.5.1-dev
+2019/02/21 16:58:18.777244 main.go:57: Starting moov/ofactest v0.7.0
 2019/02/21 16:58:18.777302 main.go:83: [INFO] using http://localhost:8084 for address
 2019/02/21 16:58:18.784140 main.go:101: [SUCCESS] ping
 2019/02/21 16:58:18.787780 main.go:108: [SUCCESS] last download was: 2s ago

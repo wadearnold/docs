@@ -12,11 +12,11 @@ First download the [latest Moov ACH server release](https://github.com/moov-io/a
 
 ```
 # Download latest ACH binary from https://github.com/moov-io/ach/releases
-# Example: https://github.com/moov-io/ach/releases/download/v0.6.0/ach-darwin-amd64
+# Example: https://github.com/moov-io/ach/releases/download/v1.0.0/ach-darwin-amd64
 
 # Run Moov's ACH server
 $ ach-linux-amd64
-ts=2019-02-21T17:03:23.782592Z caller=main.go:69 startup="Starting ach server version v0.6.0"
+ts=2019-02-21T17:03:23.782592Z caller=main.go:69 startup="Starting ach server version v1.0.0"
 ts=2019-02-21T17:03:23.78314Z caller=main.go:129 transport=HTTP addr=:8080
 ts=2019-02-21T17:03:23.783252Z caller=main.go:119 admin="listening on :9090"
 ```
@@ -38,13 +38,13 @@ You can also send [an example PPD ACH file we have](https://github.com/moov-io/a
 First, please [read over their getting started guide](https://docs.docker.com/get-started/) then to run the ACH Server locally:
 
 ```
-$ docker run moov/ach:v0.6.0 # Use the latest released version
-ts=2019-02-21T17:03:23.782592Z caller=main.go:69 startup="Starting ach server version v0.6.0"
+$ docker run moov/ach:v1.0.0 # Use the latest released version
+ts=2019-02-21T17:03:23.782592Z caller=main.go:69 startup="Starting ach server version v1.0.0"
 ts=2019-02-21T17:03:23.78314Z caller=main.go:129 transport=HTTP addr=:8080
 ts=2019-02-21T17:03:23.783252Z caller=main.go:119 admin="listening on :9090"
 ```
 (On OS X, you'll need to use [port forwarding](https://docs.docker.com/docker-for-mac/networking/#known-limitations-use-cases-and-workarounds):
-`$ docker run -p 8080:8080 -p 9090:9090 moov/ach:v0.5.0`)
+`$ docker run -p 8080:8080 -p 9090:9090 moov/ach:v1.0.0`)
 
 Then, (in a new terminal/shell) you can start making HTTP requests towards the ACH Server:
 
@@ -116,9 +116,15 @@ spec:
         app: ach
     spec:
       containers:
-      - image: moov/ach:v0.5.0
+      - image: moov/ach:v1.0.0
         imagePullPolicy: Always
         name: ach
+        args:
+          - -http.addr=:8080
+          - -admin.addr=:9090
+        env:
+          - name: ACH_FILE_TTL
+            value: 30m # 30 minutes
         ports:
           - containerPort: 8080
             name: http
@@ -129,20 +135,21 @@ spec:
         resources:
           limits:
             cpu: 0.1
-            memory: 25Mi
+            memory: 50Mi
           requests:
+            cpu: 25m
             memory: 10Mi
         readinessProbe:
           httpGet:
             path: /ping
             port: 8080
           initialDelaySeconds: 5
-          periodSeconds: 5
+          periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /ping
             port: 8080
           initialDelaySeconds: 5
-          periodSeconds: 5
+          periodSeconds: 10
       restartPolicy: Always
 ```
