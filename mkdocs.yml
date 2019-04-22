@@ -7,8 +7,8 @@ pages:
   - 'ACH File Structure': ach/file-structure.md
   - 'Picking an SEC Code': ach/sec-codes-table.md
 - FED:
-    - Overviw: fed/index.md
-      'FED File Structure': fed/file-structure.md
+  - Overviw: fed/index.md
+  - 'FED File Structure': fed/file-structure.md
 - OFAC:
   - Overview: ofac/index.md
   - 'OFAC File Structure': ofac/file-structure.md
