@@ -149,7 +149,7 @@ The ACK entry is an acknowledgement by the Receiving Depository Financial Instit
 
 The ADV entry identifies a Non-Monetary Entry that is used by an ACH Operator to provide accounting information regarding an entry to participating DFI's.  It's an optional service provided by ACH operators and must be requested by a DFI wanting the service.
 
-**ADV Batch Control Record** 
+**ADV Batch Control Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -161,7 +161,7 @@ The ADV entry identifies a Non-Monetary Entry that is used by an ACH Operator to
 | *6* | 41-60 | 20 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
 | *7* | 61-79 | 19 | Alpha-Numeric | ACH Operator Data |  This field is used as specified by the ACH operator | O |
 | *8* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Originating DFI Identification | M |
-| *9* | 88-94 | 7 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M 
+| *9* | 88-94 | 7 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M
 
 **ADV File Control Record**
 
@@ -227,9 +227,9 @@ number, account number and check serial number.
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
-## ATX Acknowledgement Record (CTX)
+## ATX Acknowledgment Record (CTX)
 
-The ATX entry is an acknowledgement by the Receiving Depository Financial Institution (RDFI) that a Corporate Credit (CTX) has been received.
+The ATX entry is an acknowledgment by the Receiving Depository Financial Institution (RDFI) that a Corporate Credit (CTX) has been received.
 
 **ATX Entry Detail Record**
 
