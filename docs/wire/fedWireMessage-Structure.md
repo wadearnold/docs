@@ -8,15 +8,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FormatVersion** | **string** | FormatVersion 30  | 
 **UserRequestCorrelation** | **string** | UserRequestCorrelation | 
-**TestProductionCode** | [**TestProductionCodeEnum**](TestProductionCodeEnum.md) |  | 
+**TestProductionCode** | **string** | TestProductionCode  * &#x60;T&#x60; - Test * &#x60;P&#x60; - Production  |
 **MessageDuplicationCode** | **string** | MessageDuplicationCode  * &#x60; &#x60; - Original Message * &#x60;R&#x60; - Retrieval of an original message * &#x60;P&#x60; - Resend  | 
 
 # TypeSubType
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TypeCode** | [**TypeCodeEnum**](TypeCodeEnum.md) |  | 
-**SubTypeCode** | [**SubTypeCodeEnum**](SubTypeCodeEnum.md) |  | 
+**TypeCode** | **string** | TypeCode:  * &#x60;10&#x60; - Funds Transfer - A funds transfer in which the sender and/or receiver may be a bank or a third party (i.e., customer of a bank). * &#x60;15&#x60; - Foreign Transfer - A funds transfer to or from a foreign central bank or government or international organization with an account at the Federal Reserve Bank of New York. * &#x60;16&#x60; - Settlement Transfer - A funds transfer between Fedwire Funds Service participants.  | 
+**SubTypeCode** | **string** | SubTypeCode:  * &#x60;00&#x60; - Basic Funds Transfer - A basic value funds transfer. * &#x60;01&#x60; - Request for Reversal - A non-value request for reversal of a funds transfer originated on the current business day. * &#x60;02&#x60; - Reversal of Transfer - A value reversal of a funds transfer received on the current business day.  May be used in response to a subtype code ‘01’ Request for Reversal. * &#x60;07&#x60; - Request for Reversal of a Prior Day Transfer - A non-value request for a reversal of a funds transfer originated on a prior business day. * &#x60;08&#x60; - Reversal of a Prior Day Transfer - A value reversal of a funds transfer received on a prior business day.  May be used in response to a subtype code ‘07’ Request for Reversal of a Prior Day Transfer. * &#x60;31&#x60; - Request for Credit (Drawdown) - A non-value request for the receiver to send a funds transfer to a designated party. * &#x60;32&#x60; - Funds Transfer Honoring a Request for Credit (Drawdown) -  A value funds transfer honoring a subtype 31 request for credit. * &#x60;33&#x60; -Refusal to Honor a Request for Credit (Drawdown) - A non-value message indicating refusal to honor a subtype 31 request for credit. * &#x60;90&#x60; - Service Message - A non-value message used to communicate questions and information that is not covered by a specific subtype.  | 
 
 # InputMessageAccountabilityData (IMAD)
 
@@ -50,9 +50,8 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BusinessFunctionCode** | [**BusinessFunctionCodeEnum**](BusinessFunctionCodeEnum.md) |  | 
+**BusinessFunctionCode** | **string** | BusinessFunctionCode * &#x60;BTR&#x60; - Bank Transfer (Beneficiary is a bank) * &#x60;DRC&#x60; - Customer or Corporate Drawdown Request * &#x60;CKS&#x60; - Check Same Day Settlement * &#x60;DRW&#x60; - Drawdown Payment * &#x60;CTP&#x60; - Customer Transfer Plus * &#x60;FFR&#x60; - Fed Funds Returned * &#x60;CTR&#x60; - Customer Transfer (Beneficiary is a not a bank) * &#x60;FFS&#x60; - Fed Funds Sold * &#x60;DEP&#x60; - Deposit to Sender’s Account * &#x60;SVC&#x60; - Service Message * &#x60;DRB&#x60; - Bank-to-Bank Drawdown Request  | 
 **TransactionTypeCode** | **string** | TransactionTypeCode If {3600} is CTR, an optional Transaction Type Code element is permitted; however, the Transaction Type Code &#39;COV&#39; is not permitted. | [optional] 
-
 
 ## Other Transfer Information
 
@@ -66,8 +65,8 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LocalInstrumentCode** | [**LocalInstrumentEnum**](LocalInstrumentEnum.md) |  | [optional] 
-**ProprietaryCode** | **string** | ProprietaryCode | [optional]
+**LocalInstrumentCode** | **string** | LocalInstrument  * &#x60;ANSI&#x60; - ANSI X12 format * &#x60;COVS&#x60; - Sequence B Cover Payment Structured * &#x60;GXML&#x60; - General XML format * &#x60;IXML&#x60; - ISO 20022 XML formaT * &#x60;NARR&#x60; - Narrative Text * &#x60;PROP&#x60; - Proprietary Local Instrument Code * &#x60;RMTS&#x60; - Remittance Information Structured * &#x60;RRMT&#x60; - Related Remittance Information * &#x60;S820&#x60; - STP 820 format * &#x60;SWIF&#x60; - SWIFT field 70 (Remittance Information) * &#x60;UEDI&#x60; - UN/EDIFACT format  | [optional] 
+**ProprietaryCode** | **string** | ProprietaryCode | [optional] 
 
 # PaymentNotification
 
@@ -219,7 +218,9 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdviceCode** | **string** | AdviceCode  * &#x60;HLD - Hold * &#x60;LTR&#x60; - Letter * &#x60;PHN&#x60; - Phone * &#x60;TLX&#x60; - Telex * &#x60;WRE&#x60; - Wire  *  | [optional] 
 **LineOne** | **string** | LineOne | [optional] 
 **LineTwo** | **string** | LineTwo | [optional] 
 **LineThree** | **string** | LineThree | [optional] 
@@ -242,7 +243,7 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**AdviceCode** | **string** | AdviceCode  * &#x60;HLD - Hold * &#x60;LTR&#x60; - Letter * &#x60;PHN&#x60; - Phone * &#x60;TLX&#x60; - Telex * &#x60;WRE&#x60; - Wire  *  | [optional] 
 **LineOne** | **string** | LineOne | [optional] 
 **LineTwo** | **string** | LineTwo | [optional] 
 **LineThree** | **string** | LineThree | [optional] 
@@ -265,7 +266,7 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**AdviceCode** | **string** | AdviceCode  * &#x60;HLD - Hold * &#x60;LTR&#x60; - Letter * &#x60;PHN&#x60; - Phone * &#x60;TLX&#x60; - Telex * &#x60;WRE&#x60; - Wire  *  | [optional] 
 **LineOne** | **string** | LineOne | [optional] 
 **LineTwo** | **string** | LineTwo | [optional] 
 **LineThree** | **string** | LineThree | [optional] 
@@ -288,7 +289,7 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**AdviceCode** | **string** | AdviceCode  * &#x60;HLD - Hold * &#x60;LTR&#x60; - Letter * &#x60;PHN&#x60; - Phone * &#x60;TLX&#x60; - Telex * &#x60;WRE&#x60; - Wire  *  | [optional] 
 **LineOne** | **string** | LineOne | [optional] 
 **LineTwo** | **string** | LineTwo | [optional] 
 **LineThree** | **string** | LineThree | [optional] 
@@ -412,7 +413,7 @@ Name | Type | Description | Notes
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RemittanceIdentification** | **string** | RemittanceIdentification | [optional] 
-**RemittanceLocationMethod** | [**RemittanceLocationMethodEnum**](RemittanceLocationMethodEnum.md) |  | [optional] 
+**RemittanceLocationMethod** | **string** | RemittanceLocationMethod  * &#x60;EDIC&#x60; - Electronic Data Interchange * &#x60;EMAL&#x60; - Email * &#x60;FAXI&#x60; - Fax * &#x60;POST&#x60; - Postal services * &#x60;SMS&#x60; - Short Message Service (text) * &#x60;URI&#x60; - Uniform Resource Identifier  | [optional] 
 **RemittanceLocationElectronicAddress** | **string** | RemittanceLocationElectronicAddress (E-mail or URL address) | [optional] 
 **RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional] 
 
@@ -422,7 +423,7 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentificationType** | [**IdentificationTypeEnum**](IdentificationTypeEnum.md) |  | [optional] 
+**IdentificationType** | **string** | IdentificationType  * &#x60;OI&#x60; - Organization ID * &#x60;PI&#x60; - Private ID  | [optional] 
 **IdentificationCode** | **string** | IdentificationCode  Organization Identification Codes  * &#x60;BANK&#x60; - Bank Party Identification * &#x60;CUST&#x60; - Customer Number * &#x60;DUNS&#x60; - Data Universal Number System (Dun &amp; Bradstreet) * &#x60;EMPL&#x60; - Employer Identification Number * &#x60;GS1G&#x60; - Global Location Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SWBB&#x60; - SWIFT BIC or BEI * &#x60;TXID&#x60; - Tax Identification Number  Private Identification Codes  * &#x60;ARNU&#x60; - Alien Registration Number * &#x60;CCPT&#x60; - Passport Number * &#x60;CUST&#x60; - Customer Number * &#x60;DPOB&#x60; - Date &amp; Place of Birth * &#x60;DRLC&#x60; - Driver’s License Number * &#x60;EMPL&#x60; - Employee Identification Number * &#x60;NIDN&#x60; - National Identity Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SOSE&#x60; - Social Security Number * &#x60;TXID&#x60; - Tax Identification Number  | [optional] 
 **IdentificationNumber** | **string** | IdentificationNumber | [optional] 
 **IdentificationNumberIssuer** | **string** | IdentificationNumberIssuer | [optional] 
@@ -434,13 +435,13 @@ Name | Type | Description | Notes
 **ContactMobileNumber** | **string** | ContactMobileNumber | [optional] 
 **ContactFaxNumber** | **string** | ContactFaxNumber | [optional] 
 **ContactElectronicAddress** | **string** | ContactElectronicAddress ( i.e., E-mail or URL address) | [optional] 
-**ContactOther** | **string** | ContactOther | [optional]
+**ContactOther** | **string** | ContactOther | [optional] 
 
 # RemittanceBeneficiary
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentificationType** | [**IdentificationTypeEnum**](IdentificationTypeEnum.md) |  | [optional] 
+**IdentificationType** | **string** | IdentificationType  * &#x60;OI&#x60; - Organization ID * &#x60;PI&#x60; - Private ID  | [optional] 
 **IdentificationCode** | **string** | IdentificationCode  Organization Identification Codes  * &#x60;BANK&#x60; - Bank Party Identification * &#x60;CUST&#x60; - Customer Number * &#x60;DUNS&#x60; - Data Universal Number System (Dun &amp; Bradstreet) * &#x60;EMPL&#x60; - Employer Identification Number * &#x60;GS1G&#x60; - Global Location Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SWBB&#x60; - SWIFT BIC or BEI * &#x60;TXID&#x60; - Tax Identification Number  Private Identification Codes  * &#x60;ARNU&#x60; - Alien Registration Number * &#x60;CCPT&#x60; - Passport Number * &#x60;CUST&#x60; - Customer Number * &#x60;DPOB&#x60; - Date &amp; Place of Birth * &#x60;DRLC&#x60; - Driver’s License Number * &#x60;EMPL&#x60; - Employee Identification Number * &#x60;NIDN&#x60; - National Identity Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SOSE&#x60; - Social Security Number * &#x60;TXID&#x60; - Tax Identification Number  | [optional] 
 **IdentificationNumber** | **string** | IdentificationNumber | [optional] 
 **IdentificationNumberIssuer** | **string** | IdentificationNumberIssuer | [optional] 
@@ -514,13 +515,13 @@ Name | Type | Description | Notes
  
  # MessageDisposition
  
- Name | Type | Description | Notes
- ------------ | ------------- | ------------- | -------------
- **FormatVersion** | **string** | FormatVersion 30  | [optional] 
- **TestProductionCode** | [**TestProductionCodeEnum**](TestProductionCodeEnum.md) |  | [optional] 
- **MessageDuplicationCode** | **string** | MessageDuplicationCode  * &#x60; &#x60; - Original Message * &#x60;R&#x60; - Retrieval of an original message * &#x60;P&#x60; - Resend  | [optional] 
- **MessageStatusIndicator** | **string** | Message Status Indicator  Outgoing Messages * &#x60;0&#x60; - In process or Intercepted * &#x60;2&#x60; - Successful with Accounting (Value) * &#x60;3&#x60; - Rejected due to Error Condition * &#x60;7&#x60; - Successful without Accounting (Non-Value)  Incoming Messages * &#x60;N&#x60; - Successful with Accounting (Value) * &#x60;S&#x60; - Successful without Accounting (Non-Value)  | [optional] 
- 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**FormatVersion** | **string** | FormatVersion 30  | [optional] 
+**TestProductionCode** | **string** | TestProductionCode  * &#x60;T&#x60; - Test * &#x60;P&#x60; - Production  | [optional] 
+**MessageDuplicationCode** | **string** | MessageDuplicationCode  * &#x60; &#x60; - Original Message * &#x60;R&#x60; - Retrieval of an original message * &#x60;P&#x60; - Resend  | [optional] 
+**MessageStatusIndicator** | **string** | Message Status Indicator  Outgoing Messages * &#x60;0&#x60; - In process or Intercepted * &#x60;2&#x60; - Successful with Accounting (Value) * &#x60;3&#x60; - Rejected due to Error Condition * &#x60;7&#x60; - Successful without Accounting (Non-Value)  Incoming Messages * &#x60;N&#x60; - Successful with Accounting (Value) * &#x60;S&#x60; - Successful without Accounting (Non-Value)  | [optional] 
+
  # ReceiptTimeStamp
  
  Name | Type | Description | Notes
