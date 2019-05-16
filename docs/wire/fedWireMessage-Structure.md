@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **TypeCode** | [**TypeCodeEnum**](TypeCodeEnum.md) |  | 
 **SubTypeCode** | [**SubTypeCodeEnum**](SubTypeCodeEnum.md) |  | 
 
-# InputMessageAccountabilityData
+# InputMessageAccountabilityData (IMAD)
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -106,7 +106,7 @@ Name | Type | Description | Notes
 
 ## Beneficiary Information
 
-# Intermediary FI
+# IntermediaryFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -115,7 +115,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name | 
 **Address** | [**Address**](address.md) |  | 
 
-# Beneficiary FI
+# BeneficiaryFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -150,6 +150,8 @@ Name | Type | Description | Notes
 
 ## Originator Information
 
+# Originator
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IdentificationCode** | **string** | IdentificationCode:  * &#x60;1&#x60; - Passport Number * &#x60;2&#x60; - Tax Identification Number * &#x60;3&#x60; - Driver’s License Number * &#x60;4&#x60; - Alien Registration Number * &#x60;5&#x60; - Corporate Identification * &#x60;9&#x60; - Other Identification  | 
@@ -167,7 +169,7 @@ Name | Type | Description | Notes
 **LineTwo** | **string** | LineTwo  Format: Must begin with one of the following Line Codes followed by a slash and at least one valid non-space character. 1 Name 2 Address 3 Country and Town 4 Date of Birth 5 Place of Birth 6 Customer Identification Number 7 National Identity Number 8 Additional Information  For example: 2/123 MAIN STREET 3/US/NEW YORK, NY 10000 7/111-22-3456  | [optional] 
 **LineThree** | **string** | LineThree  Format: Must begin with one of the following Line Codes followed by a slash and at least one valid non-space character. 1 Name 2 Address 3 Country and Town 4 Date of Birth 5 Place of Birth 6 Customer Identification Number 7 National Identity Number 8 Additional Information  For example: 2/123 MAIN STREET 3/US/NEW YORK, NY 10000 7/111-22-3456  | [optional] 
  
-# Originator FI
+# OriginatorFI
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -176,7 +178,7 @@ Name | Type | Description | Notes
  **Name** | **string** | Name | 
  **Address** | [**Address**](address.md) |  
  
-# Instructing FI
+# InstructingFI
   
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -198,4 +200,220 @@ Name | Type | Description | Notes
 **LineOne** | **string** | LineOne | [optional] 
 **LineTwo** | **string** | LineTwo | [optional] 
 **LineThree** | **string** | LineThree | [optional] 
-**LineFour** | **string** | LineFour | [optional]     
+**LineFour** | **string** | LineFour | [optional]
+
+## Financial Institution to Financial Institution Information
+
+# ReceiverFI
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# DrawdownDebitAccountAdvice
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional] 
+
+# IntermediaryFI
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# IntermediaryFIAdvice
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# BeneficiaryFI
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# BeneficiaryFIAdvice
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# Beneficiary
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# Beneficiary Advice
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdviceCode** | [**AdviceCodeEnum**](AdviceCodeEnum.md) |  | [optional] 
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+# PaymentMethodToBeneficiary
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**PaymentMethod** | **string** | PaymentMethod | [optional] 
+**Additional** | **string** |  | [optional]
+
+# AdditionalFiToFi
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional] 
+
+## Cover Payment Information
+
+# CurrencyInstructedAmount
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**Amount** | **string** | Amount | [optional]
+
+# OrderingCustomer
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional] 
+**SwiftLineFive** | **string** | SwiftLineFive | [optional]
+
+# OrderingInstitution
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional] 
+**SwiftLineFive** | **string** | SwiftLineFive | [optional]
+
+# IntermediaryInstitution
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional] 
+**SwiftLineFive** | **string** | SwiftLineFive | [optional]
+
+# InstitutionAccount
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional] 
+**SwiftLineFive** | **string** | SwiftLineFive | [optional]
+
+# BeneficiaryCustomer
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional] 
+**SwiftLineFive** | **string** | SwiftLineFive | [optional]
+
+# Remittance
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional]
+
+# Sender to Receiver
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
+**SwiftLineOne** | **string** | SwiftLineOne | [optional] 
+**SwiftLineTwo** | **string** | SwiftLineTwo | [optional] 
+**SwiftLineThree** | **string** | SwiftLineThree | [optional] 
+**SwiftLineFour** | **string** | SwiftLineFour | [optional] 
+**SwiftLineFive** | **string** | SwiftLineFive | [optional] 
+**SwiftLineSix** | **string** | SwiftLineSix | [optional]
+
+# Unstructured Addenda
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AddendaLength** | **string** | AddendaLength  Addenda Length must be numeric, padded with leading zeros if less than four characters and must equal length of content in Addenda Information (e.g., if content of Addenda Information is 987 characters, Addenda Length must be 0987).  | [optional] 
+**Addenda** | **string** | Addenda | [optional]
+
+# RelatedRemittance
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**RemittanceIdentification** | **string** | RemittanceIdentification | [optional] 
+**RemittanceLocationMethod** | [**RemittanceLocationMethodEnum**](RemittanceLocationMethodEnum.md) |  | [optional] 
+**RemittanceLocationElectronicAddress** | **string** | RemittanceLocationElectronicAddress (E-mail or URL address) | [optional] 
+**RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional] 
+
+                
