@@ -416,4 +416,134 @@ Name | Type | Description | Notes
 **RemittanceLocationElectronicAddress** | **string** | RemittanceLocationElectronicAddress (E-mail or URL address) | [optional] 
 **RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional] 
 
-                
+## Structured Remittance Information
+
+# RemittanceOriginator
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**IdentificationType** | [**IdentificationTypeEnum**](IdentificationTypeEnum.md) |  | [optional] 
+**IdentificationCode** | **string** | IdentificationCode  Organization Identification Codes  * &#x60;BANK&#x60; - Bank Party Identification * &#x60;CUST&#x60; - Customer Number * &#x60;DUNS&#x60; - Data Universal Number System (Dun &amp; Bradstreet) * &#x60;EMPL&#x60; - Employer Identification Number * &#x60;GS1G&#x60; - Global Location Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SWBB&#x60; - SWIFT BIC or BEI * &#x60;TXID&#x60; - Tax Identification Number  Private Identification Codes  * &#x60;ARNU&#x60; - Alien Registration Number * &#x60;CCPT&#x60; - Passport Number * &#x60;CUST&#x60; - Customer Number * &#x60;DPOB&#x60; - Date &amp; Place of Birth * &#x60;DRLC&#x60; - Driver’s License Number * &#x60;EMPL&#x60; - Employee Identification Number * &#x60;NIDN&#x60; - National Identity Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SOSE&#x60; - Social Security Number * &#x60;TXID&#x60; - Tax Identification Number  | [optional] 
+**IdentificationNumber** | **string** | IdentificationNumber | [optional] 
+**IdentificationNumberIssuer** | **string** | IdentificationNumberIssuer | [optional] 
+**DateBirthPlace** | **string** | DateBirthPlace | [optional] 
+**RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional] 
+**CountryOfResidence** | **string** | CountryOfResidence | [optional] 
+**ContactName** | **string** | ContactName | [optional] 
+**ContactPhoneNumber** | **string** | ContactPhoneNumber | [optional] 
+**ContactMobileNumber** | **string** | ContactMobileNumber | [optional] 
+**ContactFaxNumber** | **string** | ContactFaxNumber | [optional] 
+**ContactElectronicAddress** | **string** | ContactElectronicAddress ( i.e., E-mail or URL address) | [optional] 
+**ContactOther** | **string** | ContactOther | [optional]
+
+# RemittanceBeneficiary
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**IdentificationType** | [**IdentificationTypeEnum**](IdentificationTypeEnum.md) |  | [optional] 
+**IdentificationCode** | **string** | IdentificationCode  Organization Identification Codes  * &#x60;BANK&#x60; - Bank Party Identification * &#x60;CUST&#x60; - Customer Number * &#x60;DUNS&#x60; - Data Universal Number System (Dun &amp; Bradstreet) * &#x60;EMPL&#x60; - Employer Identification Number * &#x60;GS1G&#x60; - Global Location Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SWBB&#x60; - SWIFT BIC or BEI * &#x60;TXID&#x60; - Tax Identification Number  Private Identification Codes  * &#x60;ARNU&#x60; - Alien Registration Number * &#x60;CCPT&#x60; - Passport Number * &#x60;CUST&#x60; - Customer Number * &#x60;DPOB&#x60; - Date &amp; Place of Birth * &#x60;DRLC&#x60; - Driver’s License Number * &#x60;EMPL&#x60; - Employee Identification Number * &#x60;NIDN&#x60; - National Identity Number * &#x60;PROP&#x60; - Proprietary Identification Number * &#x60;SOSE&#x60; - Social Security Number * &#x60;TXID&#x60; - Tax Identification Number  | [optional] 
+**IdentificationNumber** | **string** | IdentificationNumber | [optional] 
+**IdentificationNumberIssuer** | **string** | IdentificationNumberIssuer | [optional] 
+**DateBirthPlace** | **string** | DateBirthPlace | [optional] 
+**RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional]
+
+# PrimaryRemittanceDocument
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**DocumentTypeCode** | **string** | DocumentTypeCode  * &#x60;AROI&#x60; - Accounts Receivable Open Item * &#x60;BOLD&#x60; - Bill of Lading Shipping Notice * &#x60;CINV&#x60; - Commercial Invoice * &#x60;CMCN&#x60; - Commercial Contract * &#x60;CNFA&#x60; - Credit Note Related to Financial Adjustment * &#x60;CREN&#x60; - Credit Note * &#x60;DEBN&#x60; - Debit Note * &#x60;DISP&#x60; - Dispatch Advice * &#x60;DNFA&#x60; - Debit Note Related to Financial Adjustment HIRI Hire Invoice * &#x60;MSIN&#x60; - Metered Service Invoice * &#x60;PROP&#x60; - Proprietary Document Type * &#x60;PUOR&#x60; - Purchase Order * &#x60;SBIN&#x60; - Self Billed Invoice * &#x60;SOAC&#x60; - Statement of Account * &#x60;TSUT&#x60; - Trade Services Utility Transaction VCHR Voucher  | [optional] 
+**ProprietaryDocumentTypeCode** | **string** | ProprietaryDocumentTypeCode | [optional] 
+**DocumentIdentificationNumber** | **string** | DocumentIdentificationNumber | [optional] 
+**Issuer** | **string** | Issuer | [optional]
+
+# ActualAmountPaid
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CurrencyCode** | **string** | CurrencyCode | [optional] 
+**Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
+
+# GrossAmountOfRemittanceDocument
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CurrencyCode** | **string** | CurrencyCode | [optional] 
+**Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
+ 
+# AmountNegotiatedDiscount
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CurrencyCode** | **string** | CurrencyCode | [optional] 
+**Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
+ 
+ # Adjustment
+ 
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **AdjustmentReasonCode** | **string** | Adjustment  * &#x60;01&#x60; - Pricing Error * &#x60;03&#x60; - Extension Error * &#x60;04&#x60; - Item Not Accepted (Damaged) * &#x60;05&#x60; - Item Not Accepted (Quality) * &#x60;06&#x60; - Quantity Contested 07   Incorrect Product * &#x60;11&#x60; - Returns (Damaged) * &#x60;12&#x60; - Returns (Quality) * &#x60;59&#x60; - Item Not Received * &#x60;75&#x60; - Total Order Not Received * &#x60;81&#x60; - Credit as Agreed * &#x60;CM&#x60; - Covered by Credit Memo  | [optional] 
+ **CreditDebitIndicator** | **string** | CreditDebitIndicator  * &#x60;CRDT&#x60; - Credit * &#x60;DBIT&#x60; - Debit  | [optional] 
+ **CurrencyCode** | **string** | CurrencyCode | [optional] 
+ **Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
+ **AdditionalInfo** | **string** | AdditionalInfo | [optional]
+ 
+ # DateRemittanceDocument
+
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **DateRemittanceDocument** | **string** | DateRemittanceDocument CCYYMMDD | [optional]
+ 
+ # SecondaryRemittanceDocument
+ 
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **DocumentTypeCode** | **string** | SecondaryRemittanceDocument  * &#x60;AROI&#x60; - Accounts Receivable Open Item * &#x60;DISP&#x60; - Dispatch Advice * &#x60;FXDR&#x60; - Foreign Exchange Deal Reference * &#x60;PROP&#x60; - Proprietary Document Type PUOR Purchase Order * &#x60;RADM&#x60; - Remittance Advice Message * &#x60;RPIN&#x60; - Related Payment Instruction * &#x60;SCOR1&#x60; - Structured Communication Reference VCHR Voucher  | [optional] 
+ **ProprietaryDocumentTypeCode** | **string** | proprietaryDocumentTypeCode | [optional] 
+ **DocumentIdentificationNumber** | **string** | documentIdentificationNumber | [optional] 
+ **Issuer** | **string** | Issuer | [optional]
+ 
+ # RemittanceFreeText
+
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **LineOne** | **string** | LineOne | [optional] 
+ **LineTwo** | **string** | LineTwo | [optional] 
+ **LineThree** | **string** | LineThree | [optional]
+ 
+ ## Information Appended by the FEDWire Funds Service
+ 
+ # MessageDisposition
+ 
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **FormatVersion** | **string** | FormatVersion 30  | [optional] 
+ **TestProductionCode** | [**TestProductionCodeEnum**](TestProductionCodeEnum.md) |  | [optional] 
+ **MessageDuplicationCode** | **string** | MessageDuplicationCode  * &#x60; &#x60; - Original Message * &#x60;R&#x60; - Retrieval of an original message * &#x60;P&#x60; - Resend  | [optional] 
+ **MessageStatusIndicator** | **string** | Message Status Indicator  Outgoing Messages * &#x60;0&#x60; - In process or Intercepted * &#x60;2&#x60; - Successful with Accounting (Value) * &#x60;3&#x60; - Rejected due to Error Condition * &#x60;7&#x60; - Successful without Accounting (Non-Value)  Incoming Messages * &#x60;N&#x60; - Successful with Accounting (Value) * &#x60;S&#x60; - Successful without Accounting (Non-Value)  | [optional] 
+ 
+ # ReceiptTimeStamp
+ 
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **ReceiptDate** | [**DateMmdd**](DateMMDD.md) |  | [optional] 
+ **ReceiptTime** | [**TimeHhmm**](TimeHHMM.md) |  | [optional] 
+ **ReceiptApplicationIdentification** | **string** | ApplicationIdentification | [optional]
+ 
+ # OutputMessageAccountabilityData
+
+ Name | Type | Description | Notes
+ ------------ | ------------- | ------------- | -------------
+ **OutputCycleDate** | **string** | OutputCycleDate (CCYYMMDD) | [optional] 
+ **OutputDestinationID** | **string** | OutputDestinationID | [optional] 
+ **OutputSequenceNumber** | **string** | outputSequenceNumber | [optional] 
+ **OutputDate** | [**DateMmdd**](DateMMDD.md) |  | [optional] 
+ **OutputTime** | [**TimeHhmm**](TimeHHMM.md) |  | [optional] 
+ **OutputFRBApplicationIdentification** | **string** | OutputFRBApplicationIdentification | [optional]  
+
+# ErrorWire
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ErrorCategory** | **string** |  * &#x60;E&#x60; - Data Error * &#x60;F&#x60; - Insufficient Balance * &#x60;H&#x60; - Accountability Error * &#x60;I&#x60; - In Process or Intercepted * &#x60;W&#x60; - Cutoff Hour Error * &#x60;X&#x60; - Duplicate IMAD  | [optional] 
+**ErrorCode** | **string** | ErrorCode | [optional] 
+**ErrorDescription** | **string** | ErrorDescription | [optional]                       
