@@ -8,11 +8,11 @@ The data and formats represent a compilation of the **FedWire** and **FedACH** d
 
 ### FedACH Directory
 
-* [FedACH](https://github.com/moov-io/fed/docs/FedACHdir.md)
+* [FedACH](https://github.com/moov-io/fed/tree/master/docs/FedACHdir.md)
 
 ### FedWire Directory
 
-* [FedWire](https://github.com/moov-io/fed/docs/fpddir.md)
+* [FedWire](https://github.com/moov-io/fed/tree/master/docs/fpddir.md)
 
 ### Other resources
 
