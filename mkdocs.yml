@@ -12,6 +12,9 @@ pages:
 - OFAC:
   - Overview: ofac/index.md
   - 'OFAC File Structure': ofac/file-structure.md
+- WIRE:
+    - Overview: wire/index.md
+    - 'WIRE File Structure': wire/file-structure.md
 - X9:
   - Overview: x9/index.md
   - 'X9 File Structure': x9/file-structure.md
