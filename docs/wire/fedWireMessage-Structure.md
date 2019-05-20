@@ -534,8 +534,8 @@ Name | Type | Description | Notes
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
- **ReceiptDate** | [**DateMmdd**](DateMmdd.md) |  | [optional] 
- **ReceiptTime** | [**TimeHhmm**](TimeHhmm.md) |  | [optional] 
+ **ReceiptDate** | [**Date**](fedWireMessage-Structure/DateMmdd.md) |  | [optional] 
+ **ReceiptTime** | [**Time**](fedWireMessage-Structure/TimeHhmm.md) |  | [optional] 
  **ReceiptApplicationIdentification** | **string** | ApplicationIdentification | [optional]
  
 ### OutputMessageAccountabilityData

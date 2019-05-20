@@ -17,8 +17,6 @@ pages:
   - 'WIRE File Structure': wire/fedWireMessage-Structure.md
   - 'Address': wire/address.md
   - 'RemittanceData': wire/remittanceData.md
-  - 'Date': wire/DateMmdd.md
-  - 'Time': wire/TimeHhmm.md
 - X9:
   - Overview: x9/index.md
   - 'X9 File Structure': x9/file-structure.md
