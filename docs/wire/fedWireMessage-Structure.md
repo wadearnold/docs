@@ -9,7 +9,7 @@ InputMessageAccountabilityData |
 Amount | 
 SenderDepositoryInstitution |
 ReceiverDepositoryInstitution |
-BusinessFunctionCode
+BusinessFunctionCode |
 
 ### SenderSupplied
 
@@ -546,8 +546,8 @@ Name | Type | Description | Notes
  **OutputCycleDate** | **string** | OutputCycleDate (CCYYMMDD) | [optional] 
  **OutputDestinationID** | **string** | OutputDestinationID | [optional] 
  **OutputSequenceNumber** | **string** | outputSequenceNumber | [optional] 
- **OutputDate** | [**DateMmdd**](DateMMDD.md) |  | [optional] 
- **OutputTime** | [**TimeHhmm**](TimeHHMM.md) |  | [optional] 
+ **OutputDate** | [**Date**](DateMmdd.md) |  | [optional] 
+ **OutputTime** | [**Time**](TimeHhmm.md) |  | [optional] 
  **OutputFRBApplicationIdentification** | **string** | OutputFRBApplicationIdentification | [optional]  
 
 ### ErrorWire
