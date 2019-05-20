@@ -9,6 +9,7 @@ InputMessageAccountabilityData |
 Amount | 
 SenderDepositoryInstitution |
 ReceiverDepositoryInstitution |
+BusinessFunctionCode
 
 ### SenderSupplied
 
