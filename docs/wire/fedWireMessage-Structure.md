@@ -1,8 +1,16 @@
-## The following Tags are mandatory for all transfers
+## The following Tags are mandatory for all transfers:
 
-# SenderSupplied, TypeSubType, InputMessageAccountabilityData, Amount, SenderDepositoryInstitution, ReceiverDepositoryInstitution
 
-# SenderSupplied
+Name |
+------------ | 
+SenderSupplied |
+TypeSubType |
+InputMessageAccountabilityData |
+Amount | 
+SenderDepositoryInstitution |
+ReceiverDepositoryInstitution |
+
+### SenderSupplied
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -11,14 +19,14 @@ Name | Type | Description | Notes
 **TestProductionCode** | **string** | TestProductionCode  * &#x60;T&#x60; - Test * &#x60;P&#x60; - Production  |
 **MessageDuplicationCode** | **string** | MessageDuplicationCode  * &#x60; &#x60; - Original Message * &#x60;R&#x60; - Retrieval of an original message * &#x60;P&#x60; - Resend  | 
 
-# TypeSubType
+### TypeSubType
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TypeCode** | **string** | TypeCode:  * &#x60;10&#x60; - Funds Transfer - A funds transfer in which the sender and/or receiver may be a bank or a third party (i.e., customer of a bank). * &#x60;15&#x60; - Foreign Transfer - A funds transfer to or from a foreign central bank or government or international organization with an account at the Federal Reserve Bank of New York. * &#x60;16&#x60; - Settlement Transfer - A funds transfer between Fedwire Funds Service participants.  | 
 **SubTypeCode** | **string** | SubTypeCode:  * &#x60;00&#x60; - Basic Funds Transfer - A basic value funds transfer. * &#x60;01&#x60; - Request for Reversal - A non-value request for reversal of a funds transfer originated on the current business day. * &#x60;02&#x60; - Reversal of Transfer - A value reversal of a funds transfer received on the current business day.  May be used in response to a subtype code ‘01’ Request for Reversal. * &#x60;07&#x60; - Request for Reversal of a Prior Day Transfer - A non-value request for a reversal of a funds transfer originated on a prior business day. * &#x60;08&#x60; - Reversal of a Prior Day Transfer - A value reversal of a funds transfer received on a prior business day.  May be used in response to a subtype code ‘07’ Request for Reversal of a Prior Day Transfer. * &#x60;31&#x60; - Request for Credit (Drawdown) - A non-value request for the receiver to send a funds transfer to a designated party. * &#x60;32&#x60; - Funds Transfer Honoring a Request for Credit (Drawdown) -  A value funds transfer honoring a subtype 31 request for credit. * &#x60;33&#x60; -Refusal to Honor a Request for Credit (Drawdown) - A non-value message indicating refusal to honor a subtype 31 request for credit. * &#x60;90&#x60; - Service Message - A non-value message used to communicate questions and information that is not covered by a specific subtype.  | 
 
-# InputMessageAccountabilityData (IMAD)
+### InputMessageAccountabilityData (IMAD)
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -26,27 +34,27 @@ Name | Type | Description | Notes
 **InputSource** | **string** | InputSource | 
 **InputSequenceNumber** | **string** | InputSequenceNumber | 
 
-# Amount
+### Amount
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **string** | Amount 12 numeric, right-justified with leading zeros, an implied decimal point and no commas; e.g., $12,345.67 becomes 000001234567 Can be all zeros for subtype 90  | 
 
-# SenderDepositoryInstitution
+### SenderDepositoryInstitution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SenderABANumber** | **string** | SenderABANumber | 
 **SenderShortName** | **string** | SenderShortName | 
 
-# ReceiverDepositoryInstitution
+### ReceiverDepositoryInstitution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReceiverABANumber** | **string** | ReceiverABANumber | 
 **ReceiverShortName** | **string** | ReceiverShortName | 
 
-# BusinessFunctionCode
+### BusinessFunctionCode
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -55,20 +63,20 @@ Name | Type | Description | Notes
 
 ## Other Transfer Information
 
-# SenderReference
+### SenderReference
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SenderReference** | **string** | SenderReference | [optional] 
 
-# LocalInstrument
+### LocalInstrument
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LocalInstrumentCode** | **string** | LocalInstrument  * &#x60;ANSI&#x60; - ANSI X12 format * &#x60;COVS&#x60; - Sequence B Cover Payment Structured * &#x60;GXML&#x60; - General XML format * &#x60;IXML&#x60; - ISO 20022 XML formaT * &#x60;NARR&#x60; - Narrative Text * &#x60;PROP&#x60; - Proprietary Local Instrument Code * &#x60;RMTS&#x60; - Remittance Information Structured * &#x60;RRMT&#x60; - Related Remittance Information * &#x60;S820&#x60; - STP 820 format * &#x60;SWIF&#x60; - SWIFT field 70 (Remittance Information) * &#x60;UEDI&#x60; - UN/EDIFACT format  | [optional] 
 **ProprietaryCode** | **string** | ProprietaryCode | [optional] 
 
-# PaymentNotification
+### PaymentNotification
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -80,7 +88,7 @@ Name | Type | Description | Notes
 **FaxNumber** | **string** | FaxNumber | [optional] 
 **EndToEndIdentification** | **string** | EndToEndIdentification | [optional] 
 
-# Charges
+### Charges
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -90,14 +98,14 @@ Name | Type | Description | Notes
 **SendersChargesThree** | **string** | SendersChargesThree  The first three characters must contain an alpha currency code (e.g., USD).  The remaining characters for the amount must begin with at least one numeric character (0-9) and only one decimal comma marker.  $1,234.56 should be entered as USD1234,56 and $0.99 should be entered as USD0,99.  | [optional] 
 **SendersChargesFour** | **string** | SendersChargesFour  The first three characters must contain an alpha currency code (e.g., USD).  The remaining characters for the amount must begin with at least one numeric character (0-9) and only one decimal comma marker.  $1,234.56 should be entered as USD1234,56 and $0.99 should be entered as USD0,99.  | [optional] 
 
-# InstructedAmount
+### InstructedAmount
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrencyCode** | **string** | CurrencyCode | [optional] 
 **Amount** | **string** | Amount  Must begin with at least one numeric character (0-9) and contain only one decimal comma marker (e.g., $1,234.56 should be entered as 1234,56 and $0.99 should be entered as  | [optional] 
 
-# ExchangeRate
+### ExchangeRate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -105,7 +113,7 @@ Name | Type | Description | Notes
 
 ## Beneficiary Information
 
-# IntermediaryFI
+### IntermediaryFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -114,7 +122,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name | 
 **Address** | [**Address**](address.md) |  | 
 
-# BeneficiaryFI
+### BeneficiaryFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -123,7 +131,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name | 
 **Address** | [**Address**](address.md) |  | 
 
-# Beneficiary
+### Beneficiary
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -132,13 +140,13 @@ Name | Type | Description | Notes
 **Name** | **string** | Name | 
 **Address** | [**Address**](address.md) |  | 
 
-# BeneficiaryReference
+### BeneficiaryReference
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BeneficiaryReference** | **string** | BeneficiaryReference | [optional]
 
-# AccountDebitedDrawdown
+### AccountDebitedDrawdown
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -149,7 +157,7 @@ Name | Type | Description | Notes
 
 ## Originator Information
 
-# Originator
+### Originator
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -158,7 +166,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name | 
 **Address** | [**Address**](address.md) |  | 
 
-# OriginatorOptionF
+### OriginatorOptionF
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -168,7 +176,7 @@ Name | Type | Description | Notes
 **LineTwo** | **string** | LineTwo  Format: Must begin with one of the following Line Codes followed by a slash and at least one valid non-space character. 1 Name 2 Address 3 Country and Town 4 Date of Birth 5 Place of Birth 6 Customer Identification Number 7 National Identity Number 8 Additional Information  For example: 2/123 MAIN STREET 3/US/NEW YORK, NY 10000 7/111-22-3456  | [optional] 
 **LineThree** | **string** | LineThree  Format: Must begin with one of the following Line Codes followed by a slash and at least one valid non-space character. 1 Name 2 Address 3 Country and Town 4 Date of Birth 5 Place of Birth 6 Customer Identification Number 7 National Identity Number 8 Additional Information  For example: 2/123 MAIN STREET 3/US/NEW YORK, NY 10000 7/111-22-3456  | [optional] 
  
-# OriginatorFI
+### OriginatorFI
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -177,7 +185,7 @@ Name | Type | Description | Notes
  **Name** | **string** | Name | 
  **Address** | [**Address**](address.md) |  
  
-# InstructingFI
+### InstructingFI
   
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -186,13 +194,13 @@ Name | Type | Description | Notes
  **Name** | **string** | Name | 
  **Address** | [**Address**](address.md) |
  
-# AccountCreditedDrawdown
+### AccountCreditedDrawdown
  
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DrawdownCreditAccountNumber** | **string** | DrawdownCreditAccountNumber  9 character ABA  | [optional]
 
-# OriginatorToBeneficiary
+### OriginatorToBeneficiary
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -203,7 +211,7 @@ Name | Type | Description | Notes
 
 ## Financial Institution to Financial Institution Information
 
-# ReceiverFI
+### ReceiverFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -214,7 +222,7 @@ Name | Type | Description | Notes
 **LineFive** | **string** | LineFive | [optional] 
 **LineSix** | **string** | LineSix | [optional]
 
-# DrawdownDebitAccountAdvice
+### DrawdownDebitAccountAdvice
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -228,7 +236,7 @@ Name | Type | Description | Notes
 **LineFive** | **string** | LineFive | [optional] 
 **LineSix** | **string** | LineSix | [optional] 
 
-# IntermediaryFI
+### IntermediaryFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -239,30 +247,7 @@ Name | Type | Description | Notes
 **LineFive** | **string** | LineFive | [optional] 
 **LineSix** | **string** | LineSix | [optional]
 
-# IntermediaryFIAdvice
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AdviceCode** | **string** | AdviceCode  * &#x60;HLD - Hold * &#x60;LTR&#x60; - Letter * &#x60;PHN&#x60; - Phone * &#x60;TLX&#x60; - Telex * &#x60;WRE&#x60; - Wire  *  | [optional] 
-**LineOne** | **string** | LineOne | [optional] 
-**LineTwo** | **string** | LineTwo | [optional] 
-**LineThree** | **string** | LineThree | [optional] 
-**LineFour** | **string** | LineFour | [optional] 
-**LineFive** | **string** | LineFive | [optional] 
-**LineSix** | **string** | LineSix | [optional]
-
-# BeneficiaryFI
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**LineOne** | **string** | LineOne | [optional] 
-**LineTwo** | **string** | LineTwo | [optional] 
-**LineThree** | **string** | LineThree | [optional] 
-**LineFour** | **string** | LineFour | [optional] 
-**LineFive** | **string** | LineFive | [optional] 
-**LineSix** | **string** | LineSix | [optional]
-
-# BeneficiaryFIAdvice
+### IntermediaryFIAdvice
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -274,7 +259,7 @@ Name | Type | Description | Notes
 **LineFive** | **string** | LineFive | [optional] 
 **LineSix** | **string** | LineSix | [optional]
 
-# Beneficiary
+### BeneficiaryFI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -285,7 +270,7 @@ Name | Type | Description | Notes
 **LineFive** | **string** | LineFive | [optional] 
 **LineSix** | **string** | LineSix | [optional]
 
-# Beneficiary Advice
+### BeneficiaryFIAdvice
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -297,14 +282,37 @@ Name | Type | Description | Notes
 **LineFive** | **string** | LineFive | [optional] 
 **LineSix** | **string** | LineSix | [optional]
 
-# PaymentMethodToBeneficiary
+### Beneficiary
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+### Beneficiary Advice
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdviceCode** | **string** | AdviceCode  * &#x60;HLD - Hold * &#x60;LTR&#x60; - Letter * &#x60;PHN&#x60; - Phone * &#x60;TLX&#x60; - Telex * &#x60;WRE&#x60; - Wire  *  | [optional] 
+**LineOne** | **string** | LineOne | [optional] 
+**LineTwo** | **string** | LineTwo | [optional] 
+**LineThree** | **string** | LineThree | [optional] 
+**LineFour** | **string** | LineFour | [optional] 
+**LineFive** | **string** | LineFive | [optional] 
+**LineSix** | **string** | LineSix | [optional]
+
+### PaymentMethodToBeneficiary
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PaymentMethod** | **string** | PaymentMethod | [optional] 
 **Additional** | **string** |  | [optional]
 
-# AdditionalFiToFi
+### AdditionalFiToFi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -317,14 +325,14 @@ Name | Type | Description | Notes
 
 ## Cover Payment Information
 
-# CurrencyInstructedAmount
+### CurrencyInstructedAmount
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SwiftFieldTag** | **string** | SwiftFieldTag | [optional] 
 **Amount** | **string** | Amount | [optional]
 
-# OrderingCustomer
+### OrderingCustomer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -335,7 +343,7 @@ Name | Type | Description | Notes
 **SwiftLineFour** | **string** | SwiftLineFour | [optional] 
 **SwiftLineFive** | **string** | SwiftLineFive | [optional]
 
-# OrderingInstitution
+### OrderingInstitution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -346,7 +354,7 @@ Name | Type | Description | Notes
 **SwiftLineFour** | **string** | SwiftLineFour | [optional] 
 **SwiftLineFive** | **string** | SwiftLineFive | [optional]
 
-# IntermediaryInstitution
+### IntermediaryInstitution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -357,7 +365,7 @@ Name | Type | Description | Notes
 **SwiftLineFour** | **string** | SwiftLineFour | [optional] 
 **SwiftLineFive** | **string** | SwiftLineFive | [optional]
 
-# InstitutionAccount
+### InstitutionAccount
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -368,7 +376,7 @@ Name | Type | Description | Notes
 **SwiftLineFour** | **string** | SwiftLineFour | [optional] 
 **SwiftLineFive** | **string** | SwiftLineFive | [optional]
 
-# BeneficiaryCustomer
+### BeneficiaryCustomer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -379,7 +387,7 @@ Name | Type | Description | Notes
 **SwiftLineFour** | **string** | SwiftLineFour | [optional] 
 **SwiftLineFive** | **string** | SwiftLineFive | [optional]
 
-# Remittance
+### Remittance
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -389,7 +397,7 @@ Name | Type | Description | Notes
 **SwiftLineThree** | **string** | SwiftLineThree | [optional] 
 **SwiftLineFour** | **string** | SwiftLineFour | [optional]
 
-# Sender to Receiver
+### Sender to Receiver
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -401,14 +409,14 @@ Name | Type | Description | Notes
 **SwiftLineFive** | **string** | SwiftLineFive | [optional] 
 **SwiftLineSix** | **string** | SwiftLineSix | [optional]
 
-# Unstructured Addenda
+###  Unstructured Addenda
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddendaLength** | **string** | AddendaLength  Addenda Length must be numeric, padded with leading zeros if less than four characters and must equal length of content in Addenda Information (e.g., if content of Addenda Information is 987 characters, Addenda Length must be 0987).  | [optional] 
 **Addenda** | **string** | Addenda | [optional]
 
-# RelatedRemittance
+### RelatedRemittance
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -419,7 +427,7 @@ Name | Type | Description | Notes
 
 ## Structured Remittance Information
 
-# RemittanceOriginator
+#### RemittanceOriginator
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -437,7 +445,7 @@ Name | Type | Description | Notes
 **ContactElectronicAddress** | **string** | ContactElectronicAddress ( i.e., E-mail or URL address) | [optional] 
 **ContactOther** | **string** | ContactOther | [optional] 
 
-# RemittanceBeneficiary
+### RemittanceBeneficiary
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -448,7 +456,7 @@ Name | Type | Description | Notes
 **DateBirthPlace** | **string** | DateBirthPlace | [optional] 
 **RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional]
 
-# PrimaryRemittanceDocument
+### PrimaryRemittanceDocument
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -457,28 +465,28 @@ Name | Type | Description | Notes
 **DocumentIdentificationNumber** | **string** | DocumentIdentificationNumber | [optional] 
 **Issuer** | **string** | Issuer | [optional]
 
-# ActualAmountPaid
+### ActualAmountPaid
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrencyCode** | **string** | CurrencyCode | [optional] 
 **Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
 
-# GrossAmountOfRemittanceDocument
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CurrencyCode** | **string** | CurrencyCode | [optional] 
-**Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
- 
-# AmountNegotiatedDiscount
+### GrossAmountOfRemittanceDocument
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrencyCode** | **string** | CurrencyCode | [optional] 
 **Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
  
- # Adjustment
+### AmountNegotiatedDiscount
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CurrencyCode** | **string** | CurrencyCode | [optional] 
+**Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
+ 
+### Adjustment
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -488,13 +496,13 @@ Name | Type | Description | Notes
  **Amount** | **string** | Amount Must contain at least one numeric character and only one decimal period marker (e.g., $1,234.56 should be entered as 1234.56). Can have up to 5 numeric characters following the decimal period marker (e.g., 1234.56789). Amount must be greater than zero (i.e., at least .01).  | [optional] 
  **AdditionalInfo** | **string** | AdditionalInfo | [optional]
  
- # DateRemittanceDocument
+### DateRemittanceDocument
 
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
  **DateRemittanceDocument** | **string** | DateRemittanceDocument CCYYMMDD | [optional]
  
- # SecondaryRemittanceDocument
+### SecondaryRemittanceDocument
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -503,7 +511,7 @@ Name | Type | Description | Notes
  **DocumentIdentificationNumber** | **string** | documentIdentificationNumber | [optional] 
  **Issuer** | **string** | Issuer | [optional]
  
- # RemittanceFreeText
+### RemittanceFreeText
 
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -513,7 +521,7 @@ Name | Type | Description | Notes
  
  ## Information Appended by the FEDWire Funds Service
  
- # MessageDisposition
+### MessageDisposition
  
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -522,15 +530,15 @@ Name | Type | Description | Notes
 **MessageDuplicationCode** | **string** | MessageDuplicationCode  * &#x60; &#x60; - Original Message * &#x60;R&#x60; - Retrieval of an original message * &#x60;P&#x60; - Resend  | [optional] 
 **MessageStatusIndicator** | **string** | Message Status Indicator  Outgoing Messages * &#x60;0&#x60; - In process or Intercepted * &#x60;2&#x60; - Successful with Accounting (Value) * &#x60;3&#x60; - Rejected due to Error Condition * &#x60;7&#x60; - Successful without Accounting (Non-Value)  Incoming Messages * &#x60;N&#x60; - Successful with Accounting (Value) * &#x60;S&#x60; - Successful without Accounting (Non-Value)  | [optional] 
 
- # ReceiptTimeStamp
+### ReceiptTimeStamp
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
- **ReceiptDate** | [**DateMmdd**](DateMMDD.md) |  | [optional] 
- **ReceiptTime** | [**TimeHhmm**](TimeHHMM.md) |  | [optional] 
+ **ReceiptDate** | [**DateMmdd**](DateMmdd.md) |  | [optional] 
+ **ReceiptTime** | [**TimeHhmm**](TimeHhmm.md) |  | [optional] 
  **ReceiptApplicationIdentification** | **string** | ApplicationIdentification | [optional]
  
- # OutputMessageAccountabilityData
+### OutputMessageAccountabilityData
 
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
@@ -541,7 +549,7 @@ Name | Type | Description | Notes
  **OutputTime** | [**TimeHhmm**](TimeHHMM.md) |  | [optional] 
  **OutputFRBApplicationIdentification** | **string** | OutputFRBApplicationIdentification | [optional]  
 
-# ErrorWire
+### ErrorWire
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
