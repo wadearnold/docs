@@ -535,8 +535,8 @@ Name | Type | Description | Notes
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
- **ReceiptDate** | [**Date**](https://docs.moov.io/en/latest/wire/TimeHhmm.md) |  | [optional] 
- **ReceiptTime** | [**Time**](https://docs.moov.io/en/latest/wire/TimeHhmm.md) |  | [optional] 
+ **ReceiptDate** | [**Date**](wire/DateMMDD.md) |  | [optional] 
+ **ReceiptTime** | [**Time**](wire/TimeHHMM.md) |  | [optional] 
  **ReceiptApplicationIdentification** | **string** | ApplicationIdentification | [optional]
  
 ### OutputMessageAccountabilityData
@@ -546,8 +546,8 @@ Name | Type | Description | Notes
  **OutputCycleDate** | **string** | OutputCycleDate (CCYYMMDD) | [optional] 
  **OutputDestinationID** | **string** | OutputDestinationID | [optional] 
  **OutputSequenceNumber** | **string** | outputSequenceNumber | [optional] 
- **OutputDate** | [**Date**](https://docs.moov.io/en/latest/wire/DateMmdd.md) |  | [optional] 
- **OutputTime** | [**Time**](https://docs.moov.io/en/latest/wire/TimeHhmm.md) |  | [optional] 
+ **OutputDate** | [**Date**](wire/DateMMDD.md) |  | [optional] 
+ **OutputTime** | [**Time**](wire/TimeHHMM.md) |  | [optional] 
  **OutputFRBApplicationIdentification** | **string** | OutputFRBApplicationIdentification | [optional]  
 
 ### ErrorWire
