@@ -535,8 +535,8 @@ Name | Type | Description | Notes
  
  Name | Type | Description | Notes
  ------------ | ------------- | ------------- | -------------
- **ReceiptDate** | [**Date**](wire/DateMMDD.md) |  | [optional] 
- **ReceiptTime** | [**Time**](wire/TimeHHMM.md) |  | [optional] 
+ **ReceiptDate** | [**Date**](DateMMDD.md) | Date | [optional] 
+ **ReceiptTime** | [**Time**](TimeHHMM.md) | Time | [optional] 
  **ReceiptApplicationIdentification** | **string** | ApplicationIdentification | [optional]
  
 ### OutputMessageAccountabilityData
@@ -546,8 +546,8 @@ Name | Type | Description | Notes
  **OutputCycleDate** | **string** | OutputCycleDate (CCYYMMDD) | [optional] 
  **OutputDestinationID** | **string** | OutputDestinationID | [optional] 
  **OutputSequenceNumber** | **string** | outputSequenceNumber | [optional] 
- **OutputDate** | [**Date**](wire/DateMMDD.md) |  | [optional] 
- **OutputTime** | [**Time**](wire/TimeHHMM.md) |  | [optional] 
+ **OutputDate** | [**Date**](DateMMDD.md) | Date | [optional] 
+ **OutputTime** | [**Time**](TimeHHMM.md) | Time | [optional] 
  **OutputFRBApplicationIdentification** | **string** | OutputFRBApplicationIdentification | [optional]  
 
 ### ErrorWire

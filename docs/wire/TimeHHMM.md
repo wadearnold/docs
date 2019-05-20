@@ -1,4 +1,4 @@
-# TimeHhmm
+# TimeHHMM
 
 ## Properties
 Name | Type | Description | Notes
