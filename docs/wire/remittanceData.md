@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name | [optional] 
-**AddressType** | [**AddressTypeEnum**](AddressTypeEnum.md) |  | [optional] 
+**AddressType** | **String** | Address Type * `ADDR` - Complete Postal Address, * `BIZZ` - Business Address, * `DLVY` - Delivery Address, * `HOME` - Home Address, * `MLTO` - Mail Address, * `PBOX` - Post Office Box | [optional] 
 **Department** | **string** | Department | [optional] 
 **SubDepartment** | **string** | SubDepartment | [optional] 
 **StreetName** | **string** | StreetName | [optional] 
@@ -21,7 +21,3 @@ Name | Type | Description | Notes
 **AddressLineSix** | **string** | AddressLineSix | [optional] 
 **AddressLineSeven** | **string** | AddressLineSeven | [optional] 
 **CountryOfResidence** | **string** | CountryOfResidence | [optional] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-
