@@ -1,4 +1,4 @@
-# DateMmdd
+# DateMMDD
 
 ## Properties
 Name | Type | Description | Notes
