@@ -6,6 +6,7 @@ pages:
   - Overview: ach/index.md
   - 'ACH File Structure': ach/file-structure.md
   - 'Picking an SEC Code': ach/sec-codes-table.md
+  - 'Merging ACH Files': ach/merging-files.md
 - FED:
   - Overview: fed/index.md
   - 'FED File Structure': fed/file-structure.md
