@@ -65,17 +65,17 @@ The File Header Record designates physical file characteristics. It also identif
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '1' | Record Type Code | Code Identifying the File Header Record is '1' | M |
 | *2* | 02-03 | 2 | '01' | Priority Code | Currently, only "01" is used | R |
-| *3* | 04-13 | 10 | bNNNNNNNNN | Immediate Destination | The Immediate Destination Field identifies the party to which the file is being delivered. Usually the Routing Number of the ACH operator  | M |
+| *3* | 04-13 | 10 | bNNNNNNNNN | Immediate Destination | The Immediate Destination Field identifies the party to which the file is being delivered. Usually the Routing Number of the ACH operator. | M |
 | *4* | 14-23 | 10 | NNNNNNNNNN | Immediate Origin | The Immediate Origin Field identifies the sender of the file. | M |
-| *5* | 24-29 | 6 | YYMMDD | File Creation Date | The date you create or transmit the input file: <br> “YY” = Last two digits of the Year <br> “MM” = Month in two digits <br> “DD” = Day in two digits | M |
-| *6* | 30-33 | 4 | HHMM | File Creation Time | Time of day you create or transmit the input file. This field is used to distinguish among input files if you submit more than one per day: <br>  “HH = Hour based on a 24 hr clock <br >“MM” = Minutes in two digits | O |
+| *5* | 24-29 | 6 | YYMMDD | File Creation Date | The date you create or transmit the input file: <br> “YY” = Last two digits of the Year <br> “MM” = Month in two digits <br> “DD” = Day in two digits. | M |
+| *6* | 30-33 | 4 | HHMM | File Creation Time | Time of day you create or transmit the input file. This field is used to distinguish among input files if you submit more than one per day: <br>  “HH = Hour based on a 24 hr clock <br >“MM” = Minutes in two digits. | O |
 | *7* | 34-34 | 1 |  UPPER CASE A-Z (or 0-9) | File ID Modifier | Code to distinguish among multiple input files sent per day. Label the first (or only) file “A” (or “0”) and continue in sequence. | M |
 | *8* | 35-37 | 3 | "094" | Record Size | Number of bytes per record-always 94. | M |
-| *9* | 38-39 | 2 | "10" | Blocking Factor | Number of records per block | M |
-| *10* | 40-40 | 1 | "1" | Format Code | Currently only “1” is used | M |
-| *11* | 41-63 | 23 | Alphanumeric | Immediate Destination Name | This field contains the name of the ACH Operator or Receiving Point for which that File is destined | M |
-| *12* | 64-86 | 23 | Alphanumeric | Immediate Origin or Company Name | This field contains the name of the ACH Operator or Sending Point that is Transmitting the File | M |
-| *13* | 87-94 | 8 | Alphanumeric | Reference Code | You may use this field to describe the input file for internal accounting purposes or fill with spaces. | O |
+| *9* | 38-39 | 2 | "10" | Blocking Factor | Number of records per block. | M |
+| *10* | 40-40 | 1 | "1" | Format Code | Currently only “1” is used. | M |
+| *11* | 41-63 | 23 | Alphameric | Immediate Destination Name | This field contains the name of the ACH Operator or Receiving Point for which that File is destined. | M |
+| *12* | 64-86 | 23 | Alphameric | Immediate Origin or Company Name | This field contains the name of the ACH Operator or Sending Point that is Transmitting the File. | M |
+| *13* | 87-94 | 8 | Alphameric | Reference Code | You may use this field to describe the input file for internal accounting purposes or fill with spaces. | O |
 
 ## Company/Batch Header Record Formats
 
@@ -85,35 +85,35 @@ A batch is a collection of like entries within a file. You must use a separate b
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '5' | Record Type Code | Code Identifying the Company /Batch Header Record is '5' | M |
-| *2* | 02-04 | 3 | Numeric | Service Class Code | Identifies the type of entries in the batch 200 - ACH Entries Mixed Debits and Credits | M |
+| *1* | 01-01 | 1 | '5' | Record Type Code | Code Identifying the Company /Batch Header Record is '5'. | M |
+| *2* | 02-04 | 3 | Numeric | Service Class Code | Identifies the type of entries in the batch 200 - ACH Entries Mixed Debits and Credits. | M |
 | *3* | 05-20 | 16 | Alpha-Numeric | Company Name | Company Name | O |
-| *4* | 21-40 | 20 | Alpha-Numeric | Company Discretionary Data | The use of this field is defined by the ODFI | O |
-| *5* | 41-50 | 10 | Numeric | Company Identification | 10 Digit Company Number  | M |
-| *6* | 51-53 | 3 | Alpha | Standard Entry Class Code | Standard Entry Class Code | M |
-| *7* | 54-63 | 10 | Alpha-Numeric | Company Entry Description | Transaction Description | M |
-| *8* | 64-69 | 6 | Alpha-Numeric | Company Descriptive Date  | The date you choose to identify the transaction | O |
-| *9* | 70-75 | 6 | YYMMDD | Effective Entry Date| Date transactions are to be posted to the participants account | R |
-| *10* | 76-78 | 3 |  Blanks  | Settlement Date (Julian) | Inserted by ACH Operator | Inserted by ACH Operator |
+| *4* | 21-40 | 20 | Alpha-Numeric | Company Discretionary Data | The use of this field is defined by the ODFI. | O |
+| *5* | 41-50 | 10 | Numeric | Company Identification | 10 Digit Company Number.  | M |
+| *6* | 51-53 | 3 | Alpha | Standard Entry Class Code | Standard Entry Class Code. | M |
+| *7* | 54-63 | 10 | Alpha-Numeric | Company Entry Description | Transaction Description. | M |
+| *8* | 64-69 | 6 | Alpha-Numeric | Company Descriptive Date  | The date you choose to identify the transaction. | O |
+| *9* | 70-75 | 6 | YYMMDD | Effective Entry Date| Date transactions are to be posted to the participants account. | R |
+| *10* | 76-78 | 3 |  Blanks  | Settlement Date (Julian) | Inserted by ACH Operator | Inserted by ACH Operator. |
 | *11* | 79-79 | 1 | Numeric | Originator Status Code | "1" | M |
-| *12* | 80-87 | 8 | Numeric | Originating DFI Identification | Standard Entry Detail Trace Number | M |
-| *13* | 88-94 | 9 | Numeric | Batch Number | Number Batches Sequentially | M |
+| *12* | 80-87 | 8 | Numeric | Originating DFI Identification | Standard Entry Detail Trace Number. | M |
+| *13* | 88-94 | 9 | Numeric | Batch Number | Number Batches Sequentially. | M |
 
 ## Company/Batch Control Record Formats
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '8' | Record Type Code | Code Identifying the Company /Batch Header Record is '8' | M |
-| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record | M |
-| *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill | M |
-| *4* | 11-20 | 20 | Numeric | Entry Hash | Total of eigh-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record. | M |
+| *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill. | M |
+| *4* | 11-20 | 20 | Numeric | Entry Hash | Total of eigh-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number. | M |
 | *5* | 21-32 | 12 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in Batch | Dollar total of debit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
 | *6* | 33-44 | 12 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zer-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
-| *7* | 45-54 | 10 | NNNNNNNNNN | Company Identification | 10 Digit Company Number  | M |
+| *7* | 45-54 | 10 | NNNNNNNNNN | Company Identification | 10 Digit Company Number.  | M |
 | *8* | 55-73 | 19 | Alpha-Numeric | Message Authentication Code  | The MAC is an-eight character code derived from a special key used in conjunction with the DES algorithm. The MAC is used to validate the authenticity of ACH Entries. The DES algorithm and key message standards must be in accordance with standards adopted by the American National Standards Institute. The remaining eleven characters of this field are blank. | O |
 | *9* | 74-79 | 6 | Alpha-Numeric | Reserved| Leave Blank | n/a |
-| *10* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Standard Entry Detail Trace Number | M |
-| *11* | 88-94 | 9 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M |
+| *10* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Standard Entry Detail Trace Number. | M |
+| *11* | 88-94 | 9 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Header. | M |
 
 ## ACK Acknowledgement Record (CCD)
 
@@ -123,17 +123,17 @@ The ACK entry is an acknowledgement by the Receiving Depository Financial Instit
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Original Entry trace Number | The original Detail Record trace number | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Receiving Company Name | Receiver's Company Name | M |
-| *9* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 15 | Alpha-Numeric | Original Entry trace Number | The original Detail Record trace number. | M |
+| *8* | 55-76 | 22 | Alpha-Numeric | Receiving Company Name | Receiver's Company Name. | M |
+| *9* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **ACK Addenda Record**
 
@@ -153,15 +153,15 @@ The ADV entry identifies a Non-Monetary Entry that is used by an ACH Operator to
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '8' | Record Type Code | Code Identifying the Company /Batch Header Record is '8' | M |
-| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record | M |
-| *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill | M |
-| *4* | 11-20 | 10 | Numeric | Entry Hash | Total of eight-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number | M |
+| *1* | 01-01 | 1 | '8' | Record Type Code | Code Identifying the Company /Batch Header Record is '8'. | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Must match the value used in the Batch Header Record. | M |
+| *3* | 05-10 | 6 | Numeric | Entry/Addenda Count | Total Number of Entry Detail Records plus addenda records (Record Types "6" and "7") in the batch. Requires 6 positions, right-justify, left zero fill. | M |
+| *4* | 11-20 | 10 | Numeric | Entry Hash | Total of eight-character Transit Routing/ACA numbers in the batch. Do not include the Transit Routing Check Digit. Enter the ten low-order (right most) digits of this number. | M |
 | *5* | 21-40 | 20 | $$$$$$$$$$¢¢ | Total Debit Entry Dollar Amount in Batch | Dollar total of debit entries in the batch. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
 | *6* | 41-60 | 20 | $$$$$$$$$$¢¢ | Total Credit Entry Dollar Amount in Batch | Dollar total of credit entries in the batch. If none, zero-fill the field. Do not enter a decimal point. Right-justify, left zero-fill.  | M |
-| *7* | 61-79 | 19 | Alpha-Numeric | ACH Operator Data |  This field is used as specified by the ACH operator | O |
-| *8* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Originating DFI Identification | M |
-| *9* | 88-94 | 7 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Headder. | M
+| *7* | 61-79 | 19 | Alpha-Numeric | ACH Operator Data |  This field is used as specified by the ACH operator. | O |
+| *8* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | Originating DFI Identification. | M |
+| *9* | 88-94 | 7 | Numeric | Batch Number | Number Batches Sequentially. Must match that of the Batch Header. | M
 
 **ADV File Control Record**
 
@@ -169,7 +169,7 @@ The File Control record contains dollar, entry, and hash totals from the file's 
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Control Record is '9' | M |
+| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Control Record is '9'. | M |
 | *2* | 02-07 | 6 | Numeric | Batch Count | Total number of Company/Batch Header Records (Record Type “5”) in the file. | M |
 | *3* | 08-13 | 6 | Numeric | Block Count | Total number of physical blocks in the file, including the File Header and File Control Records. | M |
 | *4* | 14-21 | 8 | Numeric | Entry / Addenda Count | Total number of Entry Detail and Addenda Records (Record Types “6” and “7”) in the file. | M |
@@ -182,21 +182,21 @@ The File Control record contains dollar, entry, and hash totals from the file's 
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-27 | 15 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-27 | 15 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 28-39 | 12 | $$$$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-48 | 9 | Numeric | Advice Routing Number | This field contains the Routing Number and Check Digit of the DFI or Correspondent, as defined by the ACH Operator | M |
-| *8* | 49-53 | 5 | Alpha-Numeric | File Identification | This field contains the File Creation Date and File ID Modifier  | O |
-| *9* | 54-54 | 1 | Alpha-Numeric | ACH Operator Data | This field is used as specified by the ACH operator | O |
-| *10* | 55-76 | 22 | Alpha-Numeric| Individual Name | The name associated with the advice routing number | R |
-| *11* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI | O |
-| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *13* | 80-87 | 8 | TTTTAAAA | Routing Number of ACH Operator | The Routing number of th ACH operator | M |
-| *14* | 87-90 | 3 | Numeric| Julian Date |  Julian Date on which this advice is Created | M |
-| *15* | 91-94 | 4 | Numeric | Sequence Number | Sequence Number Within Batch | M |
+| *7* | 40-48 | 9 | Numeric | Advice Routing Number | This field contains the Routing Number and Check Digit of the DFI or Correspondent, as defined by the ACH Operator. | M |
+| *8* | 49-53 | 5 | Alpha-Numeric | File Identification | This field contains the File Creation Date and File ID Modifier.  | O |
+| *9* | 54-54 | 1 | Alpha-Numeric | ACH Operator Data | This field is used as specified by the ACH operator. | O |
+| *10* | 55-76 | 22 | Alpha-Numeric| Individual Name | The name associated with the advice routing number. | R |
+| *11* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI. | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *13* | 80-87 | 8 | TTTTAAAA | Routing Number of ACH Operator | The Routing number of th ACH operator. | M |
+| *14* | 87-90 | 3 | Numeric| Julian Date |  Julian Date on which this advice is created. | M |
+| *15* | 91-94 | 4 | Numeric | Sequence Number | Sequence Number Within Batch. | M |
 
 ## ARC Accounts Receivable Entry
 
@@ -215,17 +215,17 @@ number, account number and check serial number.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | O |
-| *9* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented. | M |
+| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name. | O |
+| *9* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | O |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## ATX Acknowledgment Record (CTX)
 
@@ -236,18 +236,18 @@ The ATX entry is an acknowledgment by the Receiving Depository Financial Institu
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only) | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only). | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check.| R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Right-justified, left zero-filled, without a decimal point. Enter 10 zeros for non-dollar prenote entries. | M |
 | *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | R |
 | *8* | 55-58 | 4 | Numeric | Number of Addenda Records | Number of addenda records associated with this transaction. | M |
 | *9* | 59-74 | 16 | Alpha-Numeric | Receiving Company Name/ID Number | Name of Receiver. | M |
 | *10* | 75-76 | 2 | blank | reserved | Leave blank | n/a |
 | *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
-| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included | O |
-| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | O |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **ATX Addenda Record**
 
@@ -255,7 +255,7 @@ Up to 9,999 Addenda Records may be included with a ATX Entry Detail Record. The 
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7'. | M |
 | *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
 | *3* | 04-83 | 80 | Alpha-Numeric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1.” | M |
@@ -269,17 +269,17 @@ Up to 9,999 Addenda Records may be included with a ATX Entry Detail Record. The 
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | O |
-| *9* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented. | M |
+| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name. | O |
+| *9* | 77-78 | 2 | Blank | Discretionary Data | The use of this field is defined byu the ODFI. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | O |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## CCD Corporate Credit or Debit
 
@@ -293,13 +293,13 @@ Up to 9,999 Addenda Records may be included with a ATX Entry Detail Record. The 
 | *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
 | *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | Receiver's identification number | O |
-| *8* | 55-76 | 22 | Alpha-Numeric | Receiving Company Name | Receiver's Name | R |
+| *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | Receiver's identification number. | O |
+| *8* | 55-76 | 22 | Alpha-Numeric | Receiving Company Name | Receiver's Name. | R |
 | *9* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | For your company's internal use if desired.  No specific format is required.  | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **CCD Corporate Credit or Debit Addenda Record**
 
@@ -313,29 +313,29 @@ Up to 9,999 Addenda Records may be included with a ATX Entry Detail Record. The 
 
 ## CIE Customer-Initiated Entries
 
-**Customer-Initiated Entry** is a credit entry initiated on behalf of, and upon the instruction of, a consumer to transfer funds to a non-consumer Receiver. CIE entries are usually transmitted to a company for payment of funds that the consumer owes to that company and are initiated by the consumer through some type of online banking product or bill payment service provider. With CIEs, funds owed by the consumer are “pushed” to the biller in the form of an ACH credit, as opposed to the biller’s use of a debit application (e.g., PPD, WEB) to “pull” the funds from a customer’s account.
+**Customer-Initiated Entry** is a credit entry initiated on behalf of, and upon the instruction of, a consumer to transfer funds to a non-consumer Receiver. CIE entries are usually transmitted to a company for payment of funds that the consumer owes to that company and are initiated by the consumer through some type of online banking product or bill payment service provider. With CIEs, funds owed by the consumer are “pushed” to the biller in the form of an ACH credit, as opposed to the billers use of a debit application (e.g., PPD, WEB) to “pull” the funds from a customer’s account.
 
 **CIE Entry Detail Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Individual Name | This field is entered by the ODFI to provide additional identification for the Receiver and may be helpful in identifying returned Entries. Field 7, rather than Field 8, of the Entry Detail Record is used for the Individual Name | R |
+| *7* | 40-54 | 15 | Alpha-Numeric | Individual Name | This field is entered by the ODFI to provide additional identification for the Receiver and may be helpful in identifying returned Entries. Field 7, rather than Field 8, of the Entry Detail Record is used for the Individual Name. | R |
 | *8* | 55-76 | 22 | Alpha-Numeric | Individual Identification Number | This field contains the accounting number by which the Originator (payor) is known to the Receiver (payee). It is used by the Receiver to update accounts receivable Records. It should be the number shown on an invoice, statement, billhead, notice, or other communication as the reference. Numbers may be policy, customer, invoice, meter, sequence, and/or alphanumeric combinations. Field 8, rather than Field 7, of the Entry Detail Record is used for the Individual Identification Number. | M |
 | *9* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | This field in the Entry Detail Record allows ODFIs to include codes, of significance to them, to enable specialized handling of the Entry. There is no standardized interpretation for the value of this field. It can either be a single two-character code, or two distinct one-character codes, according to the needs of the ODFI and/or Originator involved. This field must be returned intact for any returned Entry. | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **CIE Addenda Record**
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7'. | M |
 | *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
 | *3* | 04-83 | 80 | Alpha-Numeric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1”. | M |
@@ -349,19 +349,19 @@ The Corporate Trade Exchange (CTX) application provides the ability to collect a
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only) | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only). | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Right-justified, left zero-filled, without a decimal point. Enter 10 zeros for non-dollar prenote entries. | M |
 | *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | R |
 | *8* | 55-58 | 4 | Numeric | Number of Addenda Records | Number of addenda records associated with this transaction. | M |
 | *9* | 59-74 | 16 | Alpha-Numeric | Receiving Company Name/ID Number | Name of Receiver. | M |
 | *10* | 75-76 | 2 | blank | reserved | Leave blank | n/a |
 | *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
-| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included | O |
-| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | O |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **CTX Addenda Record**
 
@@ -369,7 +369,7 @@ Up to 9,999 Addenda Records may be included with a CTX Entry Detail Record. The 
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7'. | M |
 | *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
 | *3* | 04-83 | 80 | Alpha-Numeric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1”. | M |
@@ -383,17 +383,17 @@ Death Notification Entry (DNE) is a batch file sent from United States Federal a
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
 | *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Must be 10 zeros for DNE. | M |
 | *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | O |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | R |
+| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name. | R |
 | *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
 | *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | M |
-| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **DNE Addenda**
 
@@ -413,19 +413,19 @@ ENR (Automated Enrollment Entry) is a non-monetary entry that enrolls a person w
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
 | *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Must be 10 zeros for ENR. | M |
 | *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | O |
 | *8* | 55-58 | 4 | Numeric | Number of Addenda Records | How many Addenda05 records are on this entry. | M |
-| *9* | 59-74 | 35 | Alphanumeric | Receiving Company Name/Individual Name | Insert receiver's name | M |
+| *9* | 59-74 | 35 | Alphameric | Receiving Company Name/Individual Name | Receiver's name. | M |
 | *10* | 75-76 | 2 | Blank | Reserved | N/A | M |
 | *11* | 77-78 | 2 | blank | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
 | *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | M |
-| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **ENR Addenda**
 
@@ -443,17 +443,17 @@ Machine Transfer Entry (MTE) supports the clearing of transactions from automate
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
 | *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Must be 10 zeros for ENR. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Individual Name | Receiver's Name | M |
+| *7* | 40-54 | 15 | Alpha-Numeric | Individual Name | Receiver's Name. | M |
 | *8* | 55-76 | 22 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | M |
-| *9* | 77-78 | 2 | Alphanumeric | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
+| *9* | 77-78 | 2 | Alphameric | Discretionary Data Field | The use of this field is defined by the ODFI.  | O |
 | *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 
 **MTE Addenda**
@@ -462,16 +462,16 @@ Machine Transfer Entry (MTE) supports the clearing of transactions from automate
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
 | *2* | 02-03 | 2 | '02' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
-| *3* | 04-10 | 7 | Alphanumeric | Transaction Description |  | R | // TODO
-| *4* | 11-13 | 4 | Alphanumeric | Network Identification Code | | O | // TODO
-| *5* | 14-19 | 6 | Alphanumeric | Terminal Identification code | | R |  // TODO
+| *3* | 04-10 | 7 | Alphameric | Transaction Description | This field describes the transaction in accordance with Regulation E.  Possible descriptions include: CHK–DEP	(Checking	Deposit)	SAV–DEP	(Savings	Deposit)	PAYMENT	CHK–SAV	(Transfer:	checking	to	savings)	SAV–CHK	(Transfer:	savings	to	checking)	CHK–WDL	(Checking	Withdrawal)	SAV–WDL	(Savings	Withdrawal) ADVANCE (Credit Card Cash Advance). | R |
+| *4* | 11-13 | 4 | Alphameric | Network Identification Code | This field uniquely identifies an ATM network and allows for processing of MTE transactions between DFIs belonging to different networks. | O |
+| *5* | 14-19 | 6 | Alphameric | Terminal Identification code | This field identifies an Electronic terminal with a unique code that allows a terminal owner and/ or switching network to identify the terminal at which an Entry originated. | R |
 | *6* | 20-25 | 6 | Alpha-Numeric | Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
 | *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
 | *8* | 30-35 | 6 | HHMMSS | Transaction Time | This time, expressed HHMMSS, identifies the time on which the transaction occurred. | R |
-| *9* | 36-62 | 27 | Alpha-Numeric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
-| *10* | 63-77 | 15 | Alpha-Numeric | Terminal City | Identifies the city in which the electronic terminal is located | R |
-| *11* | 78-79 | 2 | Alpha-Numeric | Terminal State | Identifies the state in which the electronic terminal is located | R |
-| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *9* | 36-62 | 27 | Alpha-Numeric | Terminal Location | This field identifies the specific location of a terminal. (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
+| *10* | 63-77 | 15 | Alpha-Numeric | Terminal City | Identifies the city in which the electronic terminal is located. | R |
+| *11* | 78-79 | 2 | Alpha-Numeric | Terminal State | Identifies the state in which the electronic terminal is located. | R |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## POP Point-of-Purchase
 
@@ -483,19 +483,19 @@ This ACH debit application is used by originators as a method of payment for the
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. Code “200” indicates a mixed batch, i.e., one containing debit and/or credit entries; “220” is for credits only; “225” is for debits only. | M |
-| *3* | 05-20 | 16 | Alphanumeric | Company Name | Your company name. NACHA rules require the RDFI to print this value on the receiver‟s statement so you will want to make this value as clear as possible. | M |
-| *4* | 21-40 | 20 | Alphanumeric | Company Discretionary Data | For your company's internal use. | O |
-| *5* | 41-50 | 10 | NNNNNNNNN | Company Identification | The Company Identification field carries the Originator’s unique identification number. | M |
-| *6* | 51-53 | 3 | 'WEB', 'PPD', etc | Standard Entry Class Code | A mnemonic, designated by NACHA, which permits entries to be distinguished. Identifies the specific record format used to carry payment and payment-related information. | M |
-| *7* | 54-63 | 10 | Alpha-Numeric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Description should describe the purpose of the entries, such as “PAYROLL” or “ECHECKPAY” for consumer entries or “TRADE PAY” for corporate receivers. NACHA Rules require that RDFIs print this value on the Receiver's account statement. | M |
-| *8* | 64-69 | 6 | Alpha-Numeric | Company Descriptive Date | Description you choose to identify the date. NACHA recommends, but does not require, that RDFIs print this value on the receiver's statement. | O |
-| *9* | 70-75 | 6 | YYMMDD | Effective Entry Date | Date you desire funds to post to receiver's account in YYMMDD format. | R |
-| *10* | 76-78 | 3 | blanks | Settlement Date (Julian) | The ACH Operator will populate the actual settlement date in this field. | R |
-| *11* | 79-79 | 1 | '1' | Originator Status Code | Identifies the Originator as a non-Federal Government entity. | M |
-| *12* | 80-87 | 8 | NNNNNNNN | Originating DFI Identification | The Originating institutions Routing Number | M |
-| *13* | 88-94 | 7 | Numeric | Batch Number | Assign batch numbers in ascending order within each file. | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
+| *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
+| *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
+| *7* | 40-48 | 9 | Alphameric| Check Serial Number | This field contains the Check Serial Number of a Check. | M |
+| *8* | 49-52 | 4 | Alphameric| Terminal City | This field contains a truncated name or abbreviation to identify the city, town, village, or township in which the Electronic terminal is located. | M |
+| *9* | 53-54 | 2 | Alphameric| Terminal State | This field identifies the state of the United States in which an Electronic terminal is located. | M |
+| *10* | 55-76 | 22 | Alphameric| Individual Name | Receiver's Name. | R |
+| *11* | 77-78 | 2 | Alphameric| Discretionary Data | The use of this field is defined by the ODFI. | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## POS Point-of-Sale
 
@@ -507,17 +507,17 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 9 | Alpha-Numeric | Individual Identification Number |The serial number of the check being represented | O |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | R |
-| *9* | 77-78 | 2 | Alpha-Numeric | Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction | M |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 9 | Alphameric| Individual Identification Number |The serial number of the check being represented. | O |
+| *8* | 55-76 | 22 | Alphameric| Individual Name | Receiver's Name. | R |
+| *9* | 77-78 | 2 | Alphameric| Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction. | M |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **POS Addenda Record**
 
@@ -525,16 +525,16 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
 | *2* | 02-03 | 2 | '02' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
-| *3* | 04-10 | 7 | Alpha-Numeric | Reference Information #1 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
-| *4* | 11-13 | 3 | Alpha-Numeric | Reference Information #2 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
-| *5* | 14-19 | 6 | Alpha-Numeric | Terminal Identification Code | This field identifies an Electronic terminal with a unique code that allows a terminal owner and/or switching network to identify the terminal at which an Entry originated. | R |
-| *6* | 20-25 | 6 | Alpha-Numeric | Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
+| *3* | 04-10 | 7 | Alphameric| Reference Information #1 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
+| *4* | 11-13 | 3 | Alphameric| Reference Information #2 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
+| *5* | 14-19 | 6 | Alphameric| Terminal Identification Code | This field identifies an Electronic terminal with a unique code that allows a terminal owner and/or switching network to identify the terminal at which an Entry originated. | R |
+| *6* | 20-25 | 6 | Alphameric| Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
 | *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
-| *8* | 30-35 | 6 | Alpha-Numeric | Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
-| *9* | 36-62 | 27 | Alpha-Numeric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
-| *10* | 63-77 | 15 | Alpha-Numeric | Terminal City | Identifies the city in which the electronic terminal is located | R |
-| *11* | 78-79 | 2 | Alpha-Numeric | Terminal State | Identifies the state in which the electronic terminal is located | R |
-| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *8* | 30-35 | 6 | Alphameric| Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
+| *9* | 36-62 | 27 | Alphameric| Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
+| *10* | 63-77 | 15 | Alphameric| Terminal City | Identifies the city in which the electronic terminal is located. | R |
+| *11* | 78-79 | 2 | Alphameric| Terminal State | Identifies the state in which the electronic terminal is located. | R |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## PPD Prearranged Payment and Deposit Entries
 
@@ -544,17 +544,17 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | M |
-| *9* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 15 | Alphameric| Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution. | M |
+| *8* | 55-76 | 22 | Alphameric| Individual Name | Receiver's Name. | M |
+| *9* | 77-78 | 2 | Alphameric| Discretionary Data | The use of this field is defined by the ODFI. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## RCK Represented Check Entries
 
@@ -564,17 +564,17 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | M |
-| *9* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined byu the ODFI | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 15 | Alphameric| Check Serial Number |The serial number of the check being represented. | M |
+| *8* | 55-76 | 22 | Alphameric| Individual Name | Receiver's Name. | M |
+| *9* | 77-78 | 2 | Alphameric| Discretionary Data | The use of this field is defined byu the ODFI. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## SHR Shared Network Entry
 
@@ -584,18 +584,18 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
 | *7* | 40-43 | 4 | MMDD | Card Expiration Date | This code is used by cardholder processors and cardholder Financial Institutions to verify that the card remains valid and that certain security procedures required by various card authorization systems have been met. | R |
-| *8* | 44-54 | 11 | Numeric | Document Reference Number | This field further defines the transaction in the event of a Receiver’s inquiry. An example is an Electronic sequence number | R |
+| *8* | 44-54 | 11 | Numeric | Document Reference Number | This field further defines the transaction in the event of a Receiver’s inquiry. An example is an Electronic sequence number. | R |
 | *9* | 55-76 | 22 | Numeric | Individual Card Account Number | The Individual Card Account Number is the number assigned by the card issuer and is obtained from the card itself. | R |
-| *10* | 77-78 | 2 | Alpha-Numeric | Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction | M |
-| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *10* | 77-78 | 2 | Alphameric| Card Transaction Type | This code is used by card processors to identify the type of transaction, such as a purchase, cash advance, or reversal. Values for this field are assigned by the major card Organizations. Code Values: <br>01	Purchase of goods or services <br>02	Cash <br>03	Return Reversal <br>11	Purchase Reversal <br>12	Cash Reversal <br>13	Return <br>21	Adjustment <br>99	Miscellaneous Transaction. | M |
+| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **SHR Addenda Record**
 
@@ -603,15 +603,15 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
 | *2* | 02-03 | 2 | '02' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
-| *3* | 04-10 | 7 | Alpha-Numeric | Reference Information #1 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
-| *4* | 11-13 | 3 | Alpha-Numeric | Reference Information #2 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
-| *5* | 14-19 | 6 | Alpha-Numeric | Terminal Identification Code | This field identifies an Electronic terminal with a unique code that allows a terminal owner and/or switching network to identify the terminal at which an Entry originated. | R |
-| *6* | 20-25 | 6 | Alpha-Numeric | Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
+| *3* | 04-10 | 7 | Alphameric| Reference Information #1 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
+| *4* | 11-13 | 3 | Alphameric| Reference Information #2 | This field may be used for additional reference numbers, identification numbers, or codes that the merchant needs to identify the particular transaction or customer. | O |
+| *5* | 14-19 | 6 | Alphameric| Terminal Identification Code | This field identifies an Electronic terminal with a unique code that allows a terminal owner and/or switching network to identify the terminal at which an Entry originated. | R |
+| *6* | 20-25 | 6 | Alphameric| Transaction Serial Number | Entry amount in dollars with two decimal places. | R |
 | *7* | 26-29 | 4 | MMDD | Transaction Date | This date, expressed MMDD, identifies the date on which the transaction occurred. | R |
 | *8* | 30-35 | 6 | MMDD | Authorization Code or Card Expiration Date | This field indicates the code that a card authorization center has furnished to the merchant. | O |
-| *9* | 36-62 | 27 | Alpha-Numeric | Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
-| *10* | 63-77 | 2 | Alpha-Numeric | Terminal City | Identifies the city in which the electronic terminal is located | R |
-| *11* | 78-79 | 2 | Alpha-Numeric | Terminal State | Identifies the state in which the electronic terminal is located | R |
+| *9* | 36-62 | 27 | Alphameric| Terminal Location | This field identifies the specific location of a terminal (i.e., street names of an intersection, address, etc.) in accordance with the requirements of Regulation E. | R |
+| *10* | 63-77 | 2 | Alphameric| Terminal City | Identifies the city in which the electronic terminal is located. | R |
+| *11* | 78-79 | 2 | Alphameric| Terminal State | Identifies the state in which the electronic terminal is located. | R |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ## TEL Telephone-Initiated Entry
@@ -620,16 +620,16 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | M |
-| *9* | 77-78 | 2 | Alpha-Numeric | Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment | O |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
+| *7* | 40-54 | 15 | Alphameric| Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution. | M |
+| *8* | 55-76 | 22 | Alphameric| Individual Name | Receiver's Name. | M |
+| *9* | 77-78 | 2 | Alphameric| Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment. | O |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
 | *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ##  TRC/TRC Truncated Entries
@@ -638,17 +638,17 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 9 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | O |
-| *8* | 55-60 | 6 | Alpha-Numeric | Process Control Field | Code which identifies the document type  | R |
-| *9* | 55-60 | 16 | Alpha-Numeric | Item Research Number | The MICR location number for check item research | R |
-| *10* | 77-78 | 2 | Blank | Item Type Indicator | Indicates the type of items being truncated. Code: 01 - Value: NACS Truncated Items | O |
-| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | O |
+| *7* | 40-54 | 9 | Alphameric| Check Serial Number |The serial number of the check being represented. | O |
+| *8* | 55-60 | 6 | Alphameric| Process Control Field | Code which identifies the document type. | R |
+| *9* | 55-60 | 16 | Alphameric| Item Research Number | The MICR location number for check item research. | R |
+| *10* | 77-78 | 2 | Blank | Item Type Indicator | Indicates the type of items being truncated. Code: 01 - Value: NACS Truncated Items. | O |
+| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | O |
 | *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
 
 ##  TRX Truncated Entries
@@ -658,18 +658,18 @@ Point-of-Sale Entries (POS) are ACH debit entries typically initiated by the use
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only) | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. Valid codes are: <br>22 = Automated deposit (checking credit)<br>23 = Prenote of checking credit<br>24 = Zero-dollar checking credit with remittance data (CCD & CTX entries only)<br>27 = Automated payment (checking debit)<br>28 = Prenote of checking debit<br>29 = Zero-dollar checking debit with remittance data (CCD & CTX entries only)<br>32 = Automated deposit (savings credit)<br>33 = Prenote of savings credit<br>34 = Zero-dollar savings credit with remittance data (CCD & CTX entries only)<br>37 = Automated payment (savings debit)<br>38 = Prenote of savings debit<br>39 = Zero-dollar savings debit with remittance data (CCD & CTX entries only). | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. Right-justified, left zero-filled, without a decimal point. Enter 10 zeros for non-dollar prenote entries. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | R |
+| *7* | 40-54 | 15 | Alphameric| Identification Number | This field contains the accounting number by which the Receiver is known to the Originator for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver‟s statement. | R |
 | *8* | 55-58 | 4 | Numeric | Number of Addenda Records | Number of addenda records associated with this transaction. | M |
-| *9* | 59-74 | 16 | Alpha-Numeric | Receiving Company Name/ID Number | Name of Receiver. | M |
+| *9* | 59-74 | 16 | Alphameric| Receiving Company Name/ID Number | Name of Receiver. | M |
 | *10* | 75-76 | 2 | blank | reserved | Leave blank | n/a |
-| *11* | 77-78 | 2 | blank | Item Type Indicator | Indicates the type of items being truncated. Code: 01 - Value: NACS Truncated Items  | O |
-| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included | O |
-| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *11* | 77-78 | 2 | blank | Item Type Indicator | Indicates the type of items being truncated. Code: 01 - Value: NACS Truncated Items. | O |
+| *12* | 79-79 | 1 | Numeric | Addenda Record Indicator | '1' = addenda included. | O |
+| *13* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 **TRX Addenda Record**
 
@@ -679,7 +679,7 @@ Up to 9,999 Addenda Records may be included with a TRX Entry Detail Record.
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
 | *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Entry Detail Record is '7' | M |
 | *2* | 02-03 | 2 | '05' | Addenda Type Code | The Addenda Type Code defines the specific interpretation and format for the addenda information contained in the Entry. | M |
-| *3* | 04-83 | 80 | Alpha-Numeric | Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
+| *3* | 04-83 | 80 | Alphameric| Payment Related Information | This field contains payment related ANSI ASC X12 data segments to further identify the payment or Transmit additional remittance information. | O |
 | *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | This number is consecutively assigned to each Addenda Record following an Entry Detail Record. The first addenda sequence number must always be a “1”. | M |
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail or Corporate Entry Detail Record’s trace number. This number is the same as the last seven digits of the trace number of the related Entry Detail Record or Corporate Entry Detail Record. | M |
 
@@ -691,17 +691,17 @@ Up to 9,999 Addenda Records may be included with a TRX Entry Detail Record.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution | M |
-| *8* | 55-76 | 22 | Alpha-Numeric | Individual Name | Receiver's Name | M |
-| *9* | 77-78 | 2 | Alpha-Numeric | Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment | R |
-| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator |  "0" = no addenda <br>"1" = one addenda included | M |
-| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 15 | Alphameric| Individual Identification Number | Receiver's identification number.  This number may be printed on the receiver's bank statement by the Receiving Financial Institution. | M |
+| *8* | 55-76 | 22 | Alphameric| Individual Name | Receiver's Name. | M |
+| *9* | 77-78 | 2 | Alphameric| Payment Type Code | Input 'R' for Recurring payments, and 'S' for single-entry payment. | R |
+| *10* | 79-79 | 1 | Numeric | Addenda Record Indicator |  "0" = no addenda <br>"1" = one addenda included. | M |
+| *11* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## XCK Destroyed Check Entry
 
@@ -711,18 +711,18 @@ Up to 9,999 Addenda Records may be included with a TRX Entry Detail Record.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-29 | 17 | Alpha-Numeric | DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check| R |
+| *5* | 13-29 | 17 | Alphameric| DFI Account Number | Receiver's account number at the RDFI, a value found on the MICR line of a check. | R |
 | *6* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *7* | 40-54 | 15 | Alpha-Numeric | Check Serial Number |The serial number of the check being represented | M |
-| *8* | 55-60 | 6 | Alpha-Numeric | Process Control Field | This field contains an optional code, as obtained from a check or sharedraft, which generally indentifies the document type. The field is usally located to the right of the account number in the on-us field of the MICR line and is sometimes called a transaction code. | R |
-| *9* | 61-76 | 16 | Alpha-Numeric | Item Research Number | This field contains the MICR locator number for Check item research. | R |
-| *10* | 77-78 | 2 | Alpha-Numeric | Discretionary Data | The use of this field is defined by the ODFI.  | 0 |
-| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included | M |
-| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number | M |
+| *7* | 40-54 | 15 | Alphameric| Check Serial Number |The serial number of the check being represented. | M |
+| *8* | 55-60 | 6 | Alphameric| Process Control Field | This field contains an optional code, as obtained from a check or share draft, which generally identifies the document type. The field is usually located to the right of the account number in the on-us field of the MICR line and is sometimes called a transaction code. | R |
+| *9* | 61-76 | 16 | Alphameric| Item Research Number | This field contains the MICR locator number for Check item research. | R |
+| *10* | 77-78 | 2 | Alphameric| Discretionary Data | The use of this field is defined by the ODFI.  | 0 |
+| *11* | 79-79 | 1 | Numeric | Addenda Record Indicator | "0" = no addenda <br>"1" = one addenda included. | M |
+| *12* | 80-94 | 15 | Numeric | Trace Number | Standard Entry Detail Trace Number. | M |
 
 ## IAT International ACH Transaction
 
@@ -732,23 +732,23 @@ Up to 9,999 Addenda Records may be included with a TRX Entry Detail Record.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '5' | Record Type Code | The code identifying the Company/Batch Header Record | M |
-| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. <br>“200” = mixed debits and credits <br>“220” = credits only<br>“225” = debits only | M |
+| *1* | 01-01 | 1 | '5' | Record Type Code | The code identifying the Company/Batch Header Record. | M |
+| *2* | 02-04 | 3 | '200'<br>'220'<br>'225' | Service Class Code | Identifies the type of entries in the batch. <br>“200” = mixed debits and credits <br>“220” = credits only<br>“225” = debits only. | M |
 | *3* | 05-20 | 16 | blank | IAT Indicator | Leave blank | O |
 | *4* | 21-22 | 2 | 'FF' | Foreign Exchange Indicator | Fixed-to-Fixed - No currency conversion. Entry is originated in a fixed-value amount and is to be received in the same fixed-value amount in the same currency. Fixed-value entries will have spaces in the Foreign Exchange Reference field. | M |
-| *5* | 23-23 | 1 | '3' | Foreign Exchange Reference Indicator | Code used to indicate the content of the Foreign Exchange Reference Field.<br>“3” = Space filled | R |
+| *5* | 23-23 | 1 | '3' | Foreign Exchange Reference Indicator | Code used to indicate the content of the Foreign Exchange Reference Field.<br>“3” = Space filled. | R |
 | *6* | 24-38 | 15 | blank | Foreign Exchange Reference | Space filled | R |
-| *7* | 39-40 | 2 | Alphanumeric | ISO Destination Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the entry is to be received. Values can be found on the International Organization for Standardization website: www.iso.org | M |
-| *8* | 41-50 | 10 | Alphanumeric | Originator Identification | For U.S. entities: the number assigned will be your tax ID<br>For non-U.S. entities: the number assigned will be your DDA number, or the last 9 characters of your account number if it exceeds 9 characters | M |
+| *7* | 39-40 | 2 | Alphameric | ISO Destination Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the entry is to be received. Values can be found on the International Organization for Standardization website: www.iso.org. | M |
+| *8* | 41-50 | 10 | Alphameric | Originator Identification | For U.S. entities: the number assigned will be your tax ID<br>For non-U.S. entities: the number assigned will be your DDA number, or the last 9 characters of your account number if it exceeds 9 characters. | M |
 | *9* | 51-53 | 3 | 'IAT' | Standard Entry Class Code | A mnemonic, designated by NACHA, for International ACH Transactions | M |
-| *10* | 54-63 | 10 | Alphanumeric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Should describe the purpose of the entry, such as “PAYROLL” or “TRADE PAY | M |
-| *11* | 64-66 | 3 | Alphanumeric | ISO Originating Currency Code (Account Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry was first originated. If the source of funds is within the territorial jurisdiction of the U.S., enter 'USD', otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
-| *12* | 67-69 | 3 | Alphanumeric | ISO Destination Currency Code (Payment Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry will ultimately be settled. If the final destination of funds is within the territorial jurisdiction of the U.S., enter “USD”, otherwise refer to International Organization for Standardization website for value: www.iso.org | M |
-| *13* | 70-75 | 6 | YYMMDD | Effective Entry Date | Date you desire funds to post to receiver‟s account | M |
+| *10* | 54-63 | 10 | Alphameric | Company Entry Description | You establish the value of this field to provide a description to be displayed to the Receiver. Should describe the purpose of the entry, such as “PAYROLL” or “TRADE PAY. | M |
+| *11* | 64-66 | 3 | Alphameric | ISO Originating Currency Code (Account Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry was first originated. If the source of funds is within the territorial jurisdiction of the U.S., enter 'USD', otherwise refer to International Organization for Standardization website for value: www.iso.org. | M |
+| *12* | 67-69 | 3 | Alphameric | ISO Destination Currency Code (Payment Currency) | This field contains the three-character code, as approved by the International Organization for Standardization (ISO), to identify the currency denomination in which the entry will ultimately be settled. If the final destination of funds is within the territorial jurisdiction of the U.S., enter “USD”, otherwise refer to International Organization for Standardization website for value: www.iso.org. | M |
+| *13* | 70-75 | 6 | YYMMDD | Effective Entry Date | Date you desire funds to post to receiver‟s account. | M |
 | *14* | 76-78 | 3 | blanks | Settlement Date (Julian) | The ACH Operator will populate the actual settlement date in this field. | M |
 | *15* | 79-79 | 1 | '1' | Originator Status Code | Identifies the Originator as a non-Federal Government entity. | M |
-| *16* | 80-87 | 8 | TTTTAAAA | Gateway Operator Identification/ ODFI Identification | For Inbound IAT Entries, this field contains the routing number of the U.S. Gateway Operator. For Outbound IAT Entries, this field contains the standard routing number, as assigned by Accuity, that identifies the U.S. ODFI initiating the Entry. | M |
-| *17* | 88-94 | 7 | Numeric | Batch Number | Assign batch number in ascending order in each batch | M |
+| *16* | 80-87 | 8 | TTTTAAAA | Gateway Operator Identification/ ODFI Identification | For Inbound IAT Entries, this field contains the routing number of the U.S. Gateway Operator. For Outbound IAT Entries, this field contains the standard routing number, as assigned by Acuity, that identifies the U.S. ODFI initiating the Entry. | M |
+| *17* | 88-94 | 7 | Numeric | Batch Number | Assign batch number in ascending order in each batch. | M |
 
 **NOTE**: For IAT Return Entries, each field of the Company Batch Header Record remains unchanged from the original record, except:
 
@@ -764,18 +764,18 @@ Up to 9,999 Addenda Records may be included with a TRX Entry Detail Record.
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6' | M |
-| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits | M |
-| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution | M |
+| *1* | 01-01 | 1 | '6' | Record Type Code | Code Identifying the Entry Detail Record is '6'. | M |
+| *2* | 02-03 | 2 | Numeric | Transaction Code | Two-digit code that identifies checking account credits/debits. | M |
+| *3* | 04-11 | 8 | TTTTAAAA | Receiving DFI Identification | Routing Transit number of the receivers financial institution. | M |
 | *4* | 12-12 | 1 | Numeric | Check Digit | The ninth character of the RDFI Routing Transit Number. Used to check for transpositions. | M |
-| *5* | 13-16 | 4 | Numeric | Number of Addenda Records | Number of Addenda Records | M |
+| *5* | 13-16 | 4 | Numeric | Number of Addenda Records | Number of Addenda Records. | M |
 | *6* | 17-29 | 13 | blank | Reserved | Leave blank | M |
 | *7* | 30-39 | 10 | $$$$$$$$¢¢ | Amount | Entry amount in dollars with two decimal places. | M |
-| *8* | 40-74 | 35 | Alphanumeric | Foreign Receiver's Account Number/DFI Account Number | Receiver‟s account number at the RDFI domiciled in the territorial jurisdiction of the U.S. A value generally found on the MICR line of a check. Enter the MICR Dash Cue Symbol as a hyphen (“-”). Account numbers vary in format. If the account number has less than 35 characters, left-justify, blank-fill. Ignore any blank spaces within the account number. | M |
+| *8* | 40-74 | 35 | Alphameric | Foreign Receiver's Account Number/DFI Account Number | Receiver‟s account number at the RDFI domiciled in the territorial jurisdiction of the U.S. A value generally found on the MICR line of a check. Enter the MICR Dash Cue Symbol as a hyphen (“-”). Account numbers vary in format. If the account number has less than 35 characters, left-justify, blank-fill. Ignore any blank spaces within the account number. | M |
 | *9* | 75-76 | 2 | blank | Reserved | Leave Blank | n/a |
-| *10* | 77-77 | 1 | blank | Gateway Operator OFAC screening indicator | Assigned by the ACH Gateway operator | O |
-| *11* | 78-78 | 1 | blank | Secondary OFAC screening indicator | Assigned by the ACH Gateway operator | O |
-| *12* | 79-79 | 1 | "1" | Addenda Record indicator | "1" = Addenda records follow this entry | M |
+| *10* | 77-77 | 1 | blank | Gateway Operator OFAC screening indicator | Assigned by the ACH Gateway operator. | O |
+| *11* | 78-78 | 1 | blank | Secondary OFAC screening indicator | Assigned by the ACH Gateway operator. | O |
+| *12* | 79-79 | 1 | "1" | Addenda Record indicator | "1" = Addenda records follow this entry. | M |
 | *13* | 80-94 | 15 | Numeric | Trace Number | The field is constructed as follows: <br> Positions 80-87 should be the same as Field 16 of the IAT Company/Batch Header. Positions 88- 94 are filled with the Entry Detail Sequence Number. This number must be assigned in ascending order to entries within each batch, although the numbers need not be continuous. | M |
 
 **NOTE**: For IAT Return Entries, each field of the Entry Detail Record remains unchanged from the original entry, except:
@@ -796,16 +796,16 @@ The First Addenda Record identifies the Receiver of the transaction and the doll
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '10' | Addenda Type Code | First Addenda REcord for IAT | M |
-| *3* | 04-06 | 3 | Alphanumeric | Transaction Type Code | Describes the type of payment:<br> ANN = Annuity <br>BUS = Business/Commercial <br>DEP = Deposit<br>LOA = Loan<br>MIS = Miscellaneous<br>MOR = Mortgage<br>PEN = Pension<br>RLS = Rent/Lease<br>REM = Remittance2<br>SAL = Salary/Payroll<br>TAX = Tax<br>TEL = Telephone-Initiated Transaction <br>WEB = Internet-Initiated Transaction <br>ARC = Accounts Receivable Entry <br>BOC = Back Office Conversion Entry <br>POP = Point of Purchase Entry<br>RCK = Re-presented Check Entry | R |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '10' | Addenda Type Code | First Addenda Record for IAT. | M |
+| *3* | 04-06 | 3 | Alphameric | Transaction Type Code | Describes the type of payment:<br> ANN = Annuity <br>BUS = Business/Commercial <br>DEP = Deposit<br>LOA = Loan<br>MIS = Miscellaneous<br>MOR = Mortgage<br>PEN = Pension<br>RLS = Rent/Lease<br>REM = Remittance2<br>SAL = Salary/Payroll<br>TAX = Tax<br>TEL = Telephone-Initiated Transaction <br>WEB = Internet-Initiated Transaction <br>ARC = Accounts Receivable Entry <br>BOC = Back Office Conversion Entry <br>POP = Point of Purchase Entry<br>RCK = Re-presented Check Entry. | R |
 | *4* | 07-24 | 18 | $$$$$$$$$$$$$$$$¢¢ | Foreign Payment Amount | For inbound IAT payments this field should contain the USD amount or may be blank. | R |
-| *5* | 25-46 | 22 | Alphanumeric | Foreign Trace Number | Insert blanks or zeros| O |
-| *6* | 47-81 | 35 | Alphanumeric | Receiving Company Name/Individual Name | Insert receiver's name | M |
+| *5* | 25-46 | 22 | Alphameric | Foreign Trace Number | Insert blanks or zeros. | O |
+| *6* | 47-81 | 35 | Alphameric | Receiving Company Name/Individual Name | Receiver's name. | M |
 | *7* | 82-87 | 6 | blank | Reserved | Leave blank | n/a |
-| *8* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+| *8* | 88-94 | 7 | Alphameric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 1st Addenda Record remains unchanged from the original 1st Addenda Record, except Entry Detail Sequence Number which reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 1st Addenda Record remains unchanged from the original 1st Addenda Record, except Entry Detail Sequence Number which reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Second Addenda Record (711)**
 
@@ -813,27 +813,27 @@ The Second and Third Addenda Records identify key information related to the Ori
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '11' | Addenda Type Code | Second Addenda Record for IAT | M |
-| *3* | 04-38 | 35 | Alphanumeric | Originator Name | Contains the originators name (your company name) | M |
-| *4* | 39-73 | 35 | Alphanumeric | Originator Street Address | Contains the originators street address (your company's address) | m |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '11' | Addenda Type Code | Second Addenda Record for IAT. | M |
+| *3* | 04-38 | 35 | Alphameric | Originator Name | Contains the originators name (your company name). | M |
+| *4* | 39-73 | 35 | Alphameric | Originator Street Address | Contains the originators street address (your company's address). | m |
 | *5* | 74-87 | 14 | blank | Reserved | Leave blank | n/a |
-| *6* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+| *6* | 88-94 | 7 | Alphameric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 2nd Addenda Record remains unchanged from the original 2nd Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 2nd Addenda Record remains unchanged from the original 2nd Addenda Record, except Entry Detail Sequence Number which reflects the Entry Detail Sequence Number associated with the trace number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Third Addenda Record (712)**
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '12' | Addenda Type Code | Third Addenda Record for IAT | M |
-| *3* | 04-38 | 35 | Alphanumeric | Originator City & State / Province | City and State should be separated with an asterisk (*) as a delimiter and the field should end with a backslash (\).<br>For example: San Francisco*CA\. | M |
-| *4* | 39-73 | 35 | Alphanumeric | Originator Country & Postal Code | Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\ | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '12' | Addenda Type Code | Third Addenda Record for IAT. | M |
+| *3* | 04-38 | 35 | Alphameric | Originator City & State / Province | City and State should be separated with an asterisk (*) as a delimiter and the field should end with a backslash (\).<br>For example: San Francisco*CA\. | M |
+| *4* | 39-73 | 35 | Alphameric | Originator Country & Postal Code | Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\. | M |
 | *5* | 74-87 | 14 | blank | Reserved | Leave blank | n/a |
-| *6* | 88-94 | 7 | Alphanumeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
+| *6* | 88-94 | 7 | Alphameric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 3rd Addenda Record remains unchanged from the original 3rd Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 3rd Addenda Record remains unchanged from the original 3rd Addenda Record, except Entry Detail Sequence Number which reflects the Entry Detail Sequence Number associated with the trace number assigned by the institituion preparing the Automated Return Entry.
 
 **IAT Fourth Addenda Record (713)**
 
@@ -841,16 +841,16 @@ The Fourth Addenda Record contains information related to the financial institut
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '13' | Addenda Type Code | Fourth Addenda Record for IAT | M |
-| *3* | 04-38 | 35 | Alphanumeric | Originating DFI Name | For Outbound IAT Entries, this field must contain the name of the U.S. ODFI.<br> For Inbound IATs: Name of the foreign bank providing funding for the payment transaction | M |
-| *4* | 39-40 | 2 | "01" | Originating DFI Identification Number Qualifier | “01” = National Clearing System <br>*For Inbound IATs:* The 2-digit code that identifies the numbering scheme used in the Foreign DFI Identification Number field: <br>01 = National Clearing System <br>02 = BIC Code <br>03 = IBAN Code | M |
-| *5* | 41-74 | 34 | Alphanumeric | Originating DFI Identification | This field contains the routing number that identifies the U.S. ODFI initiating the entry.<br>*For Inbound IATs:* This field contains the bank ID number of the Foreign Bank providing funding for the payment transaction. | M |
-| *6* | 75-77 | 3 | Alphanumeric | Originating DFI Branch Country Code | USb” = United States<br>(“b” indicates a blank space)<br>*For Inbound IATs:* This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that originated the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org. | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '13' | Addenda Type Code | Fourth Addenda Record for IAT. | M |
+| *3* | 04-38 | 35 | Alphameric | Originating DFI Name | For Outbound IAT Entries, this field must contain the name of the U.S. ODFI.<br> For Inbound IATs: Name of the foreign bank providing funding for the payment transaction. | M |
+| *4* | 39-40 | 2 | "01" | Originating DFI Identification Number Qualifier | “01” = National Clearing System <br>*For Inbound IATs:* The 2-digit code that identifies the numbering scheme used in the Foreign DFI Identification Number field: <br>01 = National Clearing System <br>02 = BIC Code <br>03 = IBAN Code.| M |
+| *5* | 41-74 | 34 | Alphameric | Originating DFI Identification | This field contains the routing number that identifies the U.S. ODFI initiating the entry.<br>*For Inbound IATs:* This field contains the bank ID number of the Foreign Bank providing funding for the payment transaction. | M |
+| *6* | 75-77 | 3 | Alphameric | Originating DFI Branch Country Code | USb” = United States<br>(“b” indicates a blank space)<br>*For Inbound IATs:* This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that originated the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org. | M |
 | *7* | 78-87 | 10 | blank | Reserved | Leave blank | n/a |
 | *8* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 4th Addenda Record remains unchanged from the original 4th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 4th Addenda Record remains unchanged from the original 4th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number associated with the trace number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Fifth Addenda Record (714)**
 
@@ -858,16 +858,16 @@ The Fifth Addenda Record identifies the Receiving financial institution holding 
 
  Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '14' | Addenda Type Code | Fifth Addenda Record for IAT | M |
-| *3* | 04-38 | 35 | Alphanumeric | Receiving DFI Name | Name of the Receiver's bank | M |
-| *4* | 39-40 | 2 | Numeric | Receiving DFI Identification Number Qualifier | The 2-digit code that identifies the numbering scheme used in the Receiving DFI Identification Number field:<br>01 = National Clearing System<br>02 = BIC Code <br>03 = IBAN Code | M |
-| *5* | 41-74 | 34 | Alphanumeric | Receiving DFI Identification Number | The bank identification number of the DFI at which the Receiver maintains his account. | M |
-| *6* | 75-77 | 3 | Alphanumeric | Receiving DFI Branch Country Code | This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that receives the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org<br>“USb” = United States<br>(“b” indicates a blank space) | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '14' | Addenda Type Code | Fifth Addenda Record for IAT. | M |
+| *3* | 04-38 | 35 | Alphameric | Receiving DFI Name | Name of the Receiver's bank. | M |
+| *4* | 39-40 | 2 | Numeric | Receiving DFI Identification Number Qualifier | The 2-digit code that identifies the numbering scheme used in the Receiving DFI Identification Number field:<br>01 = National Clearing System<br>02 = BIC Code <br>03 = IBAN Code. | M |
+| *5* | 41-74 | 34 | Alphameric | Receiving DFI Identification Number | The bank identification number of the DFI at which the Receiver maintains his account. | M |
+| *6* | 75-77 | 3 | Alphameric | Receiving DFI Branch Country Code | This 3 position field contains a 2-character code as approved by the International Organization for Standardization (ISO) used to identify the country in which the branch of the bank that receives the entry is located. Values for other countries can be found on the International Organization for Standardization website: www.iso.org<br>“USb” = United States<br>(“b” indicates a blank space). | M |
 | *7* | 78-87 | 10 | blank | Reserved | Leave blank | n/a |
 | *8* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 5th Addenda Record remains unchanged from the original 5th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 5th Addenda Record remains unchanged from the original 5th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number associated with the trace number assigned by the institituion preparing the Automated Return Entry.
 
 **IAT Sixth Addenda Record (715)**
 
@@ -875,27 +875,27 @@ The Sixth and Seventh Addenda Records identify information related to the Receiv
 
 Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '15' | Addenda Type Code | Sixth Addenda Record for IAT | M |
-| *3* | 04-18 | 15 | Alphanumeric | Receiver Identification Number | This field contains the accounting number by which the Originator is known to the Receiver for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver's statement. | O |
-| *4* | 19-53 | 35 | Alphanumeric | Receiver Street Address | Receiver‟s physical address | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '15' | Addenda Type Code | Sixth Addenda Record for IAT. | M |
+| *3* | 04-18 | 15 | Alphameric | Receiver Identification Number | This field contains the accounting number by which the Originator is known to the Receiver for descriptive purposes. NACHA Rules recommend but do not require the RDFI to print the contents of this field on the receiver's statement. | O |
+| *4* | 19-53 | 35 | Alphameric | Receiver Street Address | Receiver‟s physical address. | M |
 | *5* | 54-87 | 34 | blank | Reserved | Leave blank | n/a |
 | *6* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 6th Addenda Record remains unchanged from the original 6th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 6th Addenda Record remains unchanged from the original 6th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number associated with the trace number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Seventh Addenda Record (716)**
 
 Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '16' | Addenda Type Code | Seventh Addenda Record for IAT | M |
-| *3* | 04-38 | 35 | Alphanumeric | Receiver City, State/Province | City and State should be separated with an asterisk (*) as a delimiter and the field should end with a backslash (\).<br>For example: San Francisco*CA\ | M |
-| *4* | 39-73 | 35 | Alphanumeric | Receiver Country & Postal Code| Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\ | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '16' | Addenda Type Code | Seventh Addenda Record for IAT. | M |
+| *3* | 04-38 | 35 | Alphameric | Receiver City, State/Province | City and State should be separated with an asterisk (*) as a delimiter and the field should end with a backslash (\).<br>For example: San Francisco*CA\. | M |
+| *4* | 39-73 | 35 | Alphameric | Receiver Country & Postal Code| Data elements must be separated by an asterisk (*) and must end with a backslash (\) <br>For example: US*10036\. | M |
 | *5* | 74-87 | 34 | blank | Reserved | Leave blank | n/a |
 | *6* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
-**NOTE**: For IAT Return Entries, each field of the 7th Addenda Record remains unchanged from the original 7th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number assocoiated with the trace number assigned by the institituion preparing the Automated Return Entry.
+**NOTE**: For IAT Return Entries, each field of the 7th Addenda Record remains unchanged from the original 7th Addenda Record, except Entry Detail Sequence Number whihch reflects the Entry Detail Sequence Number associated with the trace number assigned by the institution preparing the Automated Return Entry.
 
 **IAT Addenda Record for Remittance Information (717) (Optional)**
 
@@ -903,10 +903,10 @@ This is an optional Addenda Record used to provide payment-related data. You may
 
 Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '17' | Addenda Type Code | Seventh Addenda Record for IAT | M |
-| *3* | 04-83 | 80 | Alphanumeric | Payment Related Information | Payment information associated with the preceding Entry Detail Record. Must contain NACHA endorsed ANSI ASC X12 data segments or NACHA endorsed banking conventions. The asterisk (“*”) must be the delimiter between the data elements, and the back slash (“\”) must be the terminator between the data segments. | O |
-| *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each type “17” remittance addenda in ascending order beginning with 0001 | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '17' | Addenda Type Code | Seventh Addenda Record for IAT. | M |
+| *3* | 04-83 | 80 | Alphameric | Payment Related Information | Payment information associated with the preceding Entry Detail Record. Must contain NACHA endorsed ANSI ASC X12 data segments or NACHA endorsed banking conventions. The asterisk (“*”) must be the delimiter between the data elements, and the back slash (“\”) must be the terminator between the data segments. | O |
+| *4* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each type “17” remittance addenda in ascending order beginning with 0001. | M |
 | *5* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
 **IAT Addenda Record for Foreign Correspondent Bank Information (718)**
@@ -916,14 +916,14 @@ NOTE: A maximum of five 'Type 18' addenda records may be included with each IAT 
 
 Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '18' | Addenda Type Code | Addenda Record for Foreign Correspondent Bank Information for IAT | M |
-| *3* | 04-38 | 35 | Alphanumeric | Foreign Correspondent Bank Name | This field contains the name of the Foreign Correspondent Bank | M |
-| *4* | 39-40 | 2 | Alphanumeric | Foreign Correspondent Bank Identification Number Qualifier | This field contains a 2-digit code that identifies the numbering scheme used in the Foreign Correspondent Bank Identification Number field. Code values for this field are:<br>“01” = National Clearing System<br>“02” = BIC Code <br>“03” =IBAN Code | M |
-| *5* | 41-74 | 34 | Alphanumeric | Foreign Correspondent Bank Identification Number | This field contains the bank ID number of the Foreign Correspondent Bank | M |
-| *6* | 75-77 | 3 | Alphanumeric | Foreign Correspondent Bank Branch Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the branch of the Foreign Correspondent Bank is located. Values can be found on the International Organization for Standardization website: www.iso.org | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '18' | Addenda Type Code | Addenda Record for Foreign Correspondent Bank Information for IAT. | M |
+| *3* | 04-38 | 35 | Alphameric | Foreign Correspondent Bank Name | This field contains the name of the Foreign Correspondent Bank. | M |
+| *4* | 39-40 | 2 | Alphameric | Foreign Correspondent Bank Identification Number Qualifier | This field contains a 2-digit code that identifies the numbering scheme used in the Foreign Correspondent Bank Identification Number field. Code values for this field are:<br>“01” = National Clearing System<br>“02” = BIC Code <br>“03” =IBAN Code | M |
+| *5* | 41-74 | 34 | Alphameric | Foreign Correspondent Bank Identification Number | This field contains the bank ID number of the Foreign Correspondent Bank. | M |
+| *6* | 75-77 | 3 | Alphameric | Foreign Correspondent Bank Branch Country Code | This field contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the branch of the Foreign Correspondent Bank is located. Values can be found on the International Organization for Standardization website: www.iso.org. | M |
 | *7* | 78-83 | 6 | blank | Reserved | Leave blank | n/a |
-| *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001” | M |
+| *8* | 84-87 | 4 | Numeric | Addenda Sequence Number | Sequence number of each „Type 18” Foreign Correspondent Bank Identification addenda in ascending order beginning with “0001”. | M |
 | *9* | 88-94 | 7 | Numeric | Entry Detail Sequence Number | This field contains the ascending sequence number section of the Entry Detail Record‟s trace number. This number is the same as the last seven digits of the trace number (Field 13) of the related Entry Detail Record. | M |
 
 **IAT Addenda Record for IAT Returns (799)**
@@ -932,15 +932,15 @@ This Addenda Record is used to provide return data for a returned IAT entry
 
 Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record | M |
-| *2* | 02-03 | 2 | '99' | Addenda Type Code | Addenda Record IAT Returns | M |
-| *3* | 04-06 | 3 | Alphanumeric | Return Reason Code | This field contains code associated with the reason for the return | M |
-| *4* | 07-21 | 15 | Numeric | Original Trace Number | This field contains the Trace Number as originally included on the forward Entry | M |
-| *5* | 22-27 | 6 | YYMMDD | Date of Death | This field is used for Return Reason Code R14 or R15 | O |
-| *6* | 28-35 | 8 | Alphanumeric | Original DFI | This field contains the Receiving DFI Identification as originally included on the forward Entry that the RDFI is returning or correcting | R |
-| *7* | 36-45 | 10 | Numeric | Original Payment Amount | Original Payment of the forward Entry | R |
-| *8* | 46-79 | 34 | Alphanumeric| Addenda Information | Addenda Information | O |
-| *9* | 80-94 | 15 | Numeric | Trace Number | The Trace Number of the entry being returned | M |
+| *1* | 01-01 | 1 | '7' | Record Type Code | Code Identifying the Addenda Record. | M |
+| *2* | 02-03 | 2 | '99' | Addenda Type Code | Addenda Record IAT Returns. | M |
+| *3* | 04-06 | 3 | Alphameric | Return Reason Code | This field contains code associated with the reason for the return. | M |
+| *4* | 07-21 | 15 | Numeric | Original Trace Number | This field contains the Trace Number as originally included on the forward Entry. | M |
+| *5* | 22-27 | 6 | YYMMDD | Date of Death | This field is used for Return Reason Code R14 or R15. | O |
+| *6* | 28-35 | 8 | Alphameric | Original DFI | This field contains the Receiving DFI Identification as originally included on the forward Entry that the RDFI is returning or correcting. | R |
+| *7* | 36-45 | 10 | Numeric | Original Payment Amount | Original Payment of the forward Entry. | R |
+| *8* | 46-79 | 34 | Alphameric| Addenda Information | Addenda Information. | O |
+| *9* | 80-94 | 15 | Numeric | Trace Number | The Trace Number of the entry being returned. | M |
 
 
 ## File Control
@@ -949,7 +949,7 @@ The File Control record contains dollar, entry, and hash totals from the file's 
 
 | Field | Position | Size | Contents | Field Name | Entry Information | M,R,O |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
-| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Control Record is '9' | M |
+| *1* | 01-01 | 1 | '9' | Record Type Code | Code Identifying the File Control Record is '9'. | M |
 | *2* | 02-07 |  | Numeric | Batch Count | Total number of Company/Batch Header Records (Record Type “5”) in the file. | M |
 | *3* | 08-13 | 6 | Numeric | Block Count | Total number of physical blocks in the file, including the File Header and File Control Records. | M |
 | *4* | 14-21 | 8 | Numeric | Entry / Addenda Count | Total number of Entry Detail and Addenda Records (Record Types “6” and “7”) in the file. | M |
