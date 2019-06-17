@@ -10,6 +10,9 @@ pages:
 - FED:
   - Overview: fed/index.md
   - 'FED File Structure': fed/file-structure.md
+- 'Image Cash Letter':
+  - Overview: icl/index.md
+  - 'ICL File Structure': icl/file-structure.md
 - OFAC:
   - Overview: ofac/index.md
   - 'OFAC File Structure': ofac/file-structure.md
@@ -20,9 +23,6 @@ pages:
   - 'Time': wire/TimeHHMM.md
   - 'Address': wire/address.md
   - 'Remittance Data': wire/remittanceData.md
-- X9:
-  - Overview: x9/index.md
-  - 'X9 File Structure': x9/file-structure.md
 - Tutorials:
     - 'Running ACH Server': tutorials/ach-server.md
     - 'Local Dev with Moov': tutorials/local-dev.md
