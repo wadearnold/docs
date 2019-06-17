@@ -44,16 +44,16 @@ Special characters are any of the printable characters listed in the table below
 | Special Printable | Character	ASCII hex |	EBCDIC hex |
 | :---: | :---: | :---: |
 | !	| 21 | 5A |
-| "	| 22 | 7F | 
-| #	| 23 | 7B | 
+| "	| 22 | 7F |
+| #	| 23 | 7B |
 | $	| 24 | 5B |
-| %	| 25 | 6C | 
+| %	| 25 | 6C |
 | &	| 26 | 50 |
 | '	| 27 | 7D |
-| (	| 28 | 4D | 
+| (	| 28 | 4D |
 | )	| 29 | 5D |
 | *	| 2A | 5C |
-| +	| 2B | 4E |		
+| +	| 2B | 4E |
 | ,	| 2C | 6B |
 | -	| 2D | 60 |
 | .	| 2E | 4B |
@@ -76,12 +76,12 @@ Special characters are any of the printable characters listed in the table below
 | } | 7D | D0 |
 | ~ | 7E | A1 |
 
-### Alphameric (AN) 
+### Alphameric (AN)
 An alphameric character is any of the alphabetic or numeric characters.
 
 ### Alphameric/special (ANS)
 An Alphameric/special character is any one of the alphabetic, numeric, or special characters.
- 
+
 ### X9.100-187–2016
 
 Numericblank (NB): A numericblank character is any one of the numeric characters or the blank character. Blanks shall not be embedded within the numeric digits. Blanks may be used only to fill out a field when the numeric value length is shorter than the actual field length. Leading zeros may be present but shall not be removed or added. Numericblank fields, when present, shall contain at least one numeric character and shall not be all blanks.
@@ -105,7 +105,7 @@ Forward slash (/): The forward slash character shall be used to represent the pr
 Numericblank/special MICR (NBSM): A numericblank/special MICR character is any one of the numeric characters, the blank character, the dash character, or asterisk character.
 
 Numericblank/special MICR On-Us (NBSMOS): A numericblank/special MICR On-Us character is any one of the numeric characters, the blank character, the asterisk character, the dash character, or the forward slash character.
- 
+
 
 ### Fill data
 Fill data are any characters used to fill up unused bytes in a field. Fill characters shall be blanks or zeros.
@@ -148,11 +148,11 @@ All amounts fields have two implied decimal points, e.g., $1,234.67 is entered a
 
 Most records of the file provide for User Fields. Users of the standard utilize these fields at their discretion. The standard does not define particular uses for, or the internal contents of, these fields. In many cases, the user fields within the records are more than one character in length. Users are free to use the field as a single field or divide it into multiple fields.
 
-### Usage 
+### Usage
 M - Mandatory
 C - Conditional
 
-## Annotated X9 Record Formats
+## Annotated Image Cash Letter Record Formats
 
 ### 01 File Header Record
 
@@ -218,21 +218,21 @@ C - Conditional
 
 | Field | Position | Size | Type | Field Name | Usage - M, C |
 | :---: | :---: | :---: | :---: | :--- | :---: |
-| *1* | 01–02 | 2 | N | Record Type | M |	
-| *2* |	03–17 | 15 | NBSM | Auxiliary On-Us | C |	
-| *3* |	18–18 | 1 | NS | External Processing Code | C |	
+| *1* | 01–02 | 2 | N | Record Type | M |
+| *2* |	03–17 | 15 | NBSM | Auxiliary On-Us | C |
+| *3* |	18–18 | 1 | NS | External Processing Code | C |
 | *4* |	19–26 | 8 | N | Payor Bank Routing Number | M |
-| *5* |	27–27 | 1 | N | Payor Bank Routing Number Check Digit | M | 
-| *6* |	28–47 | 20 | NBSMOS | On-Us | C |  
-| *7* |	48–57 | 10 | N | Item Amount	 | M |	 
-| *8* |	58–72 | 15 | NB | ECE Institution Item Sequence Number | M |	 
-| *9* |	73–73 | 1 | AN | Documentation Type Indicator | C |	 
-| *10* | 74–74 | 1 | AN | Return Acceptance Indicator | C |	 
-| *11* | 75–75 | 1 | N | MICR Valid Indicator | C |	 
-| *12* | 76–76 | 1 | A | BOFD Indicator | M |	 
-| *13* | 77–78 | 2 | N | Check Detail Record Addendum Count | M |	 
-| *14* | 79–79 | 1 | N | Correction Indicator | C |	 
-| *15* | 80-80 | 1 | AN | Archive Type Indicator | C | 
+| *5* |	27–27 | 1 | N | Payor Bank Routing Number Check Digit | M |
+| *6* |	28–47 | 20 | NBSMOS | On-Us | C |
+| *7* |	48–57 | 10 | N | Item Amount	 | M |
+| *8* |	58–72 | 15 | NB | ECE Institution Item Sequence Number | M |
+| *9* |	73–73 | 1 | AN | Documentation Type Indicator | C |
+| *10* | 74–74 | 1 | AN | Return Acceptance Indicator | C |
+| *11* | 75–75 | 1 | N | MICR Valid Indicator | C |
+| *12* | 76–76 | 1 | A | BOFD Indicator | M |
+| *13* | 77–78 | 2 | N | Check Detail Record Addendum Count | M |
+| *14* | 79–79 | 1 | N | Correction Indicator | C |
+| *15* | 80-80 | 1 | AN | Archive Type Indicator | C |
 
 
 ### 26 Check Detail Addendum A Record
@@ -290,21 +290,21 @@ C - Conditional
 
 | Field | Position | Size | Type | Field Name | Usage - M, C |
 | :---: | :---: | :---: | :---: | :--- | :---: |
-| *1* | 01–02 | 2 | N | Record Type | M |	
-| *2* |	03–10 | 8 | N | Payor Bank Routing Number | M |	
-| *3* |	11-11 | 1 | N | Payor Bank Routing Number Check Digit | M |	
+| *1* | 01–02 | 2 | N | Record Type | M |
+| *2* |	03–10 | 8 | N | Payor Bank Routing Number | M |
+| *3* |	11-11 | 1 | N | Payor Bank Routing Number Check Digit | M |
 | *4* |	12–31 | 20 | NBSMOS | On-Us | C |
-| *5* |	32-41 | 10 | N | Item Amount	 | M | 
-| *6* |	42-42 | 1 | AN | Return Reason| M |  
-| *7* |	43–44 | 2 | N | Return Record Addendum Count | M |	 
-| *8* |	45-45 | 1 | AN | Return Documentation Type Indicator | C |	 
-| *9* |	46-53| 8 | N | Forward Bundle Date | C |	 
-| *10* | 54–68 | 15 | NB | ECE Institution Item Sequence Number | C |	 
-| *11* | 69-69 | 1 | NS | External Processing Code | C |	 
-| *12* | 70–70 | 1 | N | Return Notification Indicator | M |	 
-| *13* | 71–71 | 2 | AN | Archive Type Indicator | M |	 
-| *14* | 72–72 | 1 | N | Number of Times Returned | C |	 
-| *15* | 73-80 | 8 | B | Reserved | M | 
+| *5* |	32-41 | 10 | N | Item Amount	 | M |
+| *6* |	42-42 | 1 | AN | Return Reason| M |
+| *7* |	43–44 | 2 | N | Return Record Addendum Count | M |
+| *8* |	45-45 | 1 | AN | Return Documentation Type Indicator | C |
+| *9* |	46-53| 8 | N | Forward Bundle Date | C |
+| *10* | 54–68 | 15 | NB | ECE Institution Item Sequence Number | C |
+| *11* | 69-69 | 1 | NS | External Processing Code | C |
+| *12* | 70–70 | 1 | N | Return Notification Indicator | M |
+| *13* | 71–71 | 2 | AN | Archive Type Indicator | M |
+| *14* | 72–72 | 1 | N | Number of Times Returned | C |
+| *15* | 73-80 | 8 | B | Reserved | M |
 
 
 ### 32 Return Detail Addendum A Record
@@ -510,7 +510,7 @@ C - Conditional
 | *22* | 325-325 | 1 | AN | Endorsement Indicator | C |
 | *23* | 326-335| 10 | ANS | User Field | C |
 
-### 70 Bundle Control Record 
+### 70 Bundle Control Record
 
 | Field | Position | Size | Type | Field Name | Usage - M, C |
 | :---: | :---: | :---: | :---: | :--- | :---: |
@@ -552,7 +552,7 @@ C - Conditional
 | Field | Position | Size | Type | Field Name | Usage - M, C |
 | :---: | :---: | :---: | :---: | :--- | :---: |
 | *1* |	01–02 | 2 | N | Record Type	| M |
-| *2* |	03-08 | 6 | N | Bundle Count | M | 
+| *2* |	03-08 | 6 | N | Bundle Count | M |
 | *3* | 09-16 | 8 | N | Items Within Cash letter Count | M |
 | *4* |	17-30 | 14 | N | Cash Letter Total Amount | M |
 | *5* |	31-39 | 9 | N | Images Within Cash Letter Count | M |
@@ -566,7 +566,7 @@ C - Conditional
 | Field | Position | Size | Type | Field Name | Usage - M, C |
 | :---: | :---: | :---: | :---: | :--- | :---: |
 | *1* |	01–02 | 2 | N | Record Type	| M |
-| *2* |	03-08 | 6 | N | Cash Letter Count | M | 
+| *2* |	03-08 | 6 | N | Cash Letter Count | M |
 | *3* | 09-16 | 8 | N | Total Record Count | M |
 | *4* | 17-24 | 8 | N | Total Item Count | M |
 | *5* | 25-40 | 16 | N | File Total Amount | M |
@@ -574,12 +574,3 @@ C - Conditional
 | *7* |	55-64 | 10 | N | Immediate Origin Contact Phone Number | C |
 | *8* |	65-65 | 1 | N | Credit Total Indicator | C |
 | *9* |	66-80 | 15 | B | Reserved |	M |
-
-
-
-
-
-
-
-
-
