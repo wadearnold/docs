@@ -1,7 +1,86 @@
+# Project information
 site_name: Moov Documentation
-pages:
-- Overview: index.md
-- About: about.md
+site_description: Open Source Financial Technology Micro Services
+site_url: https://docs.moov.io/
+
+# Repository
+repo_name: moov-io/docs
+repo_url: https://github.com/moov-io/docs/
+
+# Copyright
+copyright: 'Copyright &copy; 2017 - 2019 Moov Authors'
+
+# Configuration
+theme: 
+  name: 'material'
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # default values
+  language: en
+  feature:
+    tabs: true
+  palette:
+    primary: pink
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/images/favicon.ico
+  logo:
+    icon: "\uE80C"
+  
+# Plugins
+plugins: 
+  - search
+
+extra:
+  social:
+    - type: globe
+      link: https://moov.io
+    - type: github-alt
+      link: https://github.com/moov-io
+    - type: twitter
+      link: https://twitter.com/moov_io
+      #- type: linkedin
+      #  link: https://linkedin.com/in/squidfunk
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+- Introduction:
+  - Welcome: index.md
 - ACH:
   - Overview: ach/index.md
   - 'ACH File Structure': ach/file-structure.md
@@ -26,8 +105,6 @@ pages:
 - Tutorials:
     - 'Running ACH Server': tutorials/ach-server.md
     - 'Local Dev with Moov': tutorials/local-dev.md
-theme: readthedocs
-extra_css:
-  - extra.css
-repo_url: https://github.com/moov-io/docs/
+
+# Google analytics
 google_analytics: ['UA-118148273-1', 'moov.io']

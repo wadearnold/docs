@@ -68,7 +68,7 @@ Name | Type | Description | Notes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SenderReference** | **string** | SenderReference | [optional] 
+**SenderReference** | **string** | SenderReference | [optional]
 
 ### LocalInstrument
 
@@ -424,7 +424,7 @@ Name | Type | Description | Notes
 **RemittanceIdentification** | **string** | RemittanceIdentification | [optional] 
 **RemittanceLocationMethod** | **string** | RemittanceLocationMethod  * &#x60;EDIC&#x60; - Electronic Data Interchange * &#x60;EMAL&#x60; - Email * &#x60;FAXI&#x60; - Fax * &#x60;POST&#x60; - Postal services * &#x60;SMS&#x60; - Short Message Service (text) * &#x60;URI&#x60; - Uniform Resource Identifier  | [optional] 
 **RemittanceLocationElectronicAddress** | **string** | RemittanceLocationElectronicAddress (E-mail or URL address) | [optional] 
-**RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional] 
+**RemittanceData** | [**RemittanceData**](remittanceData.md) |  | [optional] 
 
 ## Structured Remittance Information
 
@@ -437,7 +437,7 @@ Name | Type | Description | Notes
 **IdentificationNumber** | **string** | IdentificationNumber | [optional] 
 **IdentificationNumberIssuer** | **string** | IdentificationNumberIssuer | [optional] 
 **DateBirthPlace** | **string** | DateBirthPlace | [optional] 
-**RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional] 
+**RemittanceData** | [**RemittanceData**](remittanceData.md) |  | [optional] 
 **CountryOfResidence** | **string** | CountryOfResidence | [optional] 
 **ContactName** | **string** | ContactName | [optional] 
 **ContactPhoneNumber** | **string** | ContactPhoneNumber | [optional] 
@@ -455,7 +455,7 @@ Name | Type | Description | Notes
 **IdentificationNumber** | **string** | IdentificationNumber | [optional] 
 **IdentificationNumberIssuer** | **string** | IdentificationNumberIssuer | [optional] 
 **DateBirthPlace** | **string** | DateBirthPlace | [optional] 
-**RemittanceData** | [**RemittanceData**](RemittanceData.md) |  | [optional]
+**RemittanceData** | [**RemittanceData**](remittanceData.md) |  | [optional]
 
 ### PrimaryRemittanceDocument
 
