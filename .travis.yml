@@ -1,0 +1,8 @@
+sudo: false
+language: python
+install:
+- pip install pygments
+- pip install mkdocs
+- pip install mkdocs-material
+script:
+- git clean -f -d -x

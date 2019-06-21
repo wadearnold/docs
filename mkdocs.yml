@@ -46,6 +46,9 @@ extra:
       #- type: linkedin
       #  link: https://linkedin.com/in/squidfunk
 
+extra_javascript:
+  - 'assets/javascript/github-buttons.js'
+
 # Extensions
 markdown_extensions:
   - markdown.extensions.admonition
@@ -82,10 +85,13 @@ nav:
 - Introduction:
   - Welcome: index.md
 - ACH:
-  - Overview: ach/index.md
-  - 'ACH File Structure': ach/file-structure.md
-  - 'Picking an SEC Code': ach/sec-codes-table.md
-  - 'Merging ACH Files': ach/merging-files.md
+  - Getting Started: ach/index.md
+  - Tutorials: 
+      - 'Merging ACH Files': ach/merging-files.md
+  - ACH Developers:
+    - 'Intro to ACH': ach/intro.md
+    - 'ACH File Structure': ach/file-structure.md
+    - 'Picking an SEC Code': ach/sec-codes-table.md
 - FED:
   - Overview: fed/index.md
   - 'FED File Structure': fed/file-structure.md
@@ -103,7 +109,6 @@ nav:
   - 'Address': wire/address.md
   - 'Remittance Data': wire/remittanceData.md
 - Tutorials:
-    - 'Running ACH Server': tutorials/ach-server.md
     - 'Local Dev with Moov': tutorials/local-dev.md
 
 # Google analytics
