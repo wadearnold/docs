@@ -11,7 +11,7 @@ repo_url: https://github.com/moov-io/docs/
 copyright: 'Copyright &copy; 2017 - 2019 Moov Authors'
 
 # Configuration
-theme: 
+theme:
   name: 'material'
   # Don't include MkDocs' JavaScript
   include_search_page: false
@@ -30,9 +30,9 @@ theme:
   favicon: assets/images/favicon.ico
   logo:
     icon: "\uE80C"
-  
+
 # Plugins
-plugins: 
+plugins:
   - search
 
 extra:
@@ -86,7 +86,7 @@ nav:
   - Welcome: index.md
 - ACH:
   - Getting Started: ach/index.md
-  - Tutorials: 
+  - Tutorials:
       - 'Merging ACH Files': ach/merging-files.md
   - ACH Developers:
     - 'Intro to ACH': ach/intro.md
@@ -102,14 +102,15 @@ nav:
   - Overview: ofac/index.md
   - 'OFAC File Structure': ofac/file-structure.md
 - WIRE:
-  -  Overview: wire/index.md
+  - Overview: wire/index.md
   - 'WIRE Fed Wire Message Structure': wire/fedWireMessage-Structure.md
   - 'Date': wire/DateMMDD.md
   - 'Time': wire/TimeHHMM.md
   - 'Address': wire/address.md
   - 'Remittance Data': wire/remittanceData.md
 - Tutorials:
-    - 'Local Dev with Moov': tutorials/local-dev.md
+  - 'Local Dev with Moov': tutorials/local-dev.md
+  - 'Running Paygate': tutorials/paygate.md
 
 # Google analytics
 google_analytics: ['UA-118148273-1', 'moov.io']
