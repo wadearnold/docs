@@ -1,6 +1,6 @@
 ## Setup PayGate
 
-The [Moov PayGate project](https://github.com/moov-io/paygate) provides an HTTP REST endpoint for submitting and receiving ACH payments and builds upon a suite of services offered by Moov, including [ACH](https://github.com/moov-io/ach), [OFAC](https://github.com/moov-io/ofac), and [FED](https://github.com/moov-io/fed). Each of these services must be running and reachable by PayGate. We provide several examples of setting up a complete installation using (Docker Compose)[https://docs.docker.com/compose/], Kubernetes, or directly using the provided binaries.
+The [Moov PayGate project](https://github.com/moov-io/paygate) provides an HTTP REST endpoint for submitting and receiving ACH payments and builds upon a suite of services offered by Moov, including [ACH](https://github.com/moov-io/ach), [OFAC](https://github.com/moov-io/ofac), and [FED](https://github.com/moov-io/fed). Each of these services must be running and reachable by PayGate. We provide several examples of setting up a complete installation using [Docker Compose](https://docs.docker.com/compose/), Kubernetes, or directly using the provided binaries.
 
 ### Running PayGate locally using Docker Compose (Quickest)
 
@@ -13,7 +13,8 @@ $ git clone https://github.com/moov-io/paygate.git
 $ cd paygate
 $ docker-compose up -d
 ```
-That's it! Your PayGate endpoint should be accessible at `http://localhost:8082`.  For a more advanced setup using clustering see below.
+
+That's it! Your PayGate endpoint should be accessible at `http://localhost:8082`. You can verify paygate is running with `curl http://localhost:8082/ping` and monitor the health with `curl http://localhost:9092/live`.
 
 ### Running PayGate using Kubernetes (Advanced)
 
@@ -32,16 +33,8 @@ $ go run .
 
 ## Testing endpoints
 
-In order to check that the services are running, moov provides an api tool for testing the endpoints.
+In order to check that the services are running, moov provides an api tool ([`apitest`](https://github.com/moov-io/api#apitest)) for testing the endpoints [with binaries you can download](https://github.com/moov-io/api/releases). Once downloaded running `apitest -local` will create Customer, Receiver, Depository, and a Transfer against your local docker compose stack.
 
-You can use `go` to install it locally, or the provided binaries:
-```
-# Local install using go
-$ go get github.com/moov-io/api/cmd/apitest
-# Then run, optionally with attributes below
-$ apitest -local
-```
-Or you can download the binaries for your system directly and run them:
 ```
 # For Linux
 $ wget https://github.com/moov-io/api/releases/download/v0.10.0/apitest-linux-amd64
@@ -65,11 +58,11 @@ $ ./apitest -help
 
 After confirming that the services are running correctly, there are several things needed before ACH transactions can be created/processed using PayGate.  Listed below are the steps necessary:
 
-1. [Setup a Depository](https://api.moov.io/#operation/addDepository) for the Originator (ODFI),
-2. Setup a Depository for the Receiver as well (RDFI),
-3. [Setup an Originator](https://api.moov.io/#operation/addOriginator),
-4. [Setup a Receiver](https://api.moov.io/#operation/addReceivers),
-5. Then you can [create a transaction](https://api.moov.io/#operation/addTransfer) between these two FIs.
+1. [Setup a Depository](https://api.moov.io/#operation/addDepository) for the Originator (ODFI)
+1. Setup a Depository for the Receiver as well (RDFI)
+1. [Setup an Originator](https://api.moov.io/#operation/addOriginator)
+1. [Setup a Receiver](https://api.moov.io/#operation/addReceivers)
+1. Then you can [create a transaction](https://api.moov.io/#operation/addTransfer) between these two FIs
 
 ## Setup SFTP
 
@@ -110,7 +103,7 @@ $ sqlite3 paygate.db "INSERT INTO cutoff_times (routing_number, cutoff, location
 # Setup sftp directories
 $ sqlite3 paygate.db "INSERT INTO file_transfer_configs (routing_number, inbound_path, outbound_path, return_path) VALUES ('000000000', '/inbound', '/outbound', '/returns');"
 ```
-The command may need to be ran with elevated privileges, using `sudo` or another method. The database will also need to be writeable.
+The command may need to be ran with elevated privileges, using `sudo` or another method. The database will also need to be writable.
 
 Recently an admin interface to check these values was setup (default on port `:9092`), but require PayGate to be running from the latest codebase (and not the docker image above).
 
