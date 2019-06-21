@@ -13,7 +13,7 @@ Check 21 affects check writers and depositors in the following ways:
 * Check 21 does not require your bank to return your original check to you. However, Check 21 ensures that you have the same legal protections when you receive a substitute check from your bank as you do when you receive an original check.
 * If you notice a problem with a substitute check, you should contact your bank as soon as possible. Check 21 provides a special process that allows you to claim a refund when you receive a substitute check from a bank and you think there is an error because of the substitute check. In general, you should contact your bank no later than 40 days from the date your bank provided the substitute check or from the date of the statement that shows the problem.
 
-[FRB: Frequently Asked Questions about Check 21 and Substitute Checks](www.federalreserve.gov)
+[FRB: Frequently Asked Questions about Check 21 and Substitute Checks](http://www.federalreserve.gov)
 
 [source: FDIC Check 21](https://www.fdic.gov/consumers/assistance/protection/check21.html)
 
