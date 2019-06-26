@@ -1,6 +1,6 @@
 ## moov-io/docs
 
-Documentation for the Moov project hosted at [docs.moov.io] on Github Pages.
+Documentation for the Moov project hosted at [docs.moov.io](https://docs.moov.io) on Github Pages.
 
 ## Getting Started / Install
 
